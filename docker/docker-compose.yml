@@ -1,0 +1,53 @@
+version: '3.3'
+  
+services:
+
+  katech-db-1:
+    image: mysql:8
+    command:
+        - --default-authentication-plugin=mysql_native_password
+        - --character-set-server=utf8mb4
+        - --collation-server=utf8mb4_unicode_ci
+    restart: always
+    container_name : katech-mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: tbell0518
+      LANG: C.utf8
+      TZ: "Asia/Seoul"
+    volumes:
+      - ../dbenv/mysql/mysql_master:/var/lib/mysql
+      - ../dbenv/mysql/master.cnf:/etc/mysql/conf.d/master.cnf
+    ports:
+      - 3306:3306
+
+  katech-db-2:
+    image: influxdb:latest
+    restart: always
+    container_name: katech-influx-db
+    environment:
+      INFLUXDB_ADMIN_USER: katech
+      INFLUXDB_ADMIN_PASSWORD: tbell0518
+      TZ: "Asia/Seoul"
+    volumes:
+      - ../dbenv/influxdb:/var/lib/influxdb
+    ports:
+      - 8822:8086
+
+  katech-api-1:
+    container_name: katech-api-1
+    build: 
+      context: ..
+      dockerfile: ./app/docker/Dockerfile
+    volumes:
+      - ../app:/workspace/app
+      - ../config:/workspace/config
+      - ../data:/workspace/data
+      - ../logs:/workspace/logs
+      - ../main.py:/workspace/main.py
+      - ../requirements.txt:/workspace/requirements.txt
+    ports:
+      - "8820:8820" 
+    restart: always
+    depends_on:
+      - katech-db-1
+      - katech-db-2

@@ -1,0 +1,878 @@
+
+2023-10-17 16:43:16,966 Using selector: EpollSelector2023-10-17 16:43:30,197 Calling on_part_begin with no data
+2023-10-17 16:43:30,197 Calling on_header_field with data[54:73]
+2023-10-17 16:43:30,197 Calling on_header_value with data[75:123]
+2023-10-17 16:43:30,197 Calling on_header_end with no data
+2023-10-17 16:43:30,198 Calling on_header_field with data[125:137]
+2023-10-17 16:43:30,198 Calling on_header_value with data[139:147]
+2023-10-17 16:43:30,198 Calling on_header_end with no data
+2023-10-17 16:43:30,198 Calling on_headers_finished with no data
+2023-10-17 16:43:30,198 Calling on_part_data with data[151:1599]
+2023-10-17 16:43:30,199 Calling on_part_data with data[0:33]
+2023-10-17 16:43:30,199 Calling on_part_end with no data
+2023-10-17 16:43:30,199 Calling on_end with no data
+2023-10-17 16:43:30,200 requested device id : B12345678
+2023-10-17 16:43:30,201 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231017164330.csv'}
+2023-10-17 16:43:33,428 requested device id : B12345678
+2023-10-17 16:43:33,428 response : {'files': ['B12345678_20231017164330.csv']}
+2023-10-17 16:43:35,413 requested device id : B12345678
+2023-10-17 16:44:42,916 Using selector: EpollSelector
+2023-10-17 16:44:45,893 requested device id : B12345678
+2023-10-17 16:44:45,894 download files response : /home/tbelldev/workspace/ciot_api_server/data/B12345678.zip
+2023-10-17 16:45:43,050 Calling on_part_begin with no data
+2023-10-17 16:45:43,050 Calling on_header_field with data[54:73]
+2023-10-17 16:45:43,050 Calling on_header_value with data[75:123]
+2023-10-17 16:45:43,050 Calling on_header_end with no data
+2023-10-17 16:45:43,051 Calling on_header_field with data[125:137]
+2023-10-17 16:45:43,051 Calling on_header_value with data[139:147]
+2023-10-17 16:45:43,051 Calling on_header_end with no data
+2023-10-17 16:45:43,051 Calling on_headers_finished with no data
+2023-10-17 16:45:43,051 Calling on_part_data with data[151:173]
+2023-10-17 16:45:43,051 Calling on_part_end with no data
+2023-10-17 16:45:43,051 Calling on_end with no data
+2023-10-17 16:45:43,052 requested device id : B12345679
+2023-10-17 16:45:43,053 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345679/B12345679_20231017164543.csv'}
+2023-10-17 16:45:56,242 Calling on_part_begin with no data
+2023-10-17 16:45:56,242 Calling on_header_field with data[54:73]
+2023-10-17 16:45:56,242 Calling on_header_value with data[75:123]
+2023-10-17 16:45:56,242 Calling on_header_end with no data
+2023-10-17 16:45:56,242 Calling on_header_field with data[125:137]
+2023-10-17 16:45:56,243 Calling on_header_value with data[139:147]
+2023-10-17 16:45:56,243 Calling on_header_end with no data
+2023-10-17 16:45:56,243 Calling on_headers_finished with no data
+2023-10-17 16:45:56,243 Calling on_part_data with data[151:173]
+2023-10-17 16:45:56,243 Calling on_part_end with no data
+2023-10-17 16:45:56,243 Calling on_end with no data
+2023-10-17 16:45:56,244 requested device id : B12345679
+2023-10-17 16:45:56,244 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345679/B12345679_20231017164556.csv'}
+2023-10-17 17:14:35,554 Calling on_part_begin with no data
+2023-10-17 17:14:35,554 Calling on_header_field with data[54:73]
+2023-10-17 17:14:35,554 Calling on_header_value with data[75:123]
+2023-10-17 17:14:35,554 Calling on_header_end with no data
+2023-10-17 17:14:35,555 Calling on_header_field with data[125:137]
+2023-10-17 17:14:35,555 Calling on_header_value with data[139:147]
+2023-10-17 17:14:35,555 Calling on_header_end with no data
+2023-10-17 17:14:35,555 Calling on_headers_finished with no data
+2023-10-17 17:14:35,555 Calling on_part_data with data[151:173]
+2023-10-17 17:14:35,555 Calling on_part_end with no data
+2023-10-17 17:14:35,555 Calling on_end with no data
+2023-10-17 17:14:35,556 requested device id : B12345679
+2023-10-17 17:14:35,557 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345679/B12345679_20231017171435.csv'}
+2023-10-17 17:15:24,835 requested device id : B12345679
+2023-10-17 17:15:24,835 response : {'files': ['B12345679_20231017164543.csv', 'B12345679_20231017171435.csv', 'B12345679_20231017164556.csv']}
+2023-10-17 17:16:35,067 requested device id : B12345679
+2023-10-17 17:16:35,068 download files response : /home/tbelldev/workspace/ciot_api_server/data/B12345679.zip
+2023-10-17 17:31:22,048 requested device id : B12345679
+2023-10-17 17:31:30,779 requested device id : B12345679
+2023-10-17 17:31:30,779 response : {'files': ['B12345679_20231017164543.csv', 'B12345679_20231017171435.csv', 'B12345679_20231017164556.csv']}
+2023-10-17 17:31:38,532 requested device id : B12345679
+2023-10-17 17:31:38,532 download file response : /home/tbelldev/workspace/ciot_api_server/data/B12345679/B12345679_20231017171435.csv
+2023-10-17 17:31:47,272 requested device id : B12345679
+2023-10-17 17:31:47,272 download file response : /home/tbelldev/workspace/ciot_api_server/data/B12345679/B12345679_20231017164543.csv
+2023-10-17 17:31:54,676 requested device id : B12345679
+2023-10-17 17:31:54,676 download file response : /home/tbelldev/workspace/ciot_api_server/data/B12345679/B12345679_20231017164556.csv
+2023-10-18 08:42:21,703 requested device id : B12345678
+2023-10-18 08:42:24,594 Calling on_part_begin with no data
+2023-10-18 08:42:24,594 Calling on_header_field with data[54:73]
+2023-10-18 08:42:24,594 Calling on_header_value with data[75:123]
+2023-10-18 08:42:24,594 Calling on_header_end with no data
+2023-10-18 08:42:24,594 Calling on_header_field with data[125:137]
+2023-10-18 08:42:24,594 Calling on_header_value with data[139:147]
+2023-10-18 08:42:24,594 Calling on_header_end with no data
+2023-10-18 08:42:24,594 Calling on_headers_finished with no data
+2023-10-18 08:42:24,595 Calling on_part_data with data[151:1632]
+2023-10-18 08:42:24,595 Calling on_part_end with no data
+2023-10-18 08:42:24,595 Calling on_end with no data
+2023-10-18 08:42:24,596 requested device id : B12345678
+2023-10-18 08:42:24,597 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231018084224.csv'}
+2023-10-18 08:42:27,550 requested device id : B12345678
+2023-10-18 08:42:27,552 download files response : /home/tbelldev/workspace/ciot_api_server/data/B12345678.zip
+2023-10-18 09:22:56,535 Calling on_part_begin with no data
+2023-10-18 09:22:56,536 Calling on_header_field with data[54:73]
+2023-10-18 09:22:56,536 Calling on_header_value with data[75:123]
+2023-10-18 09:22:56,536 Calling on_header_end with no data
+2023-10-18 09:22:56,536 Calling on_header_field with data[125:137]
+2023-10-18 09:22:56,536 Calling on_header_value with data[139:147]
+2023-10-18 09:22:56,536 Calling on_header_end with no data
+2023-10-18 09:22:56,537 Calling on_headers_finished with no data
+2023-10-18 09:22:56,537 Calling on_part_data with data[151:1632]
+2023-10-18 09:22:56,537 Calling on_part_end with no data
+2023-10-18 09:22:56,537 Calling on_end with no data
+2023-10-18 09:22:56,538 requested device id : B12345678
+2023-10-18 09:22:56,539 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231018092256.csv'}
+2023-10-18 09:22:57,784 Calling on_part_begin with no data
+2023-10-18 09:22:57,784 Calling on_header_field with data[54:73]
+2023-10-18 09:22:57,784 Calling on_header_value with data[75:123]
+2023-10-18 09:22:57,785 Calling on_header_end with no data
+2023-10-18 09:22:57,785 Calling on_header_field with data[125:137]
+2023-10-18 09:22:57,785 Calling on_header_value with data[139:147]
+2023-10-18 09:22:57,785 Calling on_header_end with no data
+2023-10-18 09:22:57,785 Calling on_headers_finished with no data
+2023-10-18 09:22:57,785 Calling on_part_data with data[151:1632]
+2023-10-18 09:22:57,785 Calling on_part_end with no data
+2023-10-18 09:22:57,785 Calling on_end with no data
+2023-10-18 09:22:57,786 requested device id : B12345678
+2023-10-18 09:22:57,786 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231018092257.csv'}
+2023-10-18 09:23:33,189 requested device id : B12345678
+2023-10-18 09:23:33,189 response : {'files': ['B12345678_20231018092256.csv', 'B12345678_20231018084224.csv', 'B12345678_20231018092257.csv']}
+2023-10-18 09:23:42,170 requested device id : B12345678
+2023-10-18 09:23:42,172 download files response : /home/tbelldev/workspace/ciot_api_server/data/B12345678.zip
+2023-10-18 09:23:50,503 Calling on_part_begin with no data
+2023-10-18 09:23:50,503 Calling on_header_field with data[54:73]
+2023-10-18 09:23:50,503 Calling on_header_value with data[75:123]
+2023-10-18 09:23:50,503 Calling on_header_end with no data
+2023-10-18 09:23:50,503 Calling on_header_field with data[125:137]
+2023-10-18 09:23:50,503 Calling on_header_value with data[139:147]
+2023-10-18 09:23:50,503 Calling on_header_end with no data
+2023-10-18 09:23:50,503 Calling on_headers_finished with no data
+2023-10-18 09:23:50,504 Calling on_part_data with data[151:1632]
+2023-10-18 09:23:50,504 Calling on_part_end with no data
+2023-10-18 09:23:50,504 Calling on_end with no data
+2023-10-18 09:23:50,504 requested device id : B12345678
+2023-10-18 09:23:50,505 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231018092350.csv'}
+2023-10-18 09:24:20,698 Calling on_part_begin with no data
+2023-10-18 09:24:20,698 Calling on_header_field with data[54:73]
+2023-10-18 09:24:20,698 Calling on_header_value with data[75:123]
+2023-10-18 09:24:20,698 Calling on_header_end with no data
+2023-10-18 09:24:20,698 Calling on_header_field with data[125:137]
+2023-10-18 09:24:20,698 Calling on_header_value with data[139:147]
+2023-10-18 09:24:20,699 Calling on_header_end with no data
+2023-10-18 09:24:20,699 Calling on_headers_finished with no data
+2023-10-18 09:24:20,699 Calling on_part_data with data[151:1632]
+2023-10-18 09:24:20,699 Calling on_part_end with no data
+2023-10-18 09:24:20,699 Calling on_end with no data
+2023-10-18 09:24:20,699 requested device id : B12345678
+2023-10-18 09:24:20,700 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231018092420.csv'}
+2023-10-18 09:24:28,723 requested device id : B12345678
+2023-10-18 09:24:28,724 response : {'files': ['B12345678_20231018092256.csv', 'B12345678_20231018092420.csv', 'B12345678_20231018084224.csv', 'B12345678_20231018092350.csv', 'B12345678_20231018092257.csv']}
+2023-10-18 09:24:29,512 requested device id : M3230100256
+2023-10-18 09:24:36,286 requested device id : B12345678
+2023-10-18 09:24:36,287 download files response : /home/tbelldev/workspace/ciot_api_server/data/B12345678.zip
+2023-10-18 09:27:31,902 Calling on_part_begin with no data
+2023-10-18 09:27:31,902 Calling on_header_field with data[44:63]
+2023-10-18 09:27:31,902 Calling on_header_value with data[65:130]
+2023-10-18 09:27:31,902 Calling on_header_end with no data
+2023-10-18 09:27:31,902 Calling on_header_field with data[132:144]
+2023-10-18 09:27:31,902 Calling on_header_value with data[146:170]
+2023-10-18 09:27:31,902 Calling on_header_end with no data
+2023-10-18 09:27:31,902 Calling on_headers_finished with no data
+2023-10-18 09:27:31,903 Calling on_part_data with data[174:196]
+2023-10-18 09:27:31,903 Calling on_part_end with no data
+2023-10-18 09:27:31,903 Calling on_end with no data
+2023-10-18 09:27:31,903 requested device id : M3230100256
+2023-10-18 09:27:36,773 Calling on_part_begin with no data
+2023-10-18 09:27:36,774 Calling on_header_field with data[44:63]
+2023-10-18 09:27:36,774 Calling on_header_value with data[65:130]
+2023-10-18 09:27:36,774 Calling on_header_end with no data
+2023-10-18 09:27:36,774 Calling on_header_field with data[132:144]
+2023-10-18 09:27:36,774 Calling on_header_value with data[146:170]
+2023-10-18 09:27:36,774 Calling on_header_end with no data
+2023-10-18 09:27:36,774 Calling on_headers_finished with no data
+2023-10-18 09:27:36,774 Calling on_part_data with data[174:196]
+2023-10-18 09:27:36,774 Calling on_part_end with no data
+2023-10-18 09:27:36,775 Calling on_end with no data
+2023-10-18 09:27:36,775 requested device id : M3230100256
+2023-10-18 09:27:46,450 Calling on_part_begin with no data
+2023-10-18 09:27:46,450 Calling on_header_field with data[44:63]
+2023-10-18 09:27:46,450 Calling on_header_value with data[65:130]
+2023-10-18 09:27:46,450 Calling on_header_end with no data
+2023-10-18 09:27:46,450 Calling on_header_field with data[132:144]
+2023-10-18 09:27:46,450 Calling on_header_value with data[146:170]
+2023-10-18 09:27:46,451 Calling on_header_end with no data
+2023-10-18 09:27:46,451 Calling on_headers_finished with no data
+2023-10-18 09:27:46,451 Calling on_part_data with data[174:196]
+2023-10-18 09:27:46,451 Calling on_part_end with no data
+2023-10-18 09:27:46,451 Calling on_end with no data
+2023-10-18 09:27:46,451 requested device id : M3230100256
+2023-10-18 09:27:56,749 Calling on_part_begin with no data
+2023-10-18 09:27:56,750 Calling on_header_field with data[44:63]
+2023-10-18 09:27:56,750 Calling on_header_value with data[65:130]
+2023-10-18 09:27:56,750 Calling on_header_end with no data
+2023-10-18 09:27:56,750 Calling on_header_field with data[132:144]
+2023-10-18 09:27:56,750 Calling on_header_value with data[146:170]
+2023-10-18 09:27:56,750 Calling on_header_end with no data
+2023-10-18 09:27:56,750 Calling on_headers_finished with no data
+2023-10-18 09:27:56,750 Calling on_part_data with data[174:196]
+2023-10-18 09:27:56,750 Calling on_part_end with no data
+2023-10-18 09:27:56,750 Calling on_end with no data
+2023-10-18 09:27:56,751 requested device id : M3230100256
+2023-10-18 09:28:06,690 Calling on_part_begin with no data
+2023-10-18 09:28:06,690 Calling on_header_field with data[44:63]
+2023-10-18 09:28:06,690 Calling on_header_value with data[65:130]
+2023-10-18 09:28:06,690 Calling on_header_end with no data
+2023-10-18 09:28:06,690 Calling on_header_field with data[132:144]
+2023-10-18 09:28:06,690 Calling on_header_value with data[146:170]
+2023-10-18 09:28:06,690 Calling on_header_end with no data
+2023-10-18 09:28:06,690 Calling on_headers_finished with no data
+2023-10-18 09:28:06,691 Calling on_part_data with data[174:196]
+2023-10-18 09:28:06,691 Calling on_part_end with no data
+2023-10-18 09:28:06,691 Calling on_end with no data
+2023-10-18 09:28:06,691 requested device id : M3230100256
+2023-10-18 09:28:17,023 Calling on_part_begin with no data
+2023-10-18 09:28:17,023 Calling on_header_field with data[44:63]
+2023-10-18 09:28:17,024 Calling on_header_value with data[65:130]
+2023-10-18 09:28:17,024 Calling on_header_end with no data
+2023-10-18 09:28:17,024 Calling on_header_field with data[132:144]
+2023-10-18 09:28:17,024 Calling on_header_value with data[146:170]
+2023-10-18 09:28:17,024 Calling on_header_end with no data
+2023-10-18 09:28:17,024 Calling on_headers_finished with no data
+2023-10-18 09:28:17,024 Calling on_part_data with data[174:196]
+2023-10-18 09:28:17,024 Calling on_part_end with no data
+2023-10-18 09:28:17,024 Calling on_end with no data
+2023-10-18 09:28:17,025 requested device id : M3230100256
+2023-10-18 09:28:25,995 Calling on_part_begin with no data
+2023-10-18 09:28:25,995 Calling on_header_field with data[54:73]
+2023-10-18 09:28:25,995 Calling on_header_value with data[75:123]
+2023-10-18 09:28:25,995 Calling on_header_end with no data
+2023-10-18 09:28:25,995 Calling on_header_field with data[125:137]
+2023-10-18 09:28:25,995 Calling on_header_value with data[139:147]
+2023-10-18 09:28:25,995 Calling on_header_end with no data
+2023-10-18 09:28:25,995 Calling on_headers_finished with no data
+2023-10-18 09:28:25,996 Calling on_part_data with data[151:1632]
+2023-10-18 09:28:25,996 Calling on_part_end with no data
+2023-10-18 09:28:25,996 Calling on_end with no data
+2023-10-18 09:28:25,996 requested device id : B12345678
+2023-10-18 09:28:25,997 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231018092825.csv'}
+2023-10-18 09:28:26,772 Calling on_part_begin with no data
+2023-10-18 09:28:26,772 Calling on_header_field with data[44:63]
+2023-10-18 09:28:26,772 Calling on_header_value with data[65:130]
+2023-10-18 09:28:26,772 Calling on_header_end with no data
+2023-10-18 09:28:26,772 Calling on_header_field with data[132:144]
+2023-10-18 09:28:26,772 Calling on_header_value with data[146:170]
+2023-10-18 09:28:26,772 Calling on_header_end with no data
+2023-10-18 09:28:26,772 Calling on_headers_finished with no data
+2023-10-18 09:28:26,773 Calling on_part_data with data[174:196]
+2023-10-18 09:28:26,773 Calling on_part_end with no data
+2023-10-18 09:28:26,773 Calling on_end with no data
+2023-10-18 09:28:26,773 requested device id : M3230100256
+2023-10-18 09:28:40,050 requested device id : M3230100256
+2023-10-18 09:28:41,156 requested device id : M3230100256
+2023-10-18 09:32:00,623 Using selector: EpollSelector
+2023-10-18 09:32:16,598 Calling on_part_begin with no data
+2023-10-18 09:32:16,598 Calling on_header_field with data[44:63]
+2023-10-18 09:32:16,598 Calling on_header_value with data[65:130]
+2023-10-18 09:32:16,598 Calling on_header_end with no data
+2023-10-18 09:32:16,599 Calling on_header_field with data[132:144]
+2023-10-18 09:32:16,599 Calling on_header_value with data[146:170]
+2023-10-18 09:32:16,599 Calling on_header_end with no data
+2023-10-18 09:32:16,599 Calling on_headers_finished with no data
+2023-10-18 09:32:16,599 Calling on_part_data with data[174:196]
+2023-10-18 09:32:16,599 Calling on_part_end with no data
+2023-10-18 09:32:16,599 Calling on_end with no data
+2023-10-18 09:32:16,600 requested device id : M3230100256
+2023-10-18 09:32:16,601 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018093216.csv'}
+2023-10-18 09:32:26,358 Calling on_part_begin with no data
+2023-10-18 09:32:26,358 Calling on_header_field with data[44:63]
+2023-10-18 09:32:26,358 Calling on_header_value with data[65:130]
+2023-10-18 09:32:26,358 Calling on_header_end with no data
+2023-10-18 09:32:26,358 Calling on_header_field with data[132:144]
+2023-10-18 09:32:26,359 Calling on_header_value with data[146:170]
+2023-10-18 09:32:26,359 Calling on_header_end with no data
+2023-10-18 09:32:26,359 Calling on_headers_finished with no data
+2023-10-18 09:32:26,359 Calling on_part_data with data[174:196]
+2023-10-18 09:32:26,359 Calling on_part_end with no data
+2023-10-18 09:32:26,359 Calling on_end with no data
+2023-10-18 09:32:26,359 requested device id : M3230100256
+2023-10-18 09:32:26,360 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018093226.csv'}
+2023-10-18 09:32:36,831 requested device id : M3230100256
+2023-10-18 09:32:36,832 response : {'files': ['M3230100256_20231018093216.csv', 'M3230100256_20231018093226.csv']}
+2023-10-18 09:32:37,362 Calling on_part_begin with no data
+2023-10-18 09:32:37,362 Calling on_header_field with data[44:63]
+2023-10-18 09:32:37,362 Calling on_header_value with data[65:130]
+2023-10-18 09:32:37,362 Calling on_header_end with no data
+2023-10-18 09:32:37,362 Calling on_header_field with data[132:144]
+2023-10-18 09:32:37,362 Calling on_header_value with data[146:170]
+2023-10-18 09:32:37,362 Calling on_header_end with no data
+2023-10-18 09:32:37,362 Calling on_headers_finished with no data
+2023-10-18 09:32:37,362 Calling on_part_data with data[174:196]
+2023-10-18 09:32:37,363 Calling on_part_end with no data
+2023-10-18 09:32:37,363 Calling on_end with no data
+2023-10-18 09:32:37,363 requested device id : M3230100256
+2023-10-18 09:32:37,364 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018093237.csv'}
+2023-10-18 09:32:46,526 Calling on_part_begin with no data
+2023-10-18 09:32:46,527 Calling on_header_field with data[44:63]
+2023-10-18 09:32:46,527 Calling on_header_value with data[65:130]
+2023-10-18 09:32:46,527 Calling on_header_end with no data
+2023-10-18 09:32:46,527 Calling on_header_field with data[132:144]
+2023-10-18 09:32:46,527 Calling on_header_value with data[146:170]
+2023-10-18 09:32:46,527 Calling on_header_end with no data
+2023-10-18 09:32:46,527 Calling on_headers_finished with no data
+2023-10-18 09:32:46,527 Calling on_part_data with data[174:196]
+2023-10-18 09:32:46,527 Calling on_part_end with no data
+2023-10-18 09:32:46,528 Calling on_end with no data
+2023-10-18 09:32:46,528 requested device id : M3230100256
+2023-10-18 09:32:46,529 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018093246.csv'}
+2023-10-18 09:32:56,529 Calling on_part_begin with no data
+2023-10-18 09:32:56,529 Calling on_header_field with data[44:63]
+2023-10-18 09:32:56,529 Calling on_header_value with data[65:130]
+2023-10-18 09:32:56,529 Calling on_header_end with no data
+2023-10-18 09:32:56,529 Calling on_header_field with data[132:144]
+2023-10-18 09:32:56,529 Calling on_header_value with data[146:170]
+2023-10-18 09:32:56,529 Calling on_header_end with no data
+2023-10-18 09:32:56,529 Calling on_headers_finished with no data
+2023-10-18 09:32:56,529 Calling on_part_data with data[174:196]
+2023-10-18 09:32:56,530 Calling on_part_end with no data
+2023-10-18 09:32:56,530 Calling on_end with no data
+2023-10-18 09:32:56,530 requested device id : M3230100256
+2023-10-18 09:32:56,531 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018093256.csv'}
+2023-10-18 09:33:06,856 Calling on_part_begin with no data
+2023-10-18 09:33:06,856 Calling on_header_field with data[44:63]
+2023-10-18 09:33:06,856 Calling on_header_value with data[65:130]
+2023-10-18 09:33:06,856 Calling on_header_end with no data
+2023-10-18 09:33:06,856 Calling on_header_field with data[132:144]
+2023-10-18 09:33:06,856 Calling on_header_value with data[146:170]
+2023-10-18 09:33:06,856 Calling on_header_end with no data
+2023-10-18 09:33:06,856 Calling on_headers_finished with no data
+2023-10-18 09:33:06,856 Calling on_part_data with data[174:196]
+2023-10-18 09:33:06,857 Calling on_part_end with no data
+2023-10-18 09:33:06,857 Calling on_end with no data
+2023-10-18 09:33:06,857 requested device id : M3230100256
+2023-10-18 09:33:06,858 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018093306.csv'}
+2023-10-18 09:33:16,781 Calling on_part_begin with no data
+2023-10-18 09:33:16,782 Calling on_header_field with data[44:63]
+2023-10-18 09:33:16,782 Calling on_header_value with data[65:130]
+2023-10-18 09:33:16,782 Calling on_header_end with no data
+2023-10-18 09:33:16,782 Calling on_header_field with data[132:144]
+2023-10-18 09:33:16,782 Calling on_header_value with data[146:170]
+2023-10-18 09:33:16,782 Calling on_header_end with no data
+2023-10-18 09:33:16,782 Calling on_headers_finished with no data
+2023-10-18 09:33:16,782 Calling on_part_data with data[174:196]
+2023-10-18 09:33:16,782 Calling on_part_end with no data
+2023-10-18 09:33:16,782 Calling on_end with no data
+2023-10-18 09:33:16,783 requested device id : M3230100256
+2023-10-18 09:33:16,783 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018093316.csv'}
+2023-10-18 09:33:26,767 Calling on_part_begin with no data
+2023-10-18 09:33:26,768 Calling on_header_field with data[44:63]
+2023-10-18 09:33:26,768 Calling on_header_value with data[65:130]
+2023-10-18 09:33:26,768 Calling on_header_end with no data
+2023-10-18 09:33:26,768 Calling on_header_field with data[132:144]
+2023-10-18 09:33:26,768 Calling on_header_value with data[146:170]
+2023-10-18 09:33:26,768 Calling on_header_end with no data
+2023-10-18 09:33:26,768 Calling on_headers_finished with no data
+2023-10-18 09:33:26,768 Calling on_part_data with data[174:196]
+2023-10-18 09:33:26,768 Calling on_part_end with no data
+2023-10-18 09:33:26,768 Calling on_end with no data
+2023-10-18 09:33:26,769 requested device id : M3230100256
+2023-10-18 09:33:26,770 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018093326.csv'}
+2023-10-18 09:39:20,516 requested device id : M3230100256
+2023-10-18 09:39:20,516 download file response : /home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018093216.csv
+2023-10-18 10:11:47,417 requested device id : B12345678
+2023-10-18 10:11:47,418 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231018101147.csv'}
+2023-10-18 10:12:54,857 requested device id : B12345678
+2023-10-18 10:12:54,857 response : {'files': ['B12345678_20231018092256.csv', 'B12345678_20231018092825.csv', 'B12345678_20231018101147.csv', 'B12345678_20231018092420.csv', 'B12345678_20231018084224.csv', 'B12345678_20231018092350.csv', 'B12345678_20231018092257.csv']}
+2023-10-18 10:12:56,901 requested device id : B12345678
+2023-10-18 10:12:56,903 download files response : /home/tbelldev/workspace/ciot_api_server/data/B12345678.zip
+2023-10-18 10:12:59,232 requested device id : B12345678
+2023-10-18 10:12:59,233 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231018101259.csv'}
+2023-10-18 10:13:02,147 requested device id : B12345678
+2023-10-18 10:13:02,148 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231018101302.csv'}
+2023-10-18 10:13:38,375 requested device id : B12345678
+2023-10-18 10:13:38,376 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231018101338.csv'}
+2023-10-18 10:13:40,212 requested device id : B12345678
+2023-10-18 10:13:40,213 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231018101340.csv'}
+2023-10-18 10:13:42,698 requested device id : B12345678
+2023-10-18 10:13:42,698 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231018101342.csv'}
+2023-10-18 11:57:56,676 requested device id : M3230100256
+2023-10-18 11:57:56,677 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115756.csv'}
+2023-10-18 11:58:01,374 requested device id : M3230100256
+2023-10-18 11:58:01,375 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115801.csv'}
+2023-10-18 11:58:11,541 requested device id : M3230100256
+2023-10-18 11:58:11,542 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115811.csv'}
+2023-10-18 11:58:21,625 requested device id : M3230100256
+2023-10-18 11:58:21,625 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115821.csv'}
+2023-10-18 11:58:32,004 requested device id : M3230100256
+2023-10-18 11:58:32,004 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115832.csv'}
+2023-10-18 11:58:41,631 requested device id : M3230100256
+2023-10-18 11:58:41,631 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115841.csv'}
+2023-10-18 11:58:51,783 requested device id : M3230100256
+2023-10-18 11:58:51,783 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115851.csv'}
+2023-10-18 11:59:01,781 requested device id : M3230100256
+2023-10-18 11:59:01,782 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115901.csv'}
+2023-10-18 11:59:11,764 requested device id : M3230100256
+2023-10-18 11:59:11,766 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115911.csv'}
+2023-10-18 11:59:21,719 requested device id : M3230100256
+2023-10-18 11:59:21,720 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115921.csv'}
+2023-10-18 11:59:31,941 requested device id : M3230100256
+2023-10-18 11:59:31,942 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115931.csv'}
+2023-10-18 11:59:42,102 requested device id : M3230100256
+2023-10-18 11:59:42,103 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115942.csv'}
+2023-10-18 11:59:52,021 requested device id : M3230100256
+2023-10-18 11:59:52,022 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018115952.csv'}
+2023-10-18 12:00:01,849 requested device id : M3230100256
+2023-10-18 12:00:01,850 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120001.csv'}
+2023-10-18 12:00:12,101 requested device id : M3230100256
+2023-10-18 12:00:12,101 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120012.csv'}
+2023-10-18 12:00:22,098 requested device id : M3230100256
+2023-10-18 12:00:22,099 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120022.csv'}
+2023-10-18 12:00:32,107 requested device id : M3230100256
+2023-10-18 12:00:32,108 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120032.csv'}
+2023-10-18 12:00:42,199 requested device id : M3230100256
+2023-10-18 12:00:42,200 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120042.csv'}
+2023-10-18 12:00:52,340 requested device id : M3230100256
+2023-10-18 12:00:52,341 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120052.csv'}
+2023-10-18 12:01:02,341 requested device id : M3230100256
+2023-10-18 12:01:02,342 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120102.csv'}
+2023-10-18 12:01:12,420 requested device id : M3230100256
+2023-10-18 12:01:12,420 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120112.csv'}
+2023-10-18 12:01:22,580 requested device id : M3230100256
+2023-10-18 12:01:22,581 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120122.csv'}
+2023-10-18 12:01:32,519 requested device id : M3230100256
+2023-10-18 12:01:32,520 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120132.csv'}
+2023-10-18 12:01:42,661 requested device id : M3230100256
+2023-10-18 12:01:42,661 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120142.csv'}
+2023-10-18 12:01:52,662 requested device id : M3230100256
+2023-10-18 12:01:52,663 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120152.csv'}
+2023-10-18 12:02:02,742 requested device id : M3230100256
+2023-10-18 12:02:02,742 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120202.csv'}
+2023-10-18 12:02:12,736 requested device id : M3230100256
+2023-10-18 12:02:12,737 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120212.csv'}
+2023-10-18 12:02:22,749 requested device id : M3230100256
+2023-10-18 12:02:22,750 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120222.csv'}
+2023-10-18 12:02:32,569 requested device id : M3230100256
+2023-10-18 12:02:32,570 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120232.csv'}
+2023-10-18 12:02:42,821 requested device id : M3230100256
+2023-10-18 12:02:42,821 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120242.csv'}
+2023-10-18 12:02:52,765 requested device id : M3230100256
+2023-10-18 12:02:52,766 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120252.csv'}
+2023-10-18 12:03:02,902 requested device id : M3230100256
+2023-10-18 12:03:02,903 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120302.csv'}
+2023-10-18 12:03:12,911 requested device id : M3230100256
+2023-10-18 12:03:12,911 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120312.csv'}
+2023-10-18 12:04:23,296 requested device id : M3230100256
+2023-10-18 12:04:23,296 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120423.csv'}
+2023-10-18 12:04:33,295 requested device id : M3230100256
+2023-10-18 12:04:33,296 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120433.csv'}
+2023-10-18 12:04:43,295 requested device id : M3230100256
+2023-10-18 12:04:43,296 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120443.csv'}
+2023-10-18 12:04:53,342 requested device id : M3230100256
+2023-10-18 12:04:53,343 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120453.csv'}
+2023-10-18 12:05:03,537 requested device id : M3230100256
+2023-10-18 12:05:03,537 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120503.csv'}
+2023-10-18 12:05:13,581 requested device id : M3230100256
+2023-10-18 12:05:13,581 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120513.csv'}
+2023-10-18 12:05:23,535 requested device id : M3230100256
+2023-10-18 12:05:23,536 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120523.csv'}
+2023-10-18 12:05:33,636 requested device id : M3230100256
+2023-10-18 12:05:33,637 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120533.csv'}
+2023-10-18 12:05:43,869 requested device id : M3230100256
+2023-10-18 12:05:43,870 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120543.csv'}
+2023-10-18 12:05:53,650 requested device id : M3230100256
+2023-10-18 12:05:53,651 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120553.csv'}
+2023-10-18 12:06:03,787 requested device id : M3230100256
+2023-10-18 12:06:03,787 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120603.csv'}
+2023-10-18 12:06:13,776 requested device id : M3230100256
+2023-10-18 12:06:13,777 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120613.csv'}
+2023-10-18 12:06:23,935 requested device id : M3230100256
+2023-10-18 12:06:23,936 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120623.csv'}
+2023-10-18 12:07:00,015 requested device id : M3230100256
+2023-10-18 12:07:00,016 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120700.csv'}
+2023-10-18 12:07:05,137 requested device id : M3230100256
+2023-10-18 12:07:05,137 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120705.csv'}
+2023-10-18 12:07:14,931 requested device id : M3230100256
+2023-10-18 12:07:14,932 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120714.csv'}
+2023-10-18 12:07:25,086 requested device id : M3230100256
+2023-10-18 12:07:25,087 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120725.csv'}
+2023-10-18 12:07:35,100 requested device id : M3230100256
+2023-10-18 12:07:35,101 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120735.csv'}
+2023-10-18 12:07:45,218 requested device id : M3230100256
+2023-10-18 12:07:45,219 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120745.csv'}
+2023-10-18 12:07:55,144 requested device id : M3230100256
+2023-10-18 12:07:55,144 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120755.csv'}
+2023-10-18 12:08:05,225 requested device id : M3230100256
+2023-10-18 12:08:05,225 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120805.csv'}
+2023-10-18 12:08:15,315 requested device id : M3230100256
+2023-10-18 12:08:15,315 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120815.csv'}
+2023-10-18 12:08:25,461 requested device id : M3230100256
+2023-10-18 12:08:25,462 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120825.csv'}
+2023-10-18 12:08:35,462 requested device id : M3230100256
+2023-10-18 12:08:35,463 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120835.csv'}
+2023-10-18 12:08:45,622 requested device id : M3230100256
+2023-10-18 12:08:45,622 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120845.csv'}
+2023-10-18 12:08:56,677 requested device id : M3230100256
+2023-10-18 12:08:56,678 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120856.csv'}
+2023-10-18 12:09:05,708 requested device id : M3230100256
+2023-10-18 12:09:05,708 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120905.csv'}
+2023-10-18 12:09:15,783 requested device id : M3230100256
+2023-10-18 12:09:15,784 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120915.csv'}
+2023-10-18 12:09:25,816 requested device id : M3230100256
+2023-10-18 12:09:25,817 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120925.csv'}
+2023-10-18 12:09:35,864 requested device id : M3230100256
+2023-10-18 12:09:35,865 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120935.csv'}
+2023-10-18 12:09:45,943 requested device id : M3230100256
+2023-10-18 12:09:45,944 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120945.csv'}
+2023-10-18 12:10:46,671 requested device id : M3230100256
+2023-10-18 12:10:46,672 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121046.csv'}
+2023-10-18 12:10:51,470 requested device id : M3230100256
+2023-10-18 12:10:51,470 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121051.csv'}
+2023-10-18 12:11:01,948 requested device id : M3230100256
+2023-10-18 12:11:01,948 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121101.csv'}
+2023-10-18 12:11:11,728 requested device id : M3230100256
+2023-10-18 12:11:11,729 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121111.csv'}
+2023-10-18 12:11:21,902 requested device id : M3230100256
+2023-10-18 12:11:21,903 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121121.csv'}
+2023-10-18 12:11:31,867 requested device id : M3230100256
+2023-10-18 12:11:31,868 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121131.csv'}
+2023-10-18 12:11:41,948 requested device id : M3230100256
+2023-10-18 12:11:41,949 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121141.csv'}
+2023-10-18 12:11:51,953 requested device id : M3230100256
+2023-10-18 12:11:51,954 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121151.csv'}
+2023-10-18 12:12:02,120 requested device id : M3230100256
+2023-10-18 12:12:02,121 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121202.csv'}
+2023-10-18 12:12:12,168 requested device id : M3230100256
+2023-10-18 12:12:12,169 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121212.csv'}
+2023-10-18 12:12:22,374 requested device id : M3230100256
+2023-10-18 12:12:22,375 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121222.csv'}
+2023-10-18 12:12:32,429 requested device id : M3230100256
+2023-10-18 12:12:32,430 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121232.csv'}
+2023-10-18 12:12:42,679 requested device id : M3230100256
+2023-10-18 12:12:42,680 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121242.csv'}
+2023-10-18 12:12:52,368 requested device id : M3230100256
+2023-10-18 12:12:52,368 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121252.csv'}
+2023-10-18 12:13:02,410 requested device id : M3230100256
+2023-10-18 12:13:02,410 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121302.csv'}
+2023-10-18 12:13:12,515 requested device id : M3230100256
+2023-10-18 12:13:12,516 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121312.csv'}
+2023-10-18 12:13:22,429 requested device id : M3230100256
+2023-10-18 12:13:22,429 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121322.csv'}
+2023-10-18 12:13:32,509 requested device id : M3230100256
+2023-10-18 12:13:32,509 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121332.csv'}
+2023-10-18 12:13:42,678 requested device id : M3230100256
+2023-10-18 12:13:42,679 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121342.csv'}
+2023-10-18 12:13:52,676 requested device id : M3230100256
+2023-10-18 12:13:52,677 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121352.csv'}
+2023-10-18 12:14:02,824 requested device id : M3230100256
+2023-10-18 12:14:02,824 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121402.csv'}
+2023-10-18 12:14:12,704 requested device id : M3230100256
+2023-10-18 12:14:12,705 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121412.csv'}
+2023-10-18 12:14:22,864 requested device id : M3230100256
+2023-10-18 12:14:22,865 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121422.csv'}
+2023-10-18 12:14:33,014 requested device id : M3230100256
+2023-10-18 12:14:33,015 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121433.csv'}
+2023-10-18 12:14:43,006 requested device id : M3230100256
+2023-10-18 12:14:43,006 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121443.csv'}
+2023-10-18 12:14:53,162 requested device id : M3230100256
+2023-10-18 12:14:53,163 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121453.csv'}
+2023-10-18 12:15:03,231 requested device id : M3230100256
+2023-10-18 12:15:03,232 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121503.csv'}
+2023-10-18 12:15:13,247 requested device id : M3230100256
+2023-10-18 12:15:13,248 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121513.csv'}
+2023-10-18 12:15:23,403 requested device id : M3230100256
+2023-10-18 12:15:23,404 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121523.csv'}
+2023-10-18 12:15:33,347 requested device id : M3230100256
+2023-10-18 12:15:33,348 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121533.csv'}
+2023-10-18 12:15:43,402 requested device id : M3230100256
+2023-10-18 12:15:43,403 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121543.csv'}
+2023-10-18 12:15:53,472 requested device id : M3230100256
+2023-10-18 12:15:53,472 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121553.csv'}
+2023-10-18 12:16:03,633 requested device id : M3230100256
+2023-10-18 12:16:03,633 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121603.csv'}
+2023-10-18 12:16:13,740 requested device id : M3230100256
+2023-10-18 12:16:13,741 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121613.csv'}
+2023-10-18 12:16:23,665 requested device id : M3230100256
+2023-10-18 12:16:23,666 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121623.csv'}
+2023-10-18 12:16:33,634 requested device id : M3230100256
+2023-10-18 12:16:33,635 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121633.csv'}
+2023-10-18 12:17:39,246 requested device id : M3230100256
+2023-10-18 12:17:39,247 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121739.csv'}
+2023-10-18 12:17:44,192 requested device id : M3230100256
+2023-10-18 12:17:44,192 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121744.csv'}
+2023-10-18 12:17:54,355 requested device id : M3230100256
+2023-10-18 12:17:54,355 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121754.csv'}
+2023-10-18 12:18:04,366 requested device id : M3230100256
+2023-10-18 12:18:04,367 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121804.csv'}
+2023-10-18 12:18:14,370 requested device id : M3230100256
+2023-10-18 12:18:14,370 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121814.csv'}
+2023-10-18 12:18:24,433 requested device id : M3230100256
+2023-10-18 12:18:24,434 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121824.csv'}
+2023-10-18 12:18:34,595 requested device id : M3230100256
+2023-10-18 12:18:34,596 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121834.csv'}
+2023-10-18 12:18:44,594 requested device id : M3230100256
+2023-10-18 12:18:44,595 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121844.csv'}
+2023-10-18 12:18:54,645 requested device id : M3230100256
+2023-10-18 12:18:54,646 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121854.csv'}
+2023-10-18 12:19:04,694 requested device id : M3230100256
+2023-10-18 12:19:04,694 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121904.csv'}
+2023-10-18 12:19:14,755 requested device id : M3230100256
+2023-10-18 12:19:14,756 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018121914.csv'}
+2023-10-18 12:20:05,799 requested device id : M3230100256
+2023-10-18 12:20:05,800 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122005.csv'}
+2023-10-18 12:20:10,675 requested device id : M3230100256
+2023-10-18 12:20:10,676 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122010.csv'}
+2023-10-18 12:20:20,921 requested device id : M3230100256
+2023-10-18 12:20:20,921 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122020.csv'}
+2023-10-18 12:20:30,860 requested device id : M3230100256
+2023-10-18 12:20:30,861 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122030.csv'}
+2023-10-18 12:20:40,941 requested device id : M3230100256
+2023-10-18 12:20:40,942 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122040.csv'}
+2023-10-18 12:20:51,081 requested device id : M3230100256
+2023-10-18 12:20:51,082 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122051.csv'}
+2023-10-18 12:21:00,986 requested device id : M3230100256
+2023-10-18 12:21:00,986 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122100.csv'}
+2023-10-18 12:21:10,989 requested device id : M3230100256
+2023-10-18 12:21:10,990 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122110.csv'}
+2023-10-18 12:21:55,877 requested device id : M3230100256
+2023-10-18 12:21:55,878 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122155.csv'}
+2023-10-18 12:22:00,842 requested device id : M3230100256
+2023-10-18 12:22:00,843 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122200.csv'}
+2023-10-18 12:22:10,997 requested device id : M3230100256
+2023-10-18 12:22:10,998 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122210.csv'}
+2023-10-18 12:22:21,094 requested device id : M3230100256
+2023-10-18 12:22:21,095 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122221.csv'}
+2023-10-18 12:22:31,078 requested device id : M3230100256
+2023-10-18 12:22:31,079 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122231.csv'}
+2023-10-18 12:22:41,177 requested device id : M3230100256
+2023-10-18 12:22:41,178 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122241.csv'}
+2023-10-18 12:22:51,257 requested device id : M3230100256
+2023-10-18 12:22:51,258 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122251.csv'}
+2023-10-18 12:23:01,243 requested device id : M3230100256
+2023-10-18 12:23:01,244 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122301.csv'}
+2023-10-18 12:23:11,322 requested device id : M3230100256
+2023-10-18 12:23:11,324 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122311.csv'}
+2023-10-18 12:23:21,488 requested device id : M3230100256
+2023-10-18 12:23:21,489 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122321.csv'}
+2023-10-18 12:23:31,487 requested device id : M3230100256
+2023-10-18 12:23:31,488 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122331.csv'}
+2023-10-18 12:23:41,478 requested device id : M3230100256
+2023-10-18 12:23:41,478 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122341.csv'}
+2023-10-18 12:23:51,541 requested device id : M3230100256
+2023-10-18 12:23:51,542 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122351.csv'}
+2023-10-18 12:24:01,638 requested device id : M3230100256
+2023-10-18 12:24:01,639 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122401.csv'}
+2023-10-18 12:24:11,803 requested device id : M3230100256
+2023-10-18 12:24:11,804 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122411.csv'}
+2023-10-18 12:24:21,723 requested device id : M3230100256
+2023-10-18 12:24:21,724 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122421.csv'}
+2023-10-18 12:24:31,807 requested device id : M3230100256
+2023-10-18 12:24:31,807 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122431.csv'}
+2023-10-18 12:24:41,883 requested device id : M3230100256
+2023-10-18 12:24:41,884 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122441.csv'}
+2023-10-18 12:24:52,039 requested device id : M3230100256
+2023-10-18 12:24:52,039 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122452.csv'}
+2023-10-18 12:25:01,964 requested device id : M3230100256
+2023-10-18 12:25:01,965 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122501.csv'}
+2023-10-18 12:25:12,039 requested device id : M3230100256
+2023-10-18 12:25:12,040 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122512.csv'}
+2023-10-18 12:25:22,102 requested device id : M3230100256
+2023-10-18 12:25:22,102 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122522.csv'}
+2023-10-18 12:25:32,200 requested device id : M3230100256
+2023-10-18 12:25:32,200 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122532.csv'}
+2023-10-18 12:25:42,186 requested device id : M3230100256
+2023-10-18 12:25:42,186 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122542.csv'}
+2023-10-18 12:25:52,284 requested device id : M3230100256
+2023-10-18 12:25:52,285 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122552.csv'}
+2023-10-18 12:26:02,364 requested device id : M3230100256
+2023-10-18 12:26:02,365 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122602.csv'}
+2023-10-18 12:26:12,519 requested device id : M3230100256
+2023-10-18 12:26:12,520 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122612.csv'}
+2023-10-18 12:26:22,439 requested device id : M3230100256
+2023-10-18 12:26:22,440 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122622.csv'}
+2023-10-18 12:26:32,606 requested device id : M3230100256
+2023-10-18 12:26:32,607 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122632.csv'}
+2023-10-18 12:26:42,599 requested device id : M3230100256
+2023-10-18 12:26:42,600 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122642.csv'}
+2023-10-18 12:26:52,679 requested device id : M3230100256
+2023-10-18 12:26:52,680 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122652.csv'}
+2023-10-18 12:27:02,700 requested device id : M3230100256
+2023-10-18 12:27:02,700 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122702.csv'}
+2023-10-18 12:27:12,747 requested device id : M3230100256
+2023-10-18 12:27:12,747 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122712.csv'}
+2023-10-18 12:27:22,845 requested device id : M3230100256
+2023-10-18 12:27:22,846 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122722.csv'}
+2023-10-18 12:27:32,920 requested device id : M3230100256
+2023-10-18 12:27:32,921 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122732.csv'}
+2023-10-18 12:27:42,895 requested device id : M3230100256
+2023-10-18 12:27:42,896 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122742.csv'}
+2023-10-18 12:27:52,992 requested device id : M3230100256
+2023-10-18 12:27:52,993 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122752.csv'}
+2023-10-18 12:28:50,746 requested device id : M3230100256
+2023-10-18 12:28:50,746 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122850.csv'}
+2023-10-18 12:28:55,880 requested device id : M3230100256
+2023-10-18 12:28:55,881 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122855.csv'}
+2023-10-18 12:29:05,885 requested device id : M3230100256
+2023-10-18 12:29:05,886 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122905.csv'}
+2023-10-18 12:29:15,881 requested device id : M3230100256
+2023-10-18 12:29:15,881 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122915.csv'}
+2023-10-18 12:29:25,949 requested device id : M3230100256
+2023-10-18 12:29:25,950 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122925.csv'}
+2023-10-18 12:29:36,043 requested device id : M3230100256
+2023-10-18 12:29:36,043 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122936.csv'}
+2023-10-18 12:29:45,901 requested device id : M3230100256
+2023-10-18 12:29:45,901 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122945.csv'}
+2023-10-18 12:29:56,024 requested device id : M3230100256
+2023-10-18 12:29:56,024 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122956.csv'}
+2023-10-18 12:30:32,029 requested device id : M3230100256
+2023-10-18 12:30:32,030 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123032.csv'}
+2023-10-18 12:30:47,246 requested device id : M3230100256
+2023-10-18 12:30:47,247 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123047.csv'}
+2023-10-18 12:30:52,361 requested device id : M3230100256
+2023-10-18 12:30:52,362 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123052.csv'}
+2023-10-18 12:31:02,320 requested device id : M3230100256
+2023-10-18 12:31:02,321 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123102.csv'}
+2023-10-18 12:31:12,361 requested device id : M3230100256
+2023-10-18 12:31:12,361 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123112.csv'}
+2023-10-18 12:31:22,446 requested device id : M3230100256
+2023-10-18 12:31:22,447 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123122.csv'}
+2023-10-18 12:31:32,366 requested device id : M3230100256
+2023-10-18 12:31:32,367 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123132.csv'}
+2023-10-18 12:31:42,601 requested device id : M3230100256
+2023-10-18 12:31:42,602 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123142.csv'}
+2023-10-18 12:31:52,504 requested device id : M3230100256
+2023-10-18 12:31:52,505 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123152.csv'}
+2023-10-18 12:32:02,601 requested device id : M3230100256
+2023-10-18 12:32:02,602 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123202.csv'}
+2023-10-18 12:32:12,680 requested device id : M3230100256
+2023-10-18 12:32:12,680 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123212.csv'}
+2023-10-18 12:32:22,841 requested device id : M3230100256
+2023-10-18 12:32:22,842 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123222.csv'}
+2023-10-18 12:32:32,848 requested device id : M3230100256
+2023-10-18 12:32:32,849 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123232.csv'}
+2023-10-18 12:32:43,003 requested device id : M3230100256
+2023-10-18 12:32:43,003 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123243.csv'}
+2023-10-18 12:32:53,002 requested device id : M3230100256
+2023-10-18 12:32:53,002 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123253.csv'}
+2023-10-18 12:33:03,007 requested device id : M3230100256
+2023-10-18 12:33:03,008 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123303.csv'}
+2023-10-18 12:33:15,132 requested device id : M3230100256
+2023-10-18 12:33:15,133 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123315.csv'}
+2023-10-18 12:33:23,043 requested device id : M3230100256
+2023-10-18 12:33:23,043 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123323.csv'}
+2023-10-18 12:33:33,108 requested device id : M3230100256
+2023-10-18 12:33:33,108 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123333.csv'}
+2023-10-18 12:33:43,242 requested device id : M3230100256
+2023-10-18 12:33:43,243 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123343.csv'}
+2023-10-18 12:33:53,197 requested device id : M3230100256
+2023-10-18 12:33:53,198 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123353.csv'}
+2023-10-18 12:34:03,251 requested device id : M3230100256
+2023-10-18 12:34:03,251 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123403.csv'}
+2023-10-18 12:34:13,330 requested device id : M3230100256
+2023-10-18 12:34:13,331 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123413.csv'}
+2023-10-18 12:34:23,489 requested device id : M3230100256
+2023-10-18 12:34:23,490 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123423.csv'}
+2023-10-18 12:34:33,810 requested device id : M3230100256
+2023-10-18 12:34:33,811 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123433.csv'}
+2023-10-18 12:34:43,732 requested device id : M3230100256
+2023-10-18 12:34:43,732 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123443.csv'}
+2023-10-18 12:34:53,568 requested device id : M3230100256
+2023-10-18 12:34:53,568 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123453.csv'}
+2023-10-18 12:35:03,654 requested device id : M3230100256
+2023-10-18 12:35:03,655 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018123503.csv'}
+2023-10-18 12:51:14,444 requested device id : M3230100256
+2023-10-18 12:51:14,445 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125114.csv'}
+2023-10-18 12:51:19,163 requested device id : M3230100256
+2023-10-18 12:51:19,163 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125119.csv'}
+2023-10-18 12:51:29,153 requested device id : M3230100256
+2023-10-18 12:51:29,154 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125129.csv'}
+2023-10-18 12:51:39,081 requested device id : M3230100256
+2023-10-18 12:51:39,082 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125139.csv'}
+2023-10-18 12:51:49,152 requested device id : M3230100256
+2023-10-18 12:51:49,152 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125149.csv'}
+2023-10-18 12:51:59,179 requested device id : M3230100256
+2023-10-18 12:51:59,180 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125159.csv'}
+2023-10-18 12:52:09,319 requested device id : M3230100256
+2023-10-18 12:52:09,320 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125209.csv'}
+2023-10-18 12:52:20,439 requested device id : M3230100256
+2023-10-18 12:52:20,439 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125220.csv'}
+2023-10-18 12:52:29,249 requested device id : M3230100256
+2023-10-18 12:52:29,250 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125229.csv'}
+2023-10-18 12:52:39,331 requested device id : M3230100256
+2023-10-18 12:52:39,332 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125239.csv'}
+2023-10-18 12:52:49,477 requested device id : M3230100256
+2023-10-18 12:52:49,477 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125249.csv'}
+2023-10-18 12:52:59,410 requested device id : M3230100256
+2023-10-18 12:52:59,411 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125259.csv'}
+2023-10-18 12:53:09,478 requested device id : M3230100256
+2023-10-18 12:53:09,479 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125309.csv'}
+2023-10-18 12:53:19,568 requested device id : M3230100256
+2023-10-18 12:53:19,569 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125319.csv'}
+2023-10-18 12:53:29,720 requested device id : M3230100256
+2023-10-18 12:53:29,721 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125329.csv'}
+2023-10-18 12:53:39,818 requested device id : M3230100256
+2023-10-18 12:53:39,818 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125339.csv'}
+2023-10-18 12:53:49,796 requested device id : M3230100256
+2023-10-18 12:53:49,797 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125349.csv'}
+2023-10-18 12:54:50,439 requested device id : M3230100256
+2023-10-18 12:54:50,440 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125450.csv'}
+2023-10-18 12:55:15,635 requested device id : M3230100256
+2023-10-18 12:55:15,636 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125515.csv'}
+2023-10-18 12:55:45,472 requested device id : M3230100256
+2023-10-18 12:55:45,473 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125545.csv'}
+2023-10-18 12:56:15,556 requested device id : M3230100256
+2023-10-18 12:56:15,557 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125615.csv'}
+2023-10-18 12:56:45,803 requested device id : M3230100256
+2023-10-18 12:56:45,804 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125645.csv'}
+2023-10-18 12:57:16,277 requested device id : M3230100256
+2023-10-18 12:57:16,277 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125716.csv'}
+2023-10-18 12:57:46,039 requested device id : M3230100256
+2023-10-18 12:57:46,040 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125746.csv'}
+2023-10-18 12:58:15,957 requested device id : M3230100256
+2023-10-18 12:58:15,957 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125815.csv'}
+2023-10-18 13:03:03,148 requested device id : M3230100256
+2023-10-18 13:03:03,149 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130303.csv'}
+2023-10-18 13:03:33,392 requested device id : M3230100256
+2023-10-18 13:03:33,392 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130333.csv'}
+2023-10-18 13:04:03,707 requested device id : M3230100256
+2023-10-18 13:04:03,708 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130403.csv'}
+2023-10-18 13:04:33,887 requested device id : M3230100256
+2023-10-18 13:04:33,887 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130433.csv'}
+2023-10-18 13:05:11,576 requested device id : M3230100256
+2023-10-18 13:05:11,577 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130511.csv'}
+2023-10-18 13:05:40,770 requested device id : M3230100256
+2023-10-18 13:05:40,771 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130540.csv'}
+2023-10-18 13:06:06,828 requested device id : M3230100256
+2023-10-18 13:06:06,829 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130606.csv'}
+2023-10-18 13:06:37,386 requested device id : M3230100256
+2023-10-18 13:06:37,387 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130637.csv'}
+2023-10-18 13:07:32,621 requested device id : M3230100256
+2023-10-18 13:07:32,621 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130732.csv'}
+2023-10-18 13:07:47,706 requested device id : M3230100256
+2023-10-18 13:07:47,707 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130747.csv'}
+2023-10-18 13:07:52,744 requested device id : M3230100256
+2023-10-18 13:07:52,745 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130752.csv'}
+2023-10-18 13:08:02,626 requested device id : M3230100256
+2023-10-18 13:08:02,627 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130802.csv'}
+2023-10-18 13:08:22,918 requested device id : M3230100256
+2023-10-18 13:08:22,918 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130822.csv'}
+2023-10-18 13:08:53,146 requested device id : M3230100256
+2023-10-18 13:08:53,147 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018130853.csv'}
+2023-10-18 14:21:33,966 requested device id : M3230100256
+2023-10-18 14:21:33,970 response : {'files': ['M3230100256_20231018122552.csv', 'M3230100256_20231018122542.csv', 'M3230100256_20231018130403.csv', 'M3230100256_20231018120845.csv', 'M3230100256_20231018122301.csv', 'M3230100256_20231018125209.csv', 'M3230100256_20231018121754.csv', 'M3230100256_20231018120925.csv', 'M3230100256_20231018120825.csv', 'M3230100256_20231018125349.csv', 'M3230100256_20231018120102.csv', 'M3230100256_20231018121212.csv', 'M3230100256_20231018125129.csv', 'M3230100256_20231018130511.csv', 'M3230100256_20231018115821.csv', 'M3230100256_20231018121402.csv', 'M3230100256_20231018123243.csv', 'M3230100256_20231018120052.csv', 'M3230100256_20231018122155.csv', 'M3230100256_20231018130303.csv', 'M3230100256_20231018093316.csv', 'M3230100256_20231018121352.csv', 'M3230100256_20231018125645.csv', 'M3230100256_20231018120112.csv', 'M3230100256_20231018121312.csv', 'M3230100256_20231018121633.csv', 'M3230100256_20231018121834.csv', 'M3230100256_20231018123253.csv', 'M3230100256_20231018123112.csv', 'M3230100256_20231018120523.csv', 'M3230100256_20231018121613.csv', 'M3230100256_20231018123152.csv', 'M3230100256_20231018121744.csv', 'M3230100256_20231018121046.csv', 'M3230100256_20231018130747.csv', 'M3230100256_20231018121603.csv', 'M3230100256_20231018125746.csv', 'M3230100256_20231018125139.csv', 'M3230100256_20231018121739.csv', 'M3230100256_20231018121101.csv', 'M3230100256_20231018130822.csv', 'M3230100256_20231018121804.csv', 'M3230100256_20231018122441.csv', 'M3230100256_20231018121914.csv', 'M3230100256_20231018125450.csv', 'M3230100256_20231018120232.csv', 'M3230100256_20231018123333.csv', 'M3230100256_20231018123052.csv', 'M3230100256_20231018120122.csv', 'M3230100256_20231018093326.csv', 'M3230100256_20231018122855.csv', 'M3230100256_20231018115756.csv', 'M3230100256_20231018122925.csv', 'M3230100256_20231018115911.csv', 'M3230100256_20231018120815.csv', 'M3230100256_20231018121814.csv', 'M3230100256_20231018115832.csv', 'M3230100256_20231018120533.csv', 'M3230100256_20231018120543.csv', 'M3230100256_20231018122311.csv', 'M3230100256_20231018122020.csv', 'M3230100256_20231018120001.csv', 'M3230100256_20231018115931.csv', 'M3230100256_20231018125220.csv', 'M3230100256_20231018122622.csv', 'M3230100256_20231018115801.csv', 'M3230100256_20231018125119.csv', 'M3230100256_20231018115841.csv', 'M3230100256_20231018121503.csv', 'M3230100256_20231018120252.csv', 'M3230100256_20231018123212.csv', 'M3230100256_20231018121844.csv', 'M3230100256_20231018121904.csv', 'M3230100256_20231018122905.csv', 'M3230100256_20231018125329.csv', 'M3230100256_20231018122411.csv', 'M3230100256_20231018123032.csv', 'M3230100256_20231018122732.csv', 'M3230100256_20231018122945.csv', 'M3230100256_20231018125545.csv', 'M3230100256_20231018121854.csv', 'M3230100256_20231018120212.csv', 'M3230100256_20231018122010.csv', 'M3230100256_20231018123315.csv', 'M3230100256_20231018115851.csv', 'M3230100256_20231018130333.csv', 'M3230100256_20231018122241.csv', 'M3230100256_20231018120613.csv', 'M3230100256_20231018125615.csv', 'M3230100256_20231018120603.csv', 'M3230100256_20231018120935.csv', 'M3230100256_20231018121222.csv', 'M3230100256_20231018120805.csv', 'M3230100256_20231018122110.csv', 'M3230100256_20231018120705.csv', 'M3230100256_20231018121412.csv', 'M3230100256_20231018120022.csv', 'M3230100256_20231018115901.csv', 'M3230100256_20231018123353.csv', 'M3230100256_20231018121111.csv', 'M3230100256_20231018122341.csv', 'M3230100256_20231018123503.csv', 'M3230100256_20231018121513.csv', 'M3230100256_20231018125309.csv', 'M3230100256_20231018122501.csv', 'M3230100256_20231018120856.csv', 'M3230100256_20231018122431.csv', 'M3230100256_20231018123423.csv', 'M3230100256_20231018122512.csv', 'M3230100256_20231018123453.csv', 'M3230100256_20231018120755.csv', 'M3230100256_20231018120945.csv', 'M3230100256_20231018120700.csv', 'M3230100256_20231018123433.csv', 'M3230100256_20231018122915.csv', 'M3230100256_20231018125716.csv', 'M3230100256_20231018125229.csv', 'M3230100256_20231018130853.csv', 'M3230100256_20231018121302.csv', 'M3230100256_20231018122040.csv', 'M3230100256_20231018122612.csv', 'M3230100256_20231018122652.csv', 'M3230100256_20231018122051.csv', 'M3230100256_20231018120905.csv', 'M3230100256_20231018122936.csv', 'M3230100256_20231018130433.csv', 'M3230100256_20231018130606.csv', 'M3230100256_20231018120152.csv', 'M3230100256_20231018121623.csv', 'M3230100256_20231018130637.csv', 'M3230100256_20231018115952.csv', 'M3230100256_20231018120714.csv', 'M3230100256_20231018120503.csv', 'M3230100256_20231018120835.csv', 'M3230100256_20231018120423.csv', 'M3230100256_20231018122632.csv', 'M3230100256_20231018121543.csv', 'M3230100256_20231018120513.csv', 'M3230100256_20231018122005.csv', 'M3230100256_20231018122421.csv', 'M3230100256_20231018120725.csv', 'M3230100256_20231018125515.csv', 'M3230100256_20231018115811.csv', 'M3230100256_20231018120453.csv', 'M3230100256_20231018120202.csv', 'M3230100256_20231018121342.csv', 'M3230100256_20231018121523.csv', 'M3230100256_20231018125319.csv', 'M3230100256_20231018121232.csv', 'M3230100256_20231018121322.csv', 'M3230100256_20231018093306.csv', 'M3230100256_20231018120032.csv', 'M3230100256_20231018120735.csv', 'M3230100256_20231018122850.csv', 'M3230100256_20231018093216.csv', 'M3230100256_20231018122231.csv', 'M3230100256_20231018123202.csv', 'M3230100256_20231018125239.csv', 'M3230100256_20231018121332.csv', 'M3230100256_20231018120433.csv', 'M3230100256_20231018123232.csv', 'M3230100256_20231018130752.csv', 'M3230100256_20231018115921.csv', 'M3230100256_20231018122200.csv', 'M3230100256_20231018122532.csv', 'M3230100256_20231018120312.csv', 'M3230100256_20231018122752.csv', 'M3230100256_20231018122321.csv', 'M3230100256_20231018123122.csv', 'M3230100256_20231018125114.csv', 'M3230100256_20231018122030.csv', 'M3230100256_20231018121824.csv', 'M3230100256_20231018122210.csv', 'M3230100256_20231018120443.csv', 'M3230100256_20231018123403.csv', 'M3230100256_20231018123222.csv', 'M3230100256_20231018130802.csv', 'M3230100256_20231018115942.csv', 'M3230100256_20231018121151.csv', 'M3230100256_20231018121533.csv', 'M3230100256_20231018093246.csv', 'M3230100256_20231018123343.csv', 'M3230100256_20231018122100.csv', 'M3230100256_20231018121242.csv', 'M3230100256_20231018123443.csv', 'M3230100256_20231018125159.csv', 'M3230100256_20231018125339.csv', 'M3230100256_20231018121252.csv', 'M3230100256_20231018121443.csv', 'M3230100256_20231018120302.csv', 'M3230100256_20231018121131.csv', 'M3230100256_20231018093226.csv', 'M3230100256_20231018121553.csv', 'M3230100256_20231018122642.csv', 'M3230100256_20231018122351.csv', 'M3230100256_20231018122702.csv', 'M3230100256_20231018120745.csv', 'M3230100256_20231018125149.csv', 'M3230100256_20231018120242.csv', 'M3230100256_20231018122722.csv', 'M3230100256_20231018122401.csv', 'M3230100256_20231018123323.csv', 'M3230100256_20231018123303.csv', 'M3230100256_20231018121422.csv', 'M3230100256_20231018121051.csv', 'M3230100256_20231018125815.csv', 'M3230100256_20231018121433.csv', 'M3230100256_20231018123142.csv', 'M3230100256_20231018120012.csv', 'M3230100256_20231018122742.csv', 'M3230100256_20231018123102.csv', 'M3230100256_20231018121202.csv', 'M3230100256_20231018123047.csv', 'M3230100256_20231018120553.csv', 'M3230100256_20231018123132.csv', 'M3230100256_20231018122712.csv', 'M3230100256_20231018125259.csv', 'M3230100256_20231018121121.csv', 'M3230100256_20231018122522.csv', 'M3230100256_20231018122221.csv', 'M3230100256_20231018123413.csv', 'M3230100256_20231018093256.csv', 'M3230100256_20231018120915.csv', 'M3230100256_20231018120222.csv', 'M3230100256_20231018122251.csv', 'M3230100256_20231018130540.csv', 'M3230100256_20231018121453.csv', 'M3230100256_20231018120623.csv', 'M3230100256_20231018121141.csv', 'M3230100256_20231018120132.csv', 'M3230100256_20231018122331.csv', 'M3230100256_20231018120042.csv', 'M3230100256_20231018130732.csv', 'M3230100256_20231018093237.csv', 'M3230100256_20231018122956.csv', 'M3230100256_20231018120142.csv', 'M3230100256_20231018125249.csv', 'M3230100256_20231018122602.csv', 'M3230100256_20231018122452.csv']}
+2023-10-18 14:21:56,666 requested device id : M3230100256
+2023-10-18 14:21:56,666 download file response : /home/tbelldev/workspace/ciot_api_server/data/M3230100256
+2023-10-18 14:22:06,584 requested device id : M3230100256
+2023-10-18 14:22:06,585 download file response : /home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122452.csv
+2023-10-18 14:22:14,241 requested device id : M3230100256
+2023-10-18 14:22:14,242 download file response : /home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122602.csv
+2023-10-18 14:22:24,648 requested device id : M3230100256
+2023-10-18 14:22:24,648 download file response : /home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018125249.csv
+2023-10-18 14:22:33,638 requested device id : M3230100256
+2023-10-18 14:22:33,638 download file response : /home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018120142.csv
+2023-10-18 14:22:41,210 requested device id : M3230100256
+2023-10-18 14:22:41,210 download file response : /home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018122956.csv
+2023-10-18 14:22:48,187 requested device id : M3230100256
+2023-10-18 14:22:48,187 download file response : /home/tbelldev/workspace/ciot_api_server/data/M3230100256/M3230100256_20231018093237.csv
+2023-10-18 14:22:58,283 requested device id : M3230100256
+2023-10-18 14:22:58,322 download files response : /home/tbelldev/workspace/ciot_api_server/data/M3230100256.zip
+2023-10-19 11:03:48,787 requested device id : B12345678
+2023-10-19 11:03:48,788 response : {'files': ['B12345678_20231018101302.csv', 'B12345678_20231018092256.csv', 'B12345678_20231018092825.csv', 'B12345678_20231018101340.csv', 'B12345678_20231018101147.csv', 'B12345678_20231018092420.csv', 'B12345678_20231018101342.csv', 'B12345678_20231018084224.csv', 'B12345678_20231018101338.csv', 'B12345678_20231018092350.csv', 'B12345678_20231018101259.csv', 'B12345678_20231018092257.csv']}
+2023-10-19 11:03:54,626 requested device id : B12345678
+2023-10-19 11:03:54,630 download files response : /home/tbelldev/workspace/ciot_api_server/data/B12345678.zip
+2023-10-19 11:04:03,120 requested device id : B12345678
+2023-10-19 11:04:03,121 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/B12345678/B12345678_20231019110403.csv'}
+2023-10-19 05:43:34,956 requested device id : A12345678910
+2023-10-19 05:43:34,959 response : {'file_save_path': '/home/tbelldev/workspace/ciot_api_server/data/A12345678910/A12345678910_20231019054334.csv'}
+2023-10-19 05:48:32,339 requested device id : A12345678910
+2023-10-19 05:48:32,341 response : {'file_save_path': '/workspace/data/A12345678910/A12345678910_20231019054832.csv'}
+2023-10-20 06:33:59,668 requested device id : T20231020
+2023-10-20 06:33:59,826 response : {'file_save_path': '/workspace/data/T20231020/T20231020_20231020063359.csv'}
+2023-10-20 06:37:03,034 requested device id : T20231020
+2023-10-20 06:37:03,072 response : {'file_save_path': '/workspace/data/T20231020/T20231020_20231020063703.csv'}
+2023-10-20 06:44:51,828 requested device id : T20231020
+2023-10-20 06:44:51,907 response : {'file_save_path': '/workspace/data/T20231020/T20231020_20231020064451.csv'}
+2023-10-20 06:46:25,609 requested device id : T20231020
+2023-10-20 06:46:25,632 response : {'file_save_path': '/workspace/data/T20231020/T20231020_20231020064625.csv'}
+2023-10-20 06:58:33,049 get data requested device id : T20231020
+2023-10-20 06:58:33,049 response : <coroutine object get_datas at 0x7fbbf92d2200>
+2023-10-20 06:58:54,941 get data requested device id : T20231020
+2023-10-20 06:58:54,968 response : []
+2023-10-20 06:59:18,250 requested device id : T20231020
+2023-10-20 06:59:18,274 response : {'file_save_path': '/workspace/data/T20231020/T20231020_20231020065918.csv'}
