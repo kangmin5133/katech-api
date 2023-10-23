@@ -7,6 +7,7 @@ import json
 from config.config import Config
 import zipfile
 import os 
+import subprocess
 
 from app.db.influxdb.database import InfluxDatabase
 from influxdb_client import Point
@@ -18,6 +19,10 @@ async def upload_file(device_id:str,file:UploadFile):
     # if file.content_type != "text/csv":
     #     raise HTTPException(status_code=400, detail="Invalid file format. Only CSV files are allowed.")
     
+    # Create main storage directory if not exists
+    storage_path = Path(Config.DATA_STORAGE)
+    storage_path.mkdir(parents=True, exist_ok=True)
+
     # Create folder for each device_id
     folder_path = Path(f"{Config.DATA_STORAGE}/{device_id}")
     folder_path.mkdir(parents=True, exist_ok=True)
@@ -32,25 +37,21 @@ async def upload_file(device_id:str,file:UploadFile):
         shutil.copyfileobj(file.file, buffer)
     shutil.move(buffer.name, file_path)
 
+    cmd = f"chown -R tbelldev:tbelldev {Config.DATA_STORAGE}"
+    subprocess.call(cmd, shell=True, stdin=subprocess.PIPE,
+            universal_newlines=True)
+
     #write to DB
-    db = InfluxDatabase()
-    point = create_point(file_path = file_path, 
-                         timestamp = timestamp, 
-                         device_id = device_id, 
-                         vehicle_id= "1")
-    
-    # point = Point("SensorData") \
-    #     .tag("vehicle_id", "1") \
-    #     .tag("sensor_id", "T20231020") \
-    #     .field("latitude", "37.5687") \
-    #     .field("longitude", "126.9855") \
-    #     .field("MCU_7", "1") \
-    #     .field("BMS_1", "123.45") \
-    #     .field("BMS_5", "-18") \
-    #     .field("BMS_28", "123456789") \
-    #     .time(timestamp)
-    
-    db.write_point_obj_data(point)
+    try:
+        db = InfluxDatabase()
+        point = create_point(file_path = file_path, 
+                            timestamp = timestamp, 
+                            device_id = device_id, 
+                            vehicle_id= "EV6") # 임의 작성
+        
+        db.write_point_obj_data(point)
+    except:
+        raise HTTPException(status_code=401, detail="errors while insert data to DB")
 
     return {"file_save_path": str(file_path)}
 

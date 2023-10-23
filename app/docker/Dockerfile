@@ -12,6 +12,7 @@ COPY requirements.txt .
 
 # 필요한 Python 패키지를 설치합니다.
 RUN pip install --no-cache-dir -r requirements.txt
+RUN adduser --disabled-password --gecos "" tbelldev
 
 # 앱을 실행합니다.
 CMD ["python", "main.py"]

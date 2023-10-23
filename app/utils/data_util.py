@@ -9,9 +9,12 @@ def create_point(file_path, timestamp, vehicle_id, device_id):
     
     with open(file_path, mode='r') as file:
         csv_reader = csv.reader(file)
-        for row in csv_reader:
-            for item in row:
-                if "=" in item:
+        for i,row in enumerate(csv_reader):
+            for i,item in enumerate(row):
+                if i == 0: point.field("timestamp", row[i])
+                elif i == 1: point.field("latitude", float(row[i]))
+                elif i == 2: point.field("logitude", float(row[i]))
+                elif "=" in item:
                     field, value = item.split("=")
                     try:
                         # Check if the value contains a decimal point
