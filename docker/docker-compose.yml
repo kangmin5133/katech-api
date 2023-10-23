@@ -17,6 +17,7 @@ services:
     volumes:
       - ../dbenv/mysql/mysql_master:/var/lib/mysql
       - ../dbenv/mysql/master.cnf:/etc/mysql/conf.d/master.cnf
+      - ../dbenv/mysql/env/database.sql:/docker-entrypoint-initdb.d/database.sql
     ports:
       - 3306:3306
 
@@ -29,7 +30,7 @@ services:
       INFLUXDB_ADMIN_PASSWORD: tbell0518
       TZ: "Asia/Seoul"
     volumes:
-      - ../dbenv/influxdb:/var/lib/influxdb
+      - ../dbenv/influxdb:/var/lib/influxdb2
     ports:
       - 8822:8086
 
