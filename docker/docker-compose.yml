@@ -36,6 +36,9 @@ services:
 
   katech-api-1:
     container_name: katech-api-1
+    environment:
+      LANG: C.utf8
+      TZ: "Asia/Seoul"
     build: 
       context: ..
       dockerfile: ./app/docker/Dockerfile
