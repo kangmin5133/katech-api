@@ -4,3 +4,5 @@ python-multipart
 alembic
 sqlalchemy
 influxdb-client
+apscheduler
+pandas

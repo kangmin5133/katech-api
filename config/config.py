@@ -25,3 +25,5 @@ class Config(object):
     INFLUX_USER = "katech"
     INFLUX_PASSWD = "tbell0518"
     INFLUX_BUCKET_NAME = "censorData"
+
+    DEFAULT_TIME_RANGE = "-30d"
