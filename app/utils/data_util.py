@@ -1,5 +1,6 @@
 import csv
 from influxdb_client import Point
+from collections import defaultdict
 
 def create_point(file_path, timestamp, vehicle_id, device_id):
     point = Point("SensorData") \
@@ -27,3 +28,23 @@ def create_point(file_path, timestamp, vehicle_id, device_id):
                         pass
                     point.field(field, value)
     return point
+
+def influx_parser(query_result):
+    parsed_data = defaultdict(dict)
+
+    # Loop through each row in the sample data
+    for row in query_result:
+        timestamp = row['_time']
+        field = row['_field']
+        value = row['_value']
+        
+        # Add the value to the appropriate timestamp and field in parsed_data
+        parsed_data[timestamp][field] = value
+
+    # Convert the defaultdict to a list of dictionaries
+    try:
+        final_data = [{"timestamp": timestamp, **fields} for timestamp, fields in parsed_data.items()]
+    except Exception as e:
+        final_data = str(e)
+
+    return final_data

@@ -41,7 +41,7 @@ async def upload_file(device_id:str,file:UploadFile):
     subprocess.call(cmd, shell=True, stdin=subprocess.PIPE,
             universal_newlines=True)
 
-    #write to DB
+    #write to influxDB
     try:
         db = InfluxDatabase()
         point = create_point(file_path = file_path, 
