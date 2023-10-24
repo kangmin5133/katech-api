@@ -21,8 +21,7 @@ async def get_data(
     offset: int = Query(0, alias="offset"),
     extra_fields: ExtraFields = None
 ):
-    logging.info(f"Get data requested with device_id: {device_id}, start_time: {start_time}, \
-                 stop_time: {stop_time}, vehicle_type: {vehicle_type}, limit: {limit}, offset: {offset}, extra_fields: {extra_fields}")
+    logging.info(f"Get data requested with device_id: {device_id}, start_time: {start_time}, stop_time: {stop_time}, vehicle_type: {vehicle_type}, limit: {limit}, offset: {offset}, extra_fields: {extra_fields}")
     
     if extra_fields:
         extra_fields = extra_fields.extra_fields
