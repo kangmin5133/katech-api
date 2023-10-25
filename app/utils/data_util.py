@@ -1,6 +1,7 @@
 import csv
 from influxdb_client import Point
 from collections import defaultdict
+import json
 
 def create_point(file_path, timestamp, vehicle_id, device_id):
     point = Point("SensorData") \
@@ -12,7 +13,8 @@ def create_point(file_path, timestamp, vehicle_id, device_id):
         csv_reader = csv.reader(file)
         for i,row in enumerate(csv_reader):
             for i,item in enumerate(row):
-                if i == 0: point.field("timestamp", row[i])
+                if i == 0: 
+                    if len(row[i]) == 14: point.field("timestamp", row[i])
                 elif i == 1: point.field("latitude", float(row[i]))
                 elif i == 2: point.field("logitude", float(row[i]))
                 elif "=" in item:
@@ -29,34 +31,50 @@ def create_point(file_path, timestamp, vehicle_id, device_id):
                     point.field(field, value)
     return point
 
-def influx_parser(query_result):
-    parsed_data = defaultdict(dict)
+def get_count(data_list):
+    datas = json.loads(data_list)
+    current_device_id = ""
+    result_count = {}
+    for data in datas:
+        if data.get("device_id") != current_device_id:
+            result_count[data.get("device_id")] = data.get("_value")
+            current_device_id = data.get("device_id")
+        else: continue
+    return result_count
 
-    # For capturing unique 'device_id' and 'vehicle_id'
+def influx_parser(query_result, total_count, offset, limit):
+    parsed_data = defaultdict(lambda: defaultdict(dict))
+
     device_id = None
     vehicle_id = None
+    final_output = []
 
-    # Loop through each row in the sample data
     for row in query_result:
         timestamp = row['_time']
         field = row['_field']
         value = row['_value']
 
-        # Capture 'device_id' and 'vehicle_id' if available
         device_id = row.get('device_id', device_id)
         vehicle_id = row.get('vehicle_id', vehicle_id)
 
-        # Add the value to the appropriate timestamp and field in parsed_data
-        parsed_data[timestamp][field] = value
+        parsed_data[device_id][timestamp][field] = value
+        parsed_data[device_id]['vehicle_id'] = vehicle_id
 
-    # Convert the defaultdict to a list of dictionaries
-    final_data = [{"timestamp": timestamp, **fields} for timestamp, fields in parsed_data.items()]
+    for device, data in parsed_data.items():
+        vehicle_id = data.pop('vehicle_id', None)
+        timestamps = [{"timestamp": timestamp, **fields} for timestamp, fields in data.items()]
+        final_data = {
+            "device_id": device,
+            "vehicle_id": vehicle_id,
+            "data": timestamps
+        }
+        final_output.append(final_data)
 
-    # Add 'device_id' and 'vehicle_id' to the final data
-    final_data = {
-        "device_id": device_id,
-        "vehicle_id": vehicle_id,
-        "data": final_data
+    result_with_meta = {
+        "total": total_count,
+        "offset": offset,
+        "limit": limit,
+        "data": final_output
     }
 
-    return final_data
+    return result_with_meta

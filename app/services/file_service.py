@@ -42,16 +42,41 @@ async def upload_file(device_id:str,file:UploadFile):
             universal_newlines=True)
 
     #write to influxDB
-    try:
-        db = InfluxDatabase()
+    # try:
+        # for test data generator
+        # test_vehicle_id = "EV6"
+    db = InfluxDatabase()
+    if device_id == "T20231023":
+        test_vehicle_id = "EV6"
+
         point = create_point(file_path = file_path, 
-                            timestamp = timestamp, 
-                            device_id = device_id, 
-                            vehicle_id= "EV6") # 임의 작성
-        
-        db.write_point_obj_data(point)
-    except:
-        raise HTTPException(status_code=401, detail="errors while insert data to DB")
+                        timestamp = timestamp, 
+                        device_id = device_id, 
+                        vehicle_id= test_vehicle_id) # 임의 작성
+    elif device_id == "T20231024":
+        test_vehicle_id = "IONIQ6"
+
+        point = create_point(file_path = file_path, 
+                        timestamp = timestamp, 
+                        device_id = device_id, 
+                        vehicle_id= test_vehicle_id) # 임의 작성
+    elif device_id == "T20231025":
+        test_vehicle_id = "IONIQ5"
+
+        point = create_point(file_path = file_path, 
+                        timestamp = timestamp, 
+                        device_id = device_id, 
+                        vehicle_id= test_vehicle_id) # 임의 작성
+
+    # db = InfluxDatabase()
+    # point = create_point(file_path = file_path, 
+    #                     timestamp = timestamp, 
+    #                     device_id = device_id, 
+    #                     vehicle_id= test_vehicle_id) # 임의 작성
+    
+    db.write_point_obj_data(point)
+    # except:
+    #     raise HTTPException(status_code=401, detail="errors while insert data to DB")
 
     return {"file_save_path": str(file_path)}
 

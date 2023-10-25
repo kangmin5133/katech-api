@@ -1,8 +1,8 @@
-from fastapi import APIRouter, File, UploadFile, Header, HTTPException
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from fastapi import Query
 from typing import List, Optional
-from fastapi.responses import JSONResponse, FileResponse
+from fastapi.responses import JSONResponse
 from app.services import data_service
 import logging
 
