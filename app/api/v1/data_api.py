@@ -37,3 +37,18 @@ async def get_data(
     )
     return JSONResponse(content=response)
 
+@router.get("/get/deviceId")
+async def get_device_ids():
+    response = await data_service.get_all_device_ids()
+    return JSONResponse(content=response)
+
+@router.get("/get/deviceIdBy/vehicleType")
+async def get_device_ids_by_vehicle_type(vehicle_type: str):
+
+    logging.info(f"requested vehicle_type : {vehicle_type}")
+    if vehicle_type is None:
+        raise HTTPException(status_code=400, detail="vehicle_type is missing in the param")
+    
+    response = await data_service.get_device_ids_by_vehicle_type(vehicle_type)
+    return JSONResponse(content=response)
+

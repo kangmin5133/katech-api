@@ -12,6 +12,7 @@ import logging
 from app.db.influxdb.database import InfluxDatabase
 from influxdb_client import Point
 from app.utils.data_util import influx_parser, get_count
+from app.utils.file_util import get_device_ids
 
 async def get_datas(
     device_id: str = None, 
@@ -48,7 +49,7 @@ async def get_datas(
         |> filter(fn: (r) => {filter_query})
         |> count(column: "_value")
     '''
-    logging.info(f'query from get_datas count total : {count_query}')
+    logging.info(f'Query from get_datas count total : {count_query}')
     table_count = db.query_data(count_query)
     result_count_json = table_count.to_json()
     total_count = get_count(result_count_json)
@@ -59,12 +60,58 @@ async def get_datas(
         |> filter(fn: (r) => {filter_query})
         |> limit(n: {limit}, offset: {offset})
     '''
-    logging.info(f'query from get_datas : {query}')
+    logging.info(f'Query from get_datas : {query}')
 
     table = db.query_data(query)
-    print("table json : ", table.to_json())
     result = db.flux_to_json(table)
 
     parsed_result = influx_parser(query_result = result, total_count = total_count, offset = offset, limit = limit)
 
     return parsed_result
+
+
+async def get_all_device_ids():
+    db = InfluxDatabase()
+    query = f'''
+        from(bucket: "{db.bucket}")
+        |> range(start: 0)
+        |> distinct(column: "device_id")
+        |> keep(columns: ["_value"])
+    '''
+    logging.info(f'Query to get all device_ids: {query}')
+    try:
+        table = db.query_data(query)
+        result = table.to_json()
+        device_ids = [row['_value'] for row in json.loads(result)]
+        response = {"device_ids": list(set(device_ids))}
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    
+    #file system search
+    # device_ids = get_device_ids()
+    # response = {"device_ids": [device_id.split("/")[-1] for device_id in device_ids]}
+
+    return response
+
+async def get_device_ids_by_vehicle_type(vehicle_type: str):
+    db = InfluxDatabase()
+    query = f'''
+        from(bucket: "{db.bucket}")
+        |> range(start: -30d)
+        |> filter(fn: (r) => r["vehicle_id"] == "{vehicle_type}")
+        |> filter(fn: (r) => r["_measurement"] == "{db.measurement}")
+        |> distinct(column: "device_id")
+        |> keep(columns: ["_value"])
+    '''
+    logging.info(f'Query to get device_ids by vehicle_type: {query}')
+    try:
+        table = db.query_data(query)
+        result = table.to_json()
+        device_ids = [row['_value'] for row in json.loads(result)]
+        response = {"device_ids": list(set(device_ids))}
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    
+    return response

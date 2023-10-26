@@ -9,6 +9,7 @@ class InfluxDatabase:
         self.token = Config.INFLUX_TOKEN
         self.org = Config.INFLUX_ORG
         self.bucket = Config.INFLUX_BUCKET_NAME
+        self.measurement = Config.INFLUX_MEASURENENT
         self.url = "http://katech-influx-db:8086"  # Docker Compose 서비스 이름과 포트를 사용
         self.client = InfluxDBClient(url=self.url, token=self.token)
     
