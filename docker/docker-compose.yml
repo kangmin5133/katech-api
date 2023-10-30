@@ -49,6 +49,8 @@ services:
       - ../logs:/workspace/logs
       - ../main.py:/workspace/main.py
       - ../requirements.txt:/workspace/requirements.txt
+      - ../alembic:/workspace/alembic
+      - ../alembic.ini:/workspace/alembic.ini
     ports:
       - "8820:8820" 
     restart: always

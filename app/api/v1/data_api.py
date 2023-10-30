@@ -52,3 +52,4 @@ async def get_device_ids_by_vehicle_type(vehicle_type: str):
     response = await data_service.get_device_ids_by_vehicle_type(vehicle_type)
     return JSONResponse(content=response)
 
+

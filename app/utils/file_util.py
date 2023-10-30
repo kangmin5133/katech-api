@@ -4,6 +4,7 @@ import glob
 from datetime import datetime, timedelta
 from config.config import Config
 from pathlib import Path
+import logging
 
 def get_device_ids():
     data_storage_path =  Path(Config.DATA_STORAGE)
@@ -41,4 +42,5 @@ def merge_files(device_id: str):
     if all_columns:
         merged_df = pd.DataFrame(all_columns)
         merged_filename = f"{folder_path}/{device_id}_{yesterday_date_str}.csv"
+        logging.info(f"{len(selected_files)} files merged into {folder_path}/{device_id}_{yesterday_date_str}.csv")
         merged_df.to_csv(merged_filename, index=False, header=False)

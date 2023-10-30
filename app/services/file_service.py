@@ -109,3 +109,4 @@ async def download_file(device_id: str,file_name:str):
     if not file_path.exists():
         raise HTTPException(status_code=404, detail="File not found")
     return file_path
+
