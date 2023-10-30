@@ -2,6 +2,7 @@ fastapi
 uvicorn
 python-multipart
 alembic
+pymysql
 sqlalchemy
 influxdb-client
 apscheduler
