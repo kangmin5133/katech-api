@@ -31,7 +31,7 @@ def file_merge():
 
 def start_scheduler():
     scheduler = BackgroundScheduler()
-    # scheduler.add_job(merge_files, 'interval',minutes=1) # for test
+    # scheduler.add_job(file_merge, 'interval',minutes=1) # for test
     scheduler.add_job(file_merge, 'cron', hour=0) # cron trigger to active job at specific time
     scheduler.start()
 
