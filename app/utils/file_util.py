@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from config.config import Config
 from pathlib import Path
 import logging
+import re
 
 def get_device_ids():
     data_storage_path =  Path(Config.DATA_STORAGE)
@@ -13,34 +14,41 @@ def get_device_ids():
     return device_ids
 
 def merge_files(device_id: str):
-
-    folder_path = f"{Config.DATA_STORAGE}/{device_id}"
-    # 현재 날짜 가져오기
-    current_date_str = datetime.now().strftime("%Y%m%d")
-    yesterday_date = datetime.now() - timedelta(days=1)
-    yesterday_date_str = yesterday_date.strftime("%Y%m%d")
-
-    # 디렉토리에서 파일 목록 가져오기
-    all_files = glob.glob(os.path.join(folder_path, f"{device_id}_*.csv"))
-    all_file_name = []
-    for file_path in all_files:
-        all_file_name.append(file_path.split("/")[-1])
-
-    # 어제 날짜와 일치하는 파일만 선택
-    selected_files = [f for f in all_file_name if yesterday_date_str in f.split('_')[1]]
-    # 빈 DataFrame 생성
-    merged_df = pd.DataFrame()
-
+    date_to_files = {}
     all_columns = []
 
-    # 각 파일을 읽어서 컬럼을 all_columns에 추가
-    for filename in selected_files:
-        df = pd.read_csv(f"{folder_path}/{filename}", index_col=None, header=0)
-        all_columns.append(list(df.columns))
+    device_id = device_id.split("/")[-1]
+    folder_path = f"{Config.DATA_STORAGE}/{device_id}"
+    all_files = glob.glob(os.path.join(folder_path, f"{device_id}_*.csv"))
 
-    # 병합된 컬럼을 새 파일에 저장
-    if all_columns:
-        merged_df = pd.DataFrame(all_columns)
-        merged_filename = f"{folder_path}/{device_id}_{yesterday_date_str}.csv"
-        logging.info(f"{len(selected_files)} files merged into {folder_path}/{device_id}_{yesterday_date_str}.csv")
-        merged_df.to_csv(merged_filename, index=False, header=False)
+    date_pattern = re.compile(r"_(\d{8})\d*\.csv$")
+
+    for file_path in all_files:
+        match = date_pattern.search(file_path)
+        if match:
+            date = match.group(1)
+            if date not in date_to_files:
+                date_to_files[date] = []
+            date_to_files[date].append(file_path)
+
+    for date, files in date_to_files.items():
+        files.sort()  
+        merged_df = pd.DataFrame()
+        for file_path in files:
+            try:
+                df = pd.read_csv(file_path, index_col=None, header=0)
+                all_columns.append(list(df.columns))
+            except pd.errors.EmptyDataError:
+                logging.warning(f"Empty file: {file_path}")
+
+        merged_filename = f"{folder_path}/{device_id}_{date}.csv"
+        if all_columns:
+            merged_df = pd.DataFrame(all_columns)
+            merged_df.to_csv(merged_filename, index=False, header=False)
+            logging.info(f"{len(files)} files merged into {merged_filename}")
+    
+        for file_path in files:
+            try:
+                os.remove(file_path)
+            except Exception as e:
+                logging.error(f"Error occurred while deleting file {file_path}: {e}")
