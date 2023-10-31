@@ -5,7 +5,6 @@ from app.db.mysql.schemas import VehicleInfoCreate, VehicleMetadataCreate
 from app.db.mysql import crud
 
 async def create_vehicle_data(request: dict, db: Session):
-    # 차량 유형을 먼저 조회합니다.
     vehicle_metadata = crud.get_vehicle_metadata_by_type(db, request["vehicle_type_name"])
     
     if not vehicle_metadata:
@@ -96,8 +95,8 @@ async def update_vehicle_data(vehicle_number : str, request : dict , db : Sessio
     }
 
     # 데이터 업데이트
-    crud.update_vehicle_info(db, vehicle_number, update_data)
-    return {"message": "Vehicle data updated successfully"}
+    updated_vehicle = crud.update_vehicle_info(db, vehicle_number, update_data)
+    return updated_vehicle.to_dict()
 
 async def update_vehicle_type_data(vehicle_type_id : int, request : dict , db : Session):
     # 기존 차종 데이터 가져오기
@@ -113,10 +112,15 @@ async def update_vehicle_type_data(vehicle_type_id : int, request : dict , db : 
     }
 
     # 데이터 업데이트
-    crud.update_vehicle_metadata(db, vehicle_type_id, update_data)
-    return {"message": "Vehicle type data updated successfully"}
+    updated_metadata = crud.update_vehicle_metadata(db, vehicle_type_id, update_data)
+    return updated_metadata.to_dict()
 
 async def delete_vehicle_data(vehicle_number:str, db:Session):
+    # 데이터 삭제
+    existing_vehicle = crud.get_vehicle_info_by_number(vehicle_number=vehicle_number, db=db)
+    if not existing_vehicle:
+        raise HTTPException(status_code=404, detail="Vehicle not found")
+
     # 데이터 삭제
     crud.delete_vehicle_info(db, vehicle_number)
     return {"message": "Vehicle data deleted successfully"}

@@ -58,12 +58,14 @@ async def register_vehicle_type_data(vehicle_type_name: str,
     return JSONResponse(content=response)
 # Read
 @router.get("/get/vehicle")
-async def get_vehicle_data(vehicle_number: str, db: Session = Depends(get_db)):
+async def get_vehicle_data(vehicle_number: str, 
+                           db: Session = Depends(get_db)):
     response = await vehicle_service.get_vehicle_data(vehicle_number = vehicle_number, db = db)
     return JSONResponse(content=response)
 
 @router.get("/get/vehicle")
-async def get_vehicle_data(vehicle_number: str, db: Session = Depends(get_db)):
+async def get_vehicle_data(vehicle_number: str, 
+                           db: Session = Depends(get_db)):
     response = await vehicle_service.get_vehicle_data(vehicle_number = vehicle_number, db = db)
     return JSONResponse(content=response)
 
@@ -79,22 +81,28 @@ async def get_vehicle_type_data(db: Session = Depends(get_db)):
 
 # Update
 @router.put("/update/vehicle")
-async def update_vehicle_data(vehicle_number: str, request: UpdatevehicleData, db: Session = Depends(get_db)):
+async def update_vehicle_data(vehicle_number: str, 
+                              request: UpdatevehicleData, 
+                              db: Session = Depends(get_db)):
     response = await vehicle_service.update_vehicle_data(vehicle_number = vehicle_number, request = request.model_dump(), db = db)
     return JSONResponse(content=response)
 
 @router.put("/update/vehicleType")
-async def update_vehicle_type_data(vehicle_type_id: int, request: UpdatevehicleTypeData, db: Session = Depends(get_db)):
+async def update_vehicle_type_data(vehicle_type_id: int, 
+                                   request: UpdatevehicleTypeData, 
+                                   db: Session = Depends(get_db)):
     response = await vehicle_service.update_vehicle_type_data(vehicle_type_id = vehicle_type_id, request = request.model_dump(), db = db)
     return JSONResponse(content=response)
 
 # Delete
 @router.delete("/delete/vehicle")
-async def delete_vehicle_data(vehicle_number: str, db: Session = Depends(get_db)):
+async def delete_vehicle_data(vehicle_number: str, 
+                              db: Session = Depends(get_db)):
     response = await vehicle_service.delete_vehicle_data(vehicle_number = vehicle_number, db = db)
     return JSONResponse(content=response)
 
 @router.delete("/delete/vehicleType")
-async def delete_vehicle_type_data(vehicle_type: str, db: Session = Depends(get_db)):
+async def delete_vehicle_type_data(vehicle_type: str, 
+                                   db: Session = Depends(get_db)):
     response = await vehicle_service.delete_vehicle_type_data(vehicle_type = vehicle_type, db = db)
     return JSONResponse(content=response)
