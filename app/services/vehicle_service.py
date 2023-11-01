@@ -55,8 +55,9 @@ async def get_vehicle_data(vehicle_number: str, db: Session):
 
     return combined_data
 
-async def get_all_vehicle_data(db: Session):
-    results = crud.get_all_vehicle_info_with_metadata(db)
+async def get_all_vehicle_data(offset: int, limit: int, db: Session):
+    total = crud.get_total_vehicle_count(db)
+    results = crud.get_all_vehicle_info_with_metadata(db=db, offset=offset, limit=limit)
     
     all_data = []
     for vehicle_info, vehicle_metadata in results:
@@ -69,11 +70,12 @@ async def get_all_vehicle_data(db: Session):
         combined_data = {**vehicle_info_dict, **vehicle_metadata_dict}
         all_data.append(combined_data)
 
-    return all_data
+    return all_data, total
 
-async def get_vehicle_type(db: Session):
-    result = crud.get_vehicle_metadatas(db=db)
-    return [metadata.to_dict() for metadata in result]
+async def get_vehicle_type(offset: int, limit: int, db: Session):
+    total = crud.get_total_vehicle_type_count(db)
+    result = crud.get_vehicle_metadatas(db=db, offset=offset, limit=limit)
+    return [metadata.to_dict() for metadata in result], total
 
 async def update_vehicle_data(vehicle_number : str, request : dict , db : Session):
     # 기존 차량 데이터 가져오기
