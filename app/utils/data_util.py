@@ -3,11 +3,17 @@ from influxdb_client import Point
 from collections import defaultdict
 import json
 
-def create_point(file_path, timestamp, vehicle_id, device_id):
-    point = Point("SensorData") \
-            .tag("vehicle_id", vehicle_id) \
-            .tag("device_id", device_id) \
-            .time(timestamp)
+def create_point(file_path, timestamp,device_id,vehicle_id= None ):
+    if vehicle_id:
+        point = Point("SensorData") \
+                .tag("vehicle_id", vehicle_id) \
+                .tag("device_id", device_id) \
+                .time(timestamp)
+    else:
+        point = Point("SensorData") \
+                .tag("device_id", device_id) \
+                .time(timestamp)
+
     
     with open(file_path, mode='r') as file:
         csv_reader = csv.reader(file)
@@ -15,8 +21,12 @@ def create_point(file_path, timestamp, vehicle_id, device_id):
             for i,item in enumerate(row):
                 if i == 0: 
                     if len(row[i]) == 14: point.field("timestamp", row[i])
-                elif i == 1: point.field("latitude", float(row[i]))
-                elif i == 2: point.field("logitude", float(row[i]))
+                elif i == 1: 
+                    if row[i] != "NA":
+                        point.field("latitude", float(row[i]))
+                elif i == 2: 
+                    if row[i] != "NA":
+                        point.field("logitude", float(row[i]))
                 elif "=" in item:
                     field, value = item.split("=")
                     try:
