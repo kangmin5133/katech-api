@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from . import models, schemas
 from sqlalchemy.orm import join
+from sqlalchemy import func
 
 # VehicleMetadata CRUD
 def create_vehicle_metadata(db: Session, vehicle_metadata: schemas.VehicleMetadataCreate):
@@ -37,6 +38,24 @@ def create_vehicle_info(db: Session, vehicle_info: schemas.VehicleInfoCreate):
     db.refresh(db_vehicle_info)
     return db_vehicle_info
 
+def get_total_vehicle_count(db: Session):
+    return db.query(func.count(models.VehicleInfo.vehicle_number)).scalar()
+
+def get_all_vehicle_info_with_metadata(db: Session, offset: int, limit: int):
+    return (
+        db.query(models.VehicleInfo, models.VehicleMetadata)
+        .join(models.VehicleMetadata, models.VehicleInfo.vehicle_type_id == models.VehicleMetadata.id)
+        .offset(offset)
+        .limit(limit)
+        .all()
+    )
+
+def get_total_vehicle_type_count(db: Session):
+    return db.query(func.count(models.VehicleMetadata.id)).scalar()
+
+def get_vehicle_metadatas(db: Session, offset: int, limit: int):
+    return db.query(models.VehicleMetadata).offset(offset).limit(limit).all()
+
 def get_vehicle_infos(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.VehicleInfo).offset(skip).limit(limit).all()
 
@@ -61,7 +80,3 @@ def get_vehicle_info_with_metadata_by_number(db: Session, vehicle_number: str):
         .filter(models.VehicleInfo.vehicle_number == vehicle_number)
         .first()
     )
-
-def get_all_vehicle_info_with_metadata(db: Session):
-    return db.query(models.VehicleInfo, models.VehicleMetadata).\
-            join(models.VehicleMetadata, models.VehicleInfo.vehicle_type_id == models.VehicleMetadata.id).all()

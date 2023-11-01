@@ -1,7 +1,6 @@
 from sqlalchemy.orm import Session
 from app.db.mysql.database import get_db
-from fastapi import APIRouter
-from fastapi import Query, Depends
+from fastapi import APIRouter, HTTPException, Query, Depends
 from pydantic import BaseModel
 from typing import List, Optional, Dict
 from fastapi.responses import JSONResponse
@@ -63,21 +62,23 @@ async def get_vehicle_data(vehicle_number: str,
     response = await vehicle_service.get_vehicle_data(vehicle_number = vehicle_number, db = db)
     return JSONResponse(content=response)
 
-@router.get("/get/vehicle")
-async def get_vehicle_data(vehicle_number: str, 
-                           db: Session = Depends(get_db)):
-    response = await vehicle_service.get_vehicle_data(vehicle_number = vehicle_number, db = db)
-    return JSONResponse(content=response)
-
 @router.get("/get/all/vehicles")
-async def read_all_vehicles(db: Session = Depends(get_db)):
-    response = await vehicle_service.get_all_vehicle_data(db = db)
-    return JSONResponse(content=response) 
+async def read_all_vehicles(offset: int = Query(0), 
+                            limit: int = Query(10),
+                            db: Session = Depends(get_db)):
+    
+    response, total = await vehicle_service.get_all_vehicle_data(offset=offset, limit=limit, db=db)
+    final_response  = {"total": total, "count": len(response), "data": response}
+    return JSONResponse(content=final_response) 
 
 @router.get("/get/all/vehicleTypes")
-async def get_vehicle_type_data(db: Session = Depends(get_db)):
-    response = await vehicle_service.get_vehicle_type(db = db)
-    return JSONResponse(content=response)
+async def get_vehicle_type_data(offset: int = Query(0), 
+                                limit: int = Query(10),
+                                db: Session = Depends(get_db)):
+    
+    response, total = await vehicle_service.get_vehicle_type(offset=offset, limit=limit, db=db)
+    final_response  = {"total": total, "count": len(response), "data": response}
+    return JSONResponse(content=final_response)
 
 # Update
 @router.put("/update/vehicle")
@@ -91,6 +92,8 @@ async def update_vehicle_data(vehicle_number: str,
 async def update_vehicle_type_data(vehicle_type_id: int, 
                                    request: UpdatevehicleTypeData, 
                                    db: Session = Depends(get_db)):
+    
+
     response = await vehicle_service.update_vehicle_type_data(vehicle_type_id = vehicle_type_id, request = request.model_dump(), db = db)
     return JSONResponse(content=response)
 
@@ -98,11 +101,18 @@ async def update_vehicle_type_data(vehicle_type_id: int,
 @router.delete("/delete/vehicle")
 async def delete_vehicle_data(vehicle_number: str, 
                               db: Session = Depends(get_db)):
+    if vehicle_number is None or vehicle_number == "" :
+        raise HTTPException(status_code=400, detail="vehicle_number is missing in the param")
+    
     response = await vehicle_service.delete_vehicle_data(vehicle_number = vehicle_number, db = db)
     return JSONResponse(content=response)
 
 @router.delete("/delete/vehicleType")
 async def delete_vehicle_type_data(vehicle_type: str, 
                                    db: Session = Depends(get_db)):
+    
+    if vehicle_type is None or vehicle_type == "" :
+        raise HTTPException(status_code=400, detail="vehicle_type is missing in the param")
+    
     response = await vehicle_service.delete_vehicle_type_data(vehicle_type = vehicle_type, db = db)
     return JSONResponse(content=response)
