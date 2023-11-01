@@ -42,37 +42,11 @@ async def upload_file(device_id:str,file:UploadFile):
             universal_newlines=True)
 
     #write to influxDB
-    # try:
-        # for test data generator
-        # test_vehicle_id = "EV6"
     db = InfluxDatabase()
-    if device_id == "T20231023":
-        test_vehicle_id = "EV6"
-
-        point = create_point(file_path = file_path, 
+    point = create_point(file_path = file_path, 
                         timestamp = timestamp, 
                         device_id = device_id, 
-                        vehicle_id= test_vehicle_id) # 임의 작성
-    elif device_id == "T20231024":
-        test_vehicle_id = "IONIQ6"
-
-        point = create_point(file_path = file_path, 
-                        timestamp = timestamp, 
-                        device_id = device_id, 
-                        vehicle_id= test_vehicle_id) # 임의 작성
-    elif device_id == "T20231025":
-        test_vehicle_id = "IONIQ5"
-
-        point = create_point(file_path = file_path, 
-                        timestamp = timestamp, 
-                        device_id = device_id, 
-                        vehicle_id= test_vehicle_id) # 임의 작성
-
-    # db = InfluxDatabase()
-    # point = create_point(file_path = file_path, 
-    #                     timestamp = timestamp, 
-    #                     device_id = device_id, 
-    #                     vehicle_id= test_vehicle_id) # 임의 작성
+                        ) # 임의 작성
     
     db.write_point_obj_data(point)
     # except:
@@ -95,13 +69,12 @@ async def download_zip(device_id: str):
     folder_path = Path(f"{Config.DATA_STORAGE}/{device_id}")
     if not folder_path.exists():
         raise HTTPException(status_code=404, detail="Device ID not found")
-    
+
     zip_file_path = Path(f"{Config.DATA_STORAGE}/{device_id}.zip")
     with zipfile.ZipFile(zip_file_path, 'w') as zipf:
         for root, _, files in os.walk(folder_path):
             for file in files:
                 zipf.write(os.path.join(root, file), os.path.relpath(os.path.join(root, file), folder_path))
-    
     return zip_file_path
 
 async def download_file(device_id: str,file_name:str):

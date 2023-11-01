@@ -1,11 +1,12 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from apscheduler.schedulers.background import BackgroundScheduler
-from app.db.mysql import crud, models, database, schemas
+from apscheduler.events import EVENT_JOB_EXECUTED, EVENT_JOB_ERROR
+from app.db.mysql import crud, models, database, schemas, metadatas
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker,Session
 from app.api.v1 import file_api, data_api, vehicle_api
-from app.utils.file_util import merge_files, get_device_ids
+from app.utils.file_util import merge_files, get_device_ids, delete_old_files
 import logging
 
 # Initialize FastAPI application
@@ -13,7 +14,8 @@ app = FastAPI()
 
 
 origins =[
-    "http://127.0.0.1:8824"
+    "http://127.0.0.1:8824",
+    "http://210.113.122.196:8824"
     ]
 
 # Middleware settings
@@ -25,30 +27,30 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+def job_end_listener(event):
+    if event.exception:
+        logging.info(f"The job crashed: {event.exception}")
+    else:
+        device_id_dir_path = get_device_ids()
+        for device_id_dir_path in device_id_dir_path: delete_old_files(device_id_dir_path)
+
 def file_merge():
-    device_ids = get_device_ids()
-    for device_id in device_ids: merge_files(device_id)
+    device_ids_dir_path = get_device_ids()
+    for device_id_dir_path in device_ids_dir_path: merge_files(device_id_dir_path)
 
 def start_scheduler():
     scheduler = BackgroundScheduler()
     # scheduler.add_job(file_merge, 'interval',minutes=1) # for test
-    scheduler.add_job(file_merge, 'cron', hour=0) # cron trigger to active job at specific time
+    scheduler.add_listener(job_end_listener, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
+    scheduler.add_job(file_merge, 'cron', hour=0)
     scheduler.start()
 
 def create_predefined_data():
     engine = create_engine(database.DATABASE_URL)
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     db = SessionLocal()
-    initial_vehicle_metadata = [
-        {"vehicle_type": "EV6", "manufacturer": "kia", "category": "준중형 SUV"},
-        {"vehicle_type": "IONIQ6", "manufacturer": "hyundai", "category": "중형 SEDAN"},
-        {"vehicle_type": "IONIQ5", "manufacturer": "hyundai", "category": "준중형 SUV"},
-        {"vehicle_type": "GV70", "manufacturer": "hyundai", "category": "중형 SUV"},
-        {"vehicle_type": "GV60", "manufacturer": "hyundai", "category": "준중형 SUV"},
-        {"vehicle_type": "G80", "manufacturer": "hyundai", "category": "준대형 SEDAN"},
-        {"vehicle_type": "NEXO", "manufacturer": "hyundai", "category": "중형 SUV"},
-    ]
-    for metadata in initial_vehicle_metadata:
+    
+    for metadata in metadatas.initial_vehicle_type_metadata:
         metadata_obj = schemas.VehicleMetadataCreate(**metadata)
         if not crud.get_vehicle_metadata_by_type(db, metadata["vehicle_type"]):
             crud.create_vehicle_metadata(db, metadata_obj)
