@@ -74,7 +74,7 @@ async def get_all_device_ids():
     db = InfluxDatabase()
     query = f'''
         from(bucket: "{db.bucket}")
-        |> range(start: 0)
+        |> range(start: 0, stop: {(datetime.datetime.now().isoformat()).split(".")[0]+"Z"})
         |> distinct(column: "device_id")
         |> keep(columns: ["_value"])
     '''
@@ -87,10 +87,6 @@ async def get_all_device_ids():
     except Exception as e:
         logging.error(f"An error occurred: {e}")
         raise HTTPException(status_code=500, detail=str(e))
-    
-    #file system search
-    # device_ids = get_device_ids()
-    # response = {"device_ids": [device_id.split("/")[-1] for device_id in device_ids]}
 
     return response
 
@@ -98,7 +94,7 @@ async def get_device_ids_by_vehicle_type(vehicle_type: str):
     db = InfluxDatabase()
     query = f'''
         from(bucket: "{db.bucket}")
-        |> range(start: -30d)
+        |> range(start: 0, stop: {(datetime.datetime.now().isoformat()).split(".")[0]+"Z"})
         |> filter(fn: (r) => r["vehicle_id"] == "{vehicle_type}")
         |> filter(fn: (r) => r["_measurement"] == "{db.measurement}")
         |> distinct(column: "device_id")
