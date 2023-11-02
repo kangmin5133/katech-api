@@ -56,7 +56,7 @@ def influx_parser(query_result, total_count, offset, limit):
     parsed_data = defaultdict(lambda: defaultdict(dict))
 
     device_id = None
-    vehicle_id = None
+    # vehicle_id = None
     final_output = []
 
     for row in query_result:
@@ -65,17 +65,13 @@ def influx_parser(query_result, total_count, offset, limit):
         value = row['_value']
 
         device_id = row.get('device_id', device_id)
-        vehicle_id = row.get('vehicle_id', vehicle_id)
 
         parsed_data[device_id][timestamp][field] = value
-        parsed_data[device_id]['vehicle_id'] = vehicle_id
 
     for device, data in parsed_data.items():
-        vehicle_id = data.pop('vehicle_id', None)
         timestamps = [{"timestamp": timestamp, **fields} for timestamp, fields in data.items()]
         final_data = {
             "device_id": device,
-            "vehicle_id": vehicle_id,
             "data": timestamps
         }
         final_output.append(final_data)
