@@ -1,0 +1,2618 @@
+[
+  {
+    "id": 1,
+    "category": "MCU_R",
+    "item_name": "인버터 DB 입력전압",
+    "unit": "V",
+    "range": "",
+    "index": "MCU_1"
+  },
+  {
+    "id": 2,
+    "category": "MCU_R",
+    "item_name": "보조배터리 전압",
+    "unit": "V",
+    "range": "",
+    "index": "MCU_2"
+  },
+  {
+    "id": 3,
+    "category": "MCU_R",
+    "item_name": "현재 구동 모터 속도",
+    "unit": "RPM",
+    "range": "-32768 ~ 32767",
+    "index": "MCU_3"
+  },
+  {
+    "id": 4,
+    "category": "MCU_R",
+    "item_name": "현재 구동 모터 출력 토크",
+    "unit": "Nm",
+    "range": "-3276.8 ~ 3276.7",
+    "index": "MCU_4"
+  },
+  {
+    "id": 5,
+    "category": "MCU_R",
+    "item_name": "구동 모터 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "MCU_5"
+  },
+  {
+    "id": 6,
+    "category": "MCU_R",
+    "item_name": "MCU 인버터 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "MCU_6"
+  },
+  {
+    "id": 7,
+    "category": "MCU_R",
+    "item_name": "MCU 고장상태",
+    "unit": "-",
+    "range": "",
+    "index": "MCU_7"
+  },
+  {
+    "id": 8,
+    "category": "MCU_R",
+    "item_name": "구동모터 제어가능 상태",
+    "unit": "-",
+    "range": "",
+    "index": "MCU_8"
+  },
+  {
+    "id": 9,
+    "category": "BMS",
+    "item_name": "목표 충전 전압",
+    "unit": "V",
+    "range": "0.0 ~ 6535.5",
+    "index": "BMS_1"
+  },
+  {
+    "id": 10,
+    "category": "BMS",
+    "item_name": "목표 충전 전류",
+    "unit": "A",
+    "range": "0.0 ~ 6535.5",
+    "index": "BMS_2"
+  },
+  {
+    "id": 11,
+    "category": "BMS",
+    "item_name": "배터리팩 전류",
+    "unit": "A",
+    "range": "-3276.8 ~ 3276.7",
+    "index": "BMS_3"
+  },
+  {
+    "id": 12,
+    "category": "BMS",
+    "item_name": "배터리팩 전압",
+    "unit": "V",
+    "range": "0.0 ~ 6535.5",
+    "index": "BMS_4"
+  },
+  {
+    "id": 13,
+    "category": "BMS",
+    "item_name": "배터리 최대 온도",
+    "unit": "'C",
+    "range": "-128 ~ 127",
+    "index": "BMS_5"
+  },
+  {
+    "id": 14,
+    "category": "BMS",
+    "item_name": "배터리 최소 온도",
+    "unit": "'C",
+    "range": "-128 ~ 127",
+    "index": "BMS_6"
+  },
+  {
+    "id": 15,
+    "category": "BMS",
+    "item_name": "배터리 모듈 1 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_1"
+  },
+  {
+    "id": 16,
+    "category": "BMS",
+    "item_name": "배터리 모듈 2 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_2"
+  },
+  {
+    "id": 17,
+    "category": "BMS",
+    "item_name": "배터리 모듈 3 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_3"
+  },
+  {
+    "id": 18,
+    "category": "BMS",
+    "item_name": "배터리 모듈 4 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_4"
+  },
+  {
+    "id": 19,
+    "category": "BMS",
+    "item_name": "배터리 모듈 5 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_5"
+  },
+  {
+    "id": 20,
+    "category": "BMS",
+    "item_name": "배터리 모듈 6 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_6"
+  },
+  {
+    "id": 21,
+    "category": "BMS",
+    "item_name": "배터리 모듈 7 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_7"
+  },
+  {
+    "id": 22,
+    "category": "BMS",
+    "item_name": "배터리 모듈 8 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_8"
+  },
+  {
+    "id": 23,
+    "category": "BMS",
+    "item_name": "배터리 모듈 9 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_9"
+  },
+  {
+    "id": 24,
+    "category": "BMS",
+    "item_name": "배터리 모듈 10 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_10"
+  },
+  {
+    "id": 25,
+    "category": "BMS",
+    "item_name": "배터리 모듈 11 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_11"
+  },
+  {
+    "id": 26,
+    "category": "BMS",
+    "item_name": "배터리 모듈 12 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_12"
+  },
+  {
+    "id": 27,
+    "category": "BMS",
+    "item_name": "배터리 모듈 13 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_13"
+  },
+  {
+    "id": 28,
+    "category": "BMS",
+    "item_name": "배터리 모듈 14 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_14"
+  },
+  {
+    "id": 29,
+    "category": "BMS",
+    "item_name": "배터리 모듈 15 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_15"
+  },
+  {
+    "id": 30,
+    "category": "BMS",
+    "item_name": "배터리 모듈 16 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_16"
+  },
+  {
+    "id": 31,
+    "category": "BMS",
+    "item_name": "배터리 모듈 17 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_17"
+  },
+  {
+    "id": 32,
+    "category": "BMS",
+    "item_name": "배터리 모듈 18 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_18"
+  },
+  {
+    "id": 33,
+    "category": "BMS",
+    "item_name": "배터리 모듈 19 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_19"
+  },
+  {
+    "id": 34,
+    "category": "BMS",
+    "item_name": "배터리 모듈 20 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_7_20"
+  },
+  {
+    "id": 35,
+    "category": "BMS",
+    "item_name": "배터리 외기온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_8"
+  },
+  {
+    "id": 36,
+    "category": "BMS",
+    "item_name": "배터리 최대 전압 셀",
+    "unit": "V",
+    "range": "0.00 ~ 5.10",
+    "index": "BMS_9"
+  },
+  {
+    "id": 37,
+    "category": "BMS",
+    "item_name": "배터리 최대 전압 셀 번호",
+    "unit": "-",
+    "range": "0 ~ 255",
+    "index": "BMS_10"
+  },
+  {
+    "id": 38,
+    "category": "BMS",
+    "item_name": "배터리 최소 전압 셀",
+    "unit": "V",
+    "range": "0.00 ~ 5.10",
+    "index": "BMS_11"
+  },
+  {
+    "id": 39,
+    "category": "BMS",
+    "item_name": "배터리 최소 전압 셀 번호",
+    "unit": "-",
+    "range": "0 ~ 255",
+    "index": "BMS_12"
+  },
+  {
+    "id": 40,
+    "category": "BMS",
+    "item_name": "누적 충전 전류량",
+    "unit": "Ah",
+    "range": "0.0 ~ 429496729.5",
+    "index": "BMS_13"
+  },
+  {
+    "id": 41,
+    "category": "BMS",
+    "item_name": "누적 방전 전류량",
+    "unit": "Ah",
+    "range": "0.0 ~ 429496729.5",
+    "index": "BMS_14"
+  },
+  {
+    "id": 42,
+    "category": "BMS",
+    "item_name": "누적 충전 전력량",
+    "unit": "kWh",
+    "range": "0.0 ~ 429496729.5",
+    "index": "BMS_15"
+  },
+  {
+    "id": 43,
+    "category": "BMS",
+    "item_name": "누적 방전 전력량",
+    "unit": "kWh",
+    "range": "0.0 ~ 429496729.5",
+    "index": "BMS_16"
+  },
+  {
+    "id": 44,
+    "category": "BMS",
+    "item_name": "총 동작시간",
+    "unit": "Sec",
+    "range": "0 ~ 4294967295",
+    "index": "BMS_17"
+  },
+  {
+    "id": 45,
+    "category": "BMS",
+    "item_name": "모터 회전수",
+    "unit": "RPM",
+    "range": "",
+    "index": "BMS_18"
+  },
+  {
+    "id": 46,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 1",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_1"
+  },
+  {
+    "id": 47,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 2",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_2"
+  },
+  {
+    "id": 48,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 3",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_3"
+  },
+  {
+    "id": 49,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 4",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_4"
+  },
+  {
+    "id": 50,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 5",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_5"
+  },
+  {
+    "id": 51,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 6",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_6"
+  },
+  {
+    "id": 52,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 7",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_7"
+  },
+  {
+    "id": 53,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 8",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_8"
+  },
+  {
+    "id": 54,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 9",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_9"
+  },
+  {
+    "id": 55,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 10",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_10"
+  },
+  {
+    "id": 56,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 11",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_11"
+  },
+  {
+    "id": 57,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 12",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_12"
+  },
+  {
+    "id": 58,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 13",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_13"
+  },
+  {
+    "id": 59,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 14",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_14"
+  },
+  {
+    "id": 60,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 15",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_15"
+  },
+  {
+    "id": 61,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 16",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_16"
+  },
+  {
+    "id": 62,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 17",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_17"
+  },
+  {
+    "id": 63,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 18",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_18"
+  },
+  {
+    "id": 64,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 19",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_19"
+  },
+  {
+    "id": 65,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 20",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_20"
+  },
+  {
+    "id": 66,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 21",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_21"
+  },
+  {
+    "id": 67,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 22",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_22"
+  },
+  {
+    "id": 68,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 23",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_23"
+  },
+  {
+    "id": 69,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 24",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_24"
+  },
+  {
+    "id": 70,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 25",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_25"
+  },
+  {
+    "id": 71,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 26",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_26"
+  },
+  {
+    "id": 72,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 27",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_27"
+  },
+  {
+    "id": 73,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 28",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_28"
+  },
+  {
+    "id": 74,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 29",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_29"
+  },
+  {
+    "id": 75,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 30",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_30"
+  },
+  {
+    "id": 76,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 31",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_31"
+  },
+  {
+    "id": 77,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 32",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_32"
+  },
+  {
+    "id": 78,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 33",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_33"
+  },
+  {
+    "id": 79,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 34",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_34"
+  },
+  {
+    "id": 80,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 35",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_35"
+  },
+  {
+    "id": 81,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 36",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_36"
+  },
+  {
+    "id": 82,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 37",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_37"
+  },
+  {
+    "id": 83,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 38",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_38"
+  },
+  {
+    "id": 84,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 39",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_39"
+  },
+  {
+    "id": 85,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 40",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_40"
+  },
+  {
+    "id": 86,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 41",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_41"
+  },
+  {
+    "id": 87,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 42",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_42"
+  },
+  {
+    "id": 88,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 43",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_43"
+  },
+  {
+    "id": 89,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 44",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_44"
+  },
+  {
+    "id": 90,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 45",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_45"
+  },
+  {
+    "id": 91,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 46",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_46"
+  },
+  {
+    "id": 92,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 47",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_47"
+  },
+  {
+    "id": 93,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 48",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_48"
+  },
+  {
+    "id": 94,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 49",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_49"
+  },
+  {
+    "id": 95,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 50",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_50"
+  },
+  {
+    "id": 96,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 51",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_51"
+  },
+  {
+    "id": 97,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 52",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_52"
+  },
+  {
+    "id": 98,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 53",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_53"
+  },
+  {
+    "id": 99,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 54",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_54"
+  },
+  {
+    "id": 100,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 55",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_55"
+  },
+  {
+    "id": 101,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 56",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_56"
+  },
+  {
+    "id": 102,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 57",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_57"
+  },
+  {
+    "id": 103,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 58",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_58"
+  },
+  {
+    "id": 104,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 59",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_59"
+  },
+  {
+    "id": 105,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 60",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_60"
+  },
+  {
+    "id": 106,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 61",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_61"
+  },
+  {
+    "id": 107,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 62",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_62"
+  },
+  {
+    "id": 108,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 63",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_63"
+  },
+  {
+    "id": 109,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 64",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_64"
+  },
+  {
+    "id": 110,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 65",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_65"
+  },
+  {
+    "id": 111,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 66",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_66"
+  },
+  {
+    "id": 112,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 67",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_67"
+  },
+  {
+    "id": 113,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 68",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_68"
+  },
+  {
+    "id": 114,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 69",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_69"
+  },
+  {
+    "id": 115,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 70",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_70"
+  },
+  {
+    "id": 116,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 71",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_71"
+  },
+  {
+    "id": 117,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 72",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_72"
+  },
+  {
+    "id": 118,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 73",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_73"
+  },
+  {
+    "id": 119,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 74",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_74"
+  },
+  {
+    "id": 120,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 75",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_75"
+  },
+  {
+    "id": 121,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 76",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_76"
+  },
+  {
+    "id": 122,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 77",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_77"
+  },
+  {
+    "id": 123,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 78",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_78"
+  },
+  {
+    "id": 124,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 79",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_79"
+  },
+  {
+    "id": 125,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 80",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_80"
+  },
+  {
+    "id": 126,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 81",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_81"
+  },
+  {
+    "id": 127,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 82",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_82"
+  },
+  {
+    "id": 128,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 83",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_83"
+  },
+  {
+    "id": 129,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 84",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_84"
+  },
+  {
+    "id": 130,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 85",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_85"
+  },
+  {
+    "id": 131,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 86",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_86"
+  },
+  {
+    "id": 132,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 87",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_87"
+  },
+  {
+    "id": 133,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 88",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_88"
+  },
+  {
+    "id": 134,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 89",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_89"
+  },
+  {
+    "id": 135,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 90",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_90"
+  },
+  {
+    "id": 136,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 91",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_91"
+  },
+  {
+    "id": 137,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 92",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_92"
+  },
+  {
+    "id": 138,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 93",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_93"
+  },
+  {
+    "id": 139,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 94",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_94"
+  },
+  {
+    "id": 140,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 95",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_95"
+  },
+  {
+    "id": 141,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 96",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_96"
+  },
+  {
+    "id": 142,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 97",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_97"
+  },
+  {
+    "id": 143,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 98",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_98"
+  },
+  {
+    "id": 144,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 99",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_99"
+  },
+  {
+    "id": 145,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 100",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_100"
+  },
+  {
+    "id": 146,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 101",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_101"
+  },
+  {
+    "id": 147,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 102",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_102"
+  },
+  {
+    "id": 148,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 103",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_103"
+  },
+  {
+    "id": 149,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 104",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_104"
+  },
+  {
+    "id": 150,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 105",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_105"
+  },
+  {
+    "id": 151,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 106",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_106"
+  },
+  {
+    "id": 152,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 107",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_107"
+  },
+  {
+    "id": 153,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 108",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_108"
+  },
+  {
+    "id": 154,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 109",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_109"
+  },
+  {
+    "id": 155,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 110",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_110"
+  },
+  {
+    "id": 156,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 111",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_111"
+  },
+  {
+    "id": 157,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 112",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_112"
+  },
+  {
+    "id": 158,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 113",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_113"
+  },
+  {
+    "id": 159,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 114",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_114"
+  },
+  {
+    "id": 160,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 115",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_115"
+  },
+  {
+    "id": 161,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 116",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_116"
+  },
+  {
+    "id": 162,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 117",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_117"
+  },
+  {
+    "id": 163,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 118",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_118"
+  },
+  {
+    "id": 164,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 119",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_119"
+  },
+  {
+    "id": 165,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 120",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_120"
+  },
+  {
+    "id": 166,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 121",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_121"
+  },
+  {
+    "id": 167,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 122",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_122"
+  },
+  {
+    "id": 168,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 123",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_123"
+  },
+  {
+    "id": 169,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 124",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_124"
+  },
+  {
+    "id": 170,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 125",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_125"
+  },
+  {
+    "id": 171,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 126",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_126"
+  },
+  {
+    "id": 172,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 127",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_127"
+  },
+  {
+    "id": 173,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 128",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_128"
+  },
+  {
+    "id": 174,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 129",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_129"
+  },
+  {
+    "id": 175,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 130",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_130"
+  },
+  {
+    "id": 176,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 131",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_131"
+  },
+  {
+    "id": 177,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 132",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_132"
+  },
+  {
+    "id": 178,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 133",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_133"
+  },
+  {
+    "id": 179,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 134",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_134"
+  },
+  {
+    "id": 180,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 135",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_135"
+  },
+  {
+    "id": 181,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 136",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_136"
+  },
+  {
+    "id": 182,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 137",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_137"
+  },
+  {
+    "id": 183,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 138",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_138"
+  },
+  {
+    "id": 184,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 139",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_139"
+  },
+  {
+    "id": 185,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 140",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_140"
+  },
+  {
+    "id": 186,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 141",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_141"
+  },
+  {
+    "id": 187,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 142",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_142"
+  },
+  {
+    "id": 188,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 143",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_143"
+  },
+  {
+    "id": 189,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 144",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_144"
+  },
+  {
+    "id": 190,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 145",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_145"
+  },
+  {
+    "id": 191,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 146",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_146"
+  },
+  {
+    "id": 192,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 147",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_147"
+  },
+  {
+    "id": 193,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 148",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_148"
+  },
+  {
+    "id": 194,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 149",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_149"
+  },
+  {
+    "id": 195,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 150",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_150"
+  },
+  {
+    "id": 196,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 151",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_151"
+  },
+  {
+    "id": 197,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 152",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_152"
+  },
+  {
+    "id": 198,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 153",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_153"
+  },
+  {
+    "id": 199,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 154",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_154"
+  },
+  {
+    "id": 200,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 155",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_155"
+  },
+  {
+    "id": 201,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 156",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_156"
+  },
+  {
+    "id": 202,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 157",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_157"
+  },
+  {
+    "id": 203,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 158",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_158"
+  },
+  {
+    "id": 204,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 159",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_159"
+  },
+  {
+    "id": 205,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 160",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_160"
+  },
+  {
+    "id": 206,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 161",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_161"
+  },
+  {
+    "id": 207,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 162",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_162"
+  },
+  {
+    "id": 208,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 163",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_163"
+  },
+  {
+    "id": 209,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 164",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_164"
+  },
+  {
+    "id": 210,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 165",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_165"
+  },
+  {
+    "id": 211,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 166",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_166"
+  },
+  {
+    "id": 212,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 167",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_167"
+  },
+  {
+    "id": 213,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 168",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_168"
+  },
+  {
+    "id": 214,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 169",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_169"
+  },
+  {
+    "id": 215,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 170",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_170"
+  },
+  {
+    "id": 216,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 171",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_171"
+  },
+  {
+    "id": 217,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 172",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_172"
+  },
+  {
+    "id": 218,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 173",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_173"
+  },
+  {
+    "id": 219,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 174",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_174"
+  },
+  {
+    "id": 220,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 175",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_175"
+  },
+  {
+    "id": 221,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 176",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_176"
+  },
+  {
+    "id": 222,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 177",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_177"
+  },
+  {
+    "id": 223,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 178",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_178"
+  },
+  {
+    "id": 224,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 179",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_179"
+  },
+  {
+    "id": 225,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 180",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_180"
+  },
+  {
+    "id": 226,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 181",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_181"
+  },
+  {
+    "id": 227,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 182",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_182"
+  },
+  {
+    "id": 228,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 183",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_183"
+  },
+  {
+    "id": 229,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 184",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_184"
+  },
+  {
+    "id": 230,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 185",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_185"
+  },
+  {
+    "id": 231,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 186",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_186"
+  },
+  {
+    "id": 232,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 187",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_187"
+  },
+  {
+    "id": 233,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 188",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_188"
+  },
+  {
+    "id": 234,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 189",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_189"
+  },
+  {
+    "id": 235,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 190",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_190"
+  },
+  {
+    "id": 236,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 191",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_191"
+  },
+  {
+    "id": 237,
+    "category": "BMS",
+    "item_name": "배터리 셀 전압 192",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_19_192"
+  },
+  {
+    "id": 238,
+    "category": "BMS",
+    "item_name": "배터리 셀간 전압편차",
+    "unit": "V",
+    "range": "",
+    "index": "BMS_20"
+  },
+  {
+    "id": 239,
+    "category": "BMS",
+    "item_name": "SOH 상태(신품기준 100%)",
+    "unit": "%",
+    "range": "",
+    "index": "BMS_21"
+  },
+  {
+    "id": 240,
+    "category": "BMS",
+    "item_name": "최대열화 셀 번호",
+    "unit": "-",
+    "range": "",
+    "index": "BMS_22"
+  },
+  {
+    "id": 241,
+    "category": "BMS",
+    "item_name": "배터리 잔량",
+    "unit": "Wh",
+    "range": "",
+    "index": "BMS_23"
+  },
+  {
+    "id": 242,
+    "category": "BMS",
+    "item_name": "배터리 냉각수 인렛 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_24"
+  },
+  {
+    "id": 243,
+    "category": "BMS",
+    "item_name": "배터리 PRA 버스바 온도",
+    "unit": "'C",
+    "range": "",
+    "index": "BMS_25"
+  },
+  {
+    "id": 244,
+    "category": "BMS",
+    "item_name": "셀 밸런싱 상태",
+    "unit": "-",
+    "range": "",
+    "index": "BMS_26"
+  },
+  {
+    "id": 245,
+    "category": "BMS",
+    "item_name": "셀 밸런싱 셀 개수",
+    "unit": "-",
+    "range": "",
+    "index": "BMS_27"
+  },
+  {
+    "id": 246,
+    "category": "BMS",
+    "item_name": "완속 충전 횟수",
+    "unit": "-",
+    "range": "",
+    "index": "BMS_28"
+  },
+  {
+    "id": 247,
+    "category": "BMS",
+    "item_name": "급속 충전 횟수",
+    "unit": "-",
+    "range": "",
+    "index": "BMS_29"
+  },
+  {
+    "id": 248,
+    "category": "BMS",
+    "item_name": "누적 충전 에너지",
+    "unit": "kWh",
+    "range": "",
+    "index": "BMS_30"
+  },
+  {
+    "id": 249,
+    "category": "BMS",
+    "item_name": "누적 급속충전 에너지",
+    "unit": "kWh",
+    "range": "",
+    "index": "BMS_31"
+  },
+  {
+    "id": 250,
+    "category": "BMS",
+    "item_name": "BMS 경고",
+    "unit": "-",
+    "range": "",
+    "index": "BMS_32"
+  },
+  {
+    "id": 251,
+    "category": "BMS",
+    "item_name": "BMS 고장",
+    "unit": "-",
+    "range": "",
+    "index": "BMS_33"
+  },
+  {
+    "id": 252,
+    "category": "BMS",
+    "item_name": "BMS 융착상태",
+    "unit": "-",
+    "range": "",
+    "index": "BMS_34"
+  },
+  {
+    "id": 253,
+    "category": "BMS",
+    "item_name": "VPD 활성화 ON",
+    "unit": "-",
+    "range": "",
+    "index": "BMS_35"
+  },
+  {
+    "id": 254,
+    "category": "BMS",
+    "item_name": "OPD 활성화 ON",
+    "unit": "-",
+    "range": "",
+    "index": "BMS_36"
+  },
+  {
+    "id": 255,
+    "category": "BMS",
+    "item_name": "윈터모드 활성화 상태",
+    "unit": "-",
+    "range": "",
+    "index": "BMS_37"
+  },
+  {
+    "id": 256,
+    "category": "BMS",
+    "item_name": "MCU 준비상태",
+    "unit": "-",
+    "range": "",
+    "index": "BMS_38"
+  },
+  {
+    "id": 257,
+    "category": "ICCU",
+    "item_name": "OBC 고장 상태",
+    "unit": "-",
+    "range": "",
+    "index": "ICCU_1"
+  },
+  {
+    "id": 258,
+    "category": "ICCU",
+    "item_name": "보조배터리 센서 SOC",
+    "unit": "%",
+    "range": "0 ~ 255",
+    "index": "ICCU_2"
+  },
+  {
+    "id": 259,
+    "category": "ICCU",
+    "item_name": "보조배터리 센서 온도",
+    "unit": "'C",
+    "range": "-40.0 ~ 3236.7",
+    "index": "ICCU_3"
+  },
+  {
+    "id": 260,
+    "category": "VCMS",
+    "item_name": "고전압 배터리 전압",
+    "unit": "V",
+    "range": "0.0 ~ 6553.5",
+    "index": "VCMS_1"
+  },
+  {
+    "id": 261,
+    "category": "VCMS",
+    "item_name": "고전압 배터리 SOC",
+    "unit": "%",
+    "range": "0.0 ~ 127.5",
+    "index": "VCMS_2"
+  },
+  {
+    "id": 262,
+    "category": "VCMS",
+    "item_name": "전력전송모드",
+    "unit": "-",
+    "range": "",
+    "index": "VCMS_3"
+  },
+  {
+    "id": 263,
+    "category": "VCMS",
+    "item_name": "완속 충전 수행 적산횟수",
+    "unit": "-",
+    "range": "0 ~ 65535",
+    "index": "VCMS_4"
+  },
+  {
+    "id": 264,
+    "category": "VCMS",
+    "item_name": "급속 충전 수행 적산횟수",
+    "unit": "-",
+    "range": "0 ~ 65535",
+    "index": "VCMS_5"
+  },
+  {
+    "id": 265,
+    "category": "VCMS",
+    "item_name": "완속 충전 적산 시간",
+    "unit": "hour",
+    "range": "0 ~ 65535",
+    "index": "VCMS_6"
+  },
+  {
+    "id": 266,
+    "category": "VCMS",
+    "item_name": "급속 충전 적산 시간",
+    "unit": "hour",
+    "range": "0 ~ 65535",
+    "index": "VCMS_7"
+  },
+  {
+    "id": 267,
+    "category": "VCU",
+    "item_name": "브레이크 A 접점(NO) 상태",
+    "unit": "-",
+    "range": "",
+    "index": "VCU_1"
+  },
+  {
+    "id": 268,
+    "category": "VCU",
+    "item_name": "브레이크 접점 (NC) 상태",
+    "unit": "-",
+    "range": "",
+    "index": "VCU_2"
+  },
+  {
+    "id": 269,
+    "category": "VCU",
+    "item_name": "EV 준비 상태",
+    "unit": "-",
+    "range": "0(OFF) 1(ON)",
+    "index": "VCU_3"
+  },
+  {
+    "id": 270,
+    "category": "VCU",
+    "item_name": "엑셀 패달 깊이 %",
+    "unit": "%",
+    "range": "0.0 ~ 128.0",
+    "index": "VCU_4"
+  },
+  {
+    "id": 271,
+    "category": "VCU",
+    "item_name": "차속 KPH",
+    "unit": "km/h",
+    "range": "-512.0 ~ 512.0",
+    "index": "VCU_5"
+  },
+  {
+    "id": 272,
+    "category": "ABSVDC",
+    "item_name": "프론트 좌측 휠 속도",
+    "unit": "km/h",
+    "range": "0 ~ 255",
+    "index": "ABS_1"
+  },
+  {
+    "id": 273,
+    "category": "ABSVDC",
+    "item_name": "프론트 우측 휠 속도",
+    "unit": "km/h",
+    "range": "0 ~ 255",
+    "index": "ABS_2"
+  },
+  {
+    "id": 274,
+    "category": "ABSVDC",
+    "item_name": "리어 좌측 휠 속도",
+    "unit": "km/h",
+    "range": "0 ~ 255",
+    "index": "ABS_3"
+  },
+  {
+    "id": 275,
+    "category": "ABSVDC",
+    "item_name": "리어 우측 휠 속도",
+    "unit": "km/h",
+    "range": "0 ~ 255",
+    "index": "ABS_4"
+  },
+  {
+    "id": 276,
+    "category": "ABSVDC",
+    "item_name": "스티어링 휠 각도",
+    "unit": "'",
+    "range": "-3276.8 ~ 3276.7",
+    "index": "ABS_5"
+  },
+  {
+    "id": 277,
+    "category": "ABSVDC",
+    "item_name": "요레이트센서 - 횡방향 가속도",
+    "unit": "G",
+    "range": "",
+    "index": "ABS_6"
+  },
+  {
+    "id": 278,
+    "category": "ABSVDC",
+    "item_name": "요레이트센서 - 요레이트",
+    "unit": "'/s",
+    "range": "",
+    "index": "ABS_7"
+  },
+  {
+    "id": 279,
+    "category": "ABSVDC",
+    "item_name": "요레이트센서 - 종방향 가속도",
+    "unit": "G",
+    "range": "",
+    "index": "ABS_8"
+  },
+  {
+    "id": 280,
+    "category": "EPS",
+    "item_name": "스티어링 토크 값",
+    "unit": "Nm",
+    "range": "-32.768 ~ 32.767",
+    "index": "EPS_1"
+  },
+  {
+    "id": 281,
+    "category": "EPS",
+    "item_name": "조향각 속도",
+    "unit": "'/s",
+    "range": "-3276.8 ~ 3276.7",
+    "index": "EPS_2"
+  },
+  {
+    "id": 282,
+    "category": "EPS",
+    "item_name": "절대 조향각",
+    "unit": "'",
+    "range": "-3276.8 ~ 3276.7",
+    "index": "EPS_3"
+  },
+  {
+    "id": 283,
+    "category": "EPS",
+    "item_name": "모터 전류",
+    "unit": "A",
+    "range": "-327.68 ~ 327.67",
+    "index": "EPS_4"
+  },
+  {
+    "id": 284,
+    "category": "AIRCON",
+    "item_name": "외기 온도 센서값",
+    "unit": "'C",
+    "range": "-40.0 ~ 87.5",
+    "index": "AC_1"
+  },
+  {
+    "id": 285,
+    "category": "AIRCON",
+    "item_name": "실내온도센서(FRONT)",
+    "unit": "'C",
+    "range": "-40.0 ~ 87.5",
+    "index": "AC_2"
+  },
+  {
+    "id": 286,
+    "category": "CLU",
+    "item_name": "CLU 공급 전압 V",
+    "unit": "V",
+    "range": "0.0 ~ 20.4",
+    "index": "CLU_1"
+  },
+  {
+    "id": 287,
+    "category": "CLU",
+    "item_name": "주행거리 Km",
+    "unit": "km",
+    "range": "0 ~ 16777215",
+    "index": "CLU_2"
+  },
+  {
+    "id": 288,
+    "category": "TPMS",
+    "item_name": "기준 공기압 Kpa",
+    "unit": "",
+    "range": "",
+    "index": "TPMS_1"
+  },
+  {
+    "id": 289,
+    "category": "FCU",
+    "item_name": "공기압축기 RPM",
+    "unit": "",
+    "range": "",
+    "index": "FCU_1"
+  },
+  {
+    "id": 290,
+    "category": "FCU",
+    "item_name": "공기차단밸브 각도 패드백",
+    "unit": "",
+    "range": "",
+    "index": "FCU_2"
+  },
+  {
+    "id": 291,
+    "category": "FCU",
+    "item_name": "공기압력제어밸브 각도 피드백",
+    "unit": "",
+    "range": "",
+    "index": "FCU_3"
+  },
+  {
+    "id": 292,
+    "category": "FCU",
+    "item_name": "공기차단밸브 각도 명령",
+    "unit": "",
+    "range": "",
+    "index": "FCU_4"
+  },
+  {
+    "id": 293,
+    "category": "FCU",
+    "item_name": "공기압력제어 밸브 각도 명령",
+    "unit": "",
+    "range": "",
+    "index": "FCU_5"
+  },
+  {
+    "id": 294,
+    "category": "FCU",
+    "item_name": "BPCU 출력 전압",
+    "unit": "",
+    "range": "",
+    "index": "FCU_6"
+  },
+  {
+    "id": 295,
+    "category": "FCU",
+    "item_name": "공기유량 센서값",
+    "unit": "",
+    "range": "",
+    "index": "FCU_7"
+  },
+  {
+    "id": 296,
+    "category": "FCU",
+    "item_name": "공기온도 센서값(스택출구)",
+    "unit": "",
+    "range": "",
+    "index": "FCU_8"
+  },
+  {
+    "id": 297,
+    "category": "FCU",
+    "item_name": "공기온도 센서 전압(스택출구)",
+    "unit": "",
+    "range": "",
+    "index": "FCU_9"
+  },
+  {
+    "id": 298,
+    "category": "FCU",
+    "item_name": "수소 공급 밸브 PWM 듀티",
+    "unit": "",
+    "range": "",
+    "index": "FCU_10"
+  },
+  {
+    "id": 299,
+    "category": "FCU",
+    "item_name": "수소 차단 밸브 PWM 듀티",
+    "unit": "",
+    "range": "",
+    "index": "FCU_11"
+  },
+  {
+    "id": 300,
+    "category": "FCU",
+    "item_name": "수소 공급 밸브 피드백 듀티",
+    "unit": "",
+    "range": "",
+    "index": "FCU_12"
+  },
+  {
+    "id": 301,
+    "category": "FCU",
+    "item_name": "수소 차단 밸브 피드백 듀티",
+    "unit": "",
+    "range": "",
+    "index": "FCU_13"
+  },
+  {
+    "id": 302,
+    "category": "FCU",
+    "item_name": "수소 압력(보정 후 평균값)",
+    "unit": "",
+    "range": "",
+    "index": "FCU_14"
+  },
+  {
+    "id": 303,
+    "category": "FCU",
+    "item_name": "수소 목표 압력",
+    "unit": "",
+    "range": "",
+    "index": "FCU_15"
+  },
+  {
+    "id": 304,
+    "category": "FCU",
+    "item_name": "수소 최고 압력",
+    "unit": "",
+    "range": "",
+    "index": "FCU_16"
+  },
+  {
+    "id": 305,
+    "category": "FCU",
+    "item_name": "수소 압력 센서1 값",
+    "unit": "",
+    "range": "",
+    "index": "FCU_17"
+  },
+  {
+    "id": 306,
+    "category": "FCU",
+    "item_name": "수소 압력 센서2 값",
+    "unit": "",
+    "range": "",
+    "index": "FCU_18"
+  },
+  {
+    "id": 307,
+    "category": "FCU",
+    "item_name": "스택 냉각수 온도(입구)",
+    "unit": "",
+    "range": "",
+    "index": "FCU_19"
+  },
+  {
+    "id": 308,
+    "category": "FCU",
+    "item_name": "스택 냉각수 온도(출구)",
+    "unit": "",
+    "range": "",
+    "index": "FCU_20"
+  },
+  {
+    "id": 309,
+    "category": "FCU",
+    "item_name": "외기 온도 센서값",
+    "unit": "",
+    "range": "",
+    "index": "FCU_21"
+  },
+  {
+    "id": 310,
+    "category": "FCU",
+    "item_name": "BHDC 출력 전압",
+    "unit": "",
+    "range": "",
+    "index": "FCU_22"
+  },
+  {
+    "id": 311,
+    "category": "FCU",
+    "item_name": "BHDC 입력 전압",
+    "unit": "",
+    "range": "",
+    "index": "FCU_23"
+  },
+  {
+    "id": 312,
+    "category": "FCU",
+    "item_name": "고전압 배터리 SOC 값",
+    "unit": "",
+    "range": "",
+    "index": "FCU_24"
+  },
+  {
+    "id": 313,
+    "category": "FCU",
+    "item_name": "모터 RPM",
+    "unit": "",
+    "range": "",
+    "index": "FCU_25"
+  },
+  {
+    "id": 314,
+    "category": "FCU",
+    "item_name": "수소 라인 압력",
+    "unit": "",
+    "range": "",
+    "index": "FCU_26"
+  },
+  {
+    "id": 315,
+    "category": "FCU",
+    "item_name": "수소 탱크 압력",
+    "unit": "",
+    "range": "",
+    "index": "FCU_27"
+  },
+  {
+    "id": 316,
+    "category": "FCU",
+    "item_name": "수소 충전 잔량 (SOF)",
+    "unit": "",
+    "range": "",
+    "index": "FCU_28"
+  },
+  {
+    "id": 317,
+    "category": "FCU",
+    "item_name": "전방 수소 탱크 온도",
+    "unit": "",
+    "range": "",
+    "index": "FCU_29"
+  },
+  {
+    "id": 318,
+    "category": "FCU",
+    "item_name": "중앙 수소 탱크 온도",
+    "unit": "",
+    "range": "",
+    "index": "FCU_30"
+  },
+  {
+    "id": 319,
+    "category": "FCU",
+    "item_name": "후방 수소 탱크 온도",
+    "unit": "",
+    "range": "",
+    "index": "FCU_31"
+  },
+  {
+    "id": 320,
+    "category": "FCU",
+    "item_name": "수소 공급시스템 주변 수소 누출 센서값",
+    "unit": "",
+    "range": "",
+    "index": "FCU_32"
+  },
+  {
+    "id": 321,
+    "category": "FCU",
+    "item_name": "스택 주변 수소 누출 센서값",
+    "unit": "",
+    "range": "",
+    "index": "FCU_33"
+  },
+  {
+    "id": 322,
+    "category": "HMU",
+    "item_name": "전방탱크 온도",
+    "unit": "",
+    "range": "",
+    "index": "HMU_1"
+  },
+  {
+    "id": 323,
+    "category": "HMU",
+    "item_name": "중앙탱크 온도",
+    "unit": "",
+    "range": "",
+    "index": "HMU_2"
+  },
+  {
+    "id": 324,
+    "category": "HMU",
+    "item_name": "후방탱크 온도",
+    "unit": "",
+    "range": "",
+    "index": "HMU_3"
+  },
+  {
+    "id": 325,
+    "category": "VDCAHB",
+    "item_name": "페달 압력 센서",
+    "unit": "",
+    "range": "",
+    "index": "AHB_1"
+  },
+  {
+    "id": 326,
+    "category": "VDCAHB",
+    "item_name": "뒤측 압력 센서",
+    "unit": "",
+    "range": "",
+    "index": "AHB_2"
+  },
+  {
+    "id": 327,
+    "category": "VDCAHB",
+    "item_name": "압측 압력 센서",
+    "unit": "",
+    "range": "",
+    "index": "AHB_3"
+  }
+]
