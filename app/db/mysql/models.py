@@ -25,7 +25,7 @@ class VehicleInfo(Base):
     vehicle_type_id = Column(Integer, ForeignKey('vehicle_metadata.id'), nullable=False)
     year = Column(Integer, nullable=False)
     fuel_type = Column(String(50), nullable=False)
-    terminal_info = Column(String(50))
+    terminal_info = Column(String(50), unique=True)
 
     def to_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
