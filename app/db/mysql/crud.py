@@ -80,3 +80,11 @@ def get_vehicle_info_with_metadata_by_number(db: Session, vehicle_number: str):
         .filter(models.VehicleInfo.vehicle_number == vehicle_number)
         .first()
     )
+
+def get_device_ids_by_vehicle_type_id(db: Session, vehicle_type_id: int):
+    return db.query(models.VehicleInfo.terminal_info)\
+        .filter(models.VehicleInfo.vehicle_type_id == vehicle_type_id)\
+        .all()
+
+def get_vehicle_info_by_terminal_info(db: Session, terminal_info: str):
+    return db.query(models.VehicleInfo).filter(models.VehicleInfo.terminal_info == terminal_info).first()
