@@ -1,15 +1,33 @@
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, NoResultFound
 from app.db.mysql.schemas import VehicleInfoCreate, VehicleMetadataCreate
 from app.db.mysql import crud
+import re
 
 async def create_vehicle_data(request: dict, db: Session):
+
+    pattern = r"\d{2,3}[가-힣]\d{4}"
+    if not re.fullmatch(pattern, request["vehicle_number"]):
+        raise HTTPException(status_code=400, detail="Invalid vehicle number format")
+    
+    year_pattern = r"\d{4}"
+    if not re.fullmatch(year_pattern, str(request["year"])):
+        raise HTTPException(status_code=400, detail="Invalid year format")
+    
     vehicle_metadata = crud.get_vehicle_metadata_by_type(db, request["vehicle_type_name"])
     
     if not vehicle_metadata:
         raise HTTPException(status_code=404, detail="Vehicle type not found")
     
+    # terminal_info 중복 검사
+    try:
+        existing_terminal = crud.get_vehicle_info_by_terminal_info(db, request["terminal_info"])
+        if existing_terminal:
+            raise HTTPException(status_code=400, detail=f"There is duplicated terminal_info {request['terminal_info']}")
+    except NoResultFound:
+        pass  # terminal_info가 없으면, 생성 진행
+
     vehicle_info = VehicleInfoCreate(
         vehicle_number=request["vehicle_number"],
         vehicle_type_id=vehicle_metadata.id,
@@ -25,6 +43,7 @@ async def create_vehicle_data(request: dict, db: Session):
     return result.to_dict()
 
 async def create_vehicle_type_data(request: dict, db: Session):
+
     vehicle_metadata = VehicleMetadataCreate(
         vehicle_type=request["vehicle_type_name"],
         manufacturer=request["manufacturer"],
@@ -118,6 +137,11 @@ async def update_vehicle_type_data(vehicle_type_id : int, request : dict , db : 
     return updated_metadata.to_dict()
 
 async def delete_vehicle_data(vehicle_number:str, db:Session):
+    
+    pattern = r"\d{2,3}[가-힣]\d{4}"
+    if not re.fullmatch(pattern, vehicle_number):
+        raise HTTPException(status_code=400, detail="Invalid vehicle number format")
+
     # 데이터 삭제
     existing_vehicle = crud.get_vehicle_info_by_number(vehicle_number=vehicle_number, db=db)
     if not existing_vehicle:

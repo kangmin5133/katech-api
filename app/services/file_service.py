@@ -46,7 +46,7 @@ async def upload_file(device_id:str,file:UploadFile):
     point = create_point(file_path = file_path, 
                         timestamp = timestamp, 
                         device_id = device_id, 
-                        ) # 임의 작성
+                        ) 
     
     db.write_point_obj_data(point)
     # except:

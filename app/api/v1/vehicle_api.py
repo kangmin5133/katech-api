@@ -28,6 +28,19 @@ async def register_vehicle_data(vehicle_number: str,
                                 fuel_type : str,
                                 terminal_info : str,
                                 db: Session = Depends(get_db)):
+    
+    if vehicle_number is None:
+        raise HTTPException(status_code=400, detail="vehicle_number is required in the params")
+    
+    if vehicle_type_name is None:
+        raise HTTPException(status_code=400, detail="vehicle_type_name is required in the params")
+    
+    if year is None:
+        raise HTTPException(status_code=400, detail="year is required in the params")
+    
+    if fuel_type is None:
+        raise HTTPException(status_code=400, detail="fuel_type is required in the params")
+
     request = {
         "vehicle_number":vehicle_number,
         "vehicle_type_name":vehicle_type_name,
@@ -45,6 +58,17 @@ async def register_vehicle_type_data(vehicle_type_name: str,
                                      manufacturer : str,
                                      category : str,
                                      db: Session = Depends(get_db)):
+    
+    
+    if vehicle_type_name is None:
+        raise HTTPException(status_code=400, detail="vehicle_type_name is required in the params")
+    
+    if manufacturer is None:
+        raise HTTPException(status_code=400, detail="manufacturer is required in the params")
+    
+    if category is None:
+        raise HTTPException(status_code=400, detail="category is required in the params")
+
     request = {
         "vehicle_type_name":vehicle_type_name,
         "manufacturer":manufacturer,
@@ -59,6 +83,10 @@ async def register_vehicle_type_data(vehicle_type_name: str,
 @router.get("/get/vehicle")
 async def get_vehicle_data(vehicle_number: str, 
                            db: Session = Depends(get_db)):
+    
+    if vehicle_number is None:
+        raise HTTPException(status_code=400, detail="vehicle_number is required in the params")
+    
     response = await vehicle_service.get_vehicle_data(vehicle_number = vehicle_number, db = db)
     return JSONResponse(content=response)
 
@@ -85,6 +113,13 @@ async def get_vehicle_type_data(offset: int = Query(0),
 async def update_vehicle_data(vehicle_number: str, 
                               request: UpdatevehicleData, 
                               db: Session = Depends(get_db)):
+    
+    if vehicle_number is None:
+        raise HTTPException(status_code=400, detail="vehicle_number is required in the params")
+    
+    if request is None:
+        raise HTTPException(status_code=400, detail="No Body data received")
+
     response = await vehicle_service.update_vehicle_data(vehicle_number = vehicle_number, request = request.model_dump(), db = db)
     return JSONResponse(content=response)
 
@@ -93,6 +128,11 @@ async def update_vehicle_type_data(vehicle_type_id: int,
                                    request: UpdatevehicleTypeData, 
                                    db: Session = Depends(get_db)):
     
+    if vehicle_type_id is None:
+        raise HTTPException(status_code=400, detail="vehicle_type_id is required in the params")
+    
+    if request is None:
+        raise HTTPException(status_code=400, detail="No Body data received")
 
     response = await vehicle_service.update_vehicle_type_data(vehicle_type_id = vehicle_type_id, request = request.model_dump(), db = db)
     return JSONResponse(content=response)
@@ -101,6 +141,7 @@ async def update_vehicle_type_data(vehicle_type_id: int,
 @router.delete("/delete/vehicle")
 async def delete_vehicle_data(vehicle_number: str, 
                               db: Session = Depends(get_db)):
+    
     if vehicle_number is None or vehicle_number == "" :
         raise HTTPException(status_code=400, detail="vehicle_number is missing in the param")
     
