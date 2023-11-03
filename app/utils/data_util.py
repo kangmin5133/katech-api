@@ -22,10 +22,10 @@ def create_point(file_path, timestamp,device_id,vehicle_id= None ):
                 if i == 0: 
                     if len(row[i]) == 14: point.field("timestamp", row[i])
                 elif i == 1: 
-                    if row[i] != "NA":
+                    if row[i] not in ["NA","NA.1"]:
                         point.field("latitude", float(row[i]))
                 elif i == 2: 
-                    if row[i] != "NA":
+                    if row[i] not in ["NA","NA.1"]:
                         point.field("logitude", float(row[i]))
                 elif "=" in item:
                     field, value = item.split("=")
