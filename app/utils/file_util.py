@@ -20,9 +20,9 @@ def merge_files(device_id_dir_path: str):
     folder_path = f"{Config.DATA_STORAGE}/{device_id}"
     all_files = glob.glob(os.path.join(folder_path, f"{device_id}_*.csv"))
 
-    date_pattern = re.compile(r"_(\d{8})\d*\.csv$")
+    datetime_pattern = re.compile(r"_(\d{8})(\d{6})\.csv$")
     for file_path in all_files:
-        match = date_pattern.search(file_path)
+        match = datetime_pattern.search(file_path)
         if match:
             date = match.group(1)
             if date not in date_to_files:
