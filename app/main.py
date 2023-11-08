@@ -5,7 +5,7 @@ from apscheduler.events import EVENT_JOB_EXECUTED, EVENT_JOB_ERROR
 from app.db.mysql import crud, models, database, schemas, metadatas
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker,Session
-from app.api.v1 import file_api, data_api, vehicle_api
+from app.api.v1 import file_api, data_api, vehicle_api, static_api
 from app.utils.file_util import merge_files, get_device_ids, delete_old_files
 import logging
 
@@ -72,3 +72,4 @@ async def log_requests(request: Request, call_next):
 app.include_router(file_api.router, prefix="/api/v1/file", tags=["file_upload_api"])
 app.include_router(data_api.router, prefix="/api/v1/data", tags=["censor_data_api"])
 app.include_router(vehicle_api.router, prefix="/api/v1/vehicle", tags=["vehicle_data_api"])
+app.include_router(static_api.router, prefix="/api/v1/static", tags=["static_data_api"])
