@@ -17,7 +17,8 @@ class Config(object):
     JSON_AS_ASCII=False
 
     # default image directory in container
-    DATA_STORAGE = "/workspace/data"
+    DATA_STORAGE = "/workspace/data/devices"
+    DOWNLOAD_STORAGE = "/workspace/data/downloads"
 
     #influxDB token
     INFLUX_TOKEN = ""
