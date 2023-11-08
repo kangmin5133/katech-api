@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError, NoResultFound
 from app.db.mysql.schemas import VehicleInfoCreate, VehicleMetadataCreate
 from app.db.mysql import crud
+from typing import List, Optional, Dict
 import re
 
 async def create_vehicle_data(request: dict, db: Session):
@@ -74,9 +75,26 @@ async def get_vehicle_data(vehicle_number: str, db: Session):
 
     return combined_data
 
-async def get_all_vehicle_data(offset: int, limit: int, db: Session):
-    total = crud.get_total_vehicle_count(db)
-    results = crud.get_all_vehicle_info_with_metadata(db=db, offset=offset, limit=limit)
+async def get_all_vehicle_data(
+    offset: int, 
+    limit: int, 
+    db: Session, 
+    vehicle_types: Optional[str] = None
+):
+    # 전체 차량 수 계산
+    if vehicle_types is None:
+        total = crud.get_total_vehicle_count(db)
+    else:
+        vehicle_types = vehicle_types.split(",")
+        total = sum(crud.get_vehicle_count_by_type(db, vehicle_type) for vehicle_type in vehicle_types)  # 리스트에 있는 모든 차량 타입의 수를 합산
+
+    # 차량 정보와 메타데이터를 가져옴
+    results = crud.get_all_vehicle_info_with_metadata(
+        db=db, 
+        offset=offset, 
+        limit=limit, 
+        vehicle_types=vehicle_types  # 리스트를 CRUD 함수에 전달
+    )
     
     all_data = []
     for vehicle_info, vehicle_metadata in results:

@@ -56,6 +56,7 @@ async def register_vehicle_data(vehicle_number: str,
 @router.post("/register/vehicleType")
 async def register_vehicle_type_data(vehicle_type_name: str,
                                      manufacturer : str,
+                                     size : str,
                                      category : str,
                                      db: Session = Depends(get_db)):
     
@@ -66,13 +67,16 @@ async def register_vehicle_type_data(vehicle_type_name: str,
     if manufacturer is None:
         raise HTTPException(status_code=400, detail="manufacturer is required in the params")
     
+    if size is None:
+        raise HTTPException(status_code=400, detail="size is required in the params")
+
     if category is None:
         raise HTTPException(status_code=400, detail="category is required in the params")
 
     request = {
         "vehicle_type_name":vehicle_type_name,
         "manufacturer":manufacturer,
-        "category":category
+        "category": size+" "+category
     }
 
     logging.info(f"requested register vehicle type data : {request}")
@@ -93,9 +97,10 @@ async def get_vehicle_data(vehicle_number: str,
 @router.get("/get/all/vehicles")
 async def read_all_vehicles(offset: int = Query(0), 
                             limit: int = Query(10),
+                            vehicle_types: Optional[str] = None,
                             db: Session = Depends(get_db)):
     
-    response, total = await vehicle_service.get_all_vehicle_data(offset=offset, limit=limit, db=db)
+    response, total = await vehicle_service.get_all_vehicle_data(offset=offset, limit=limit, vehicle_types=vehicle_types, db=db)
     final_response  = {"total": total, "count": len(response), "data": response}
     return JSONResponse(content=final_response) 
 
