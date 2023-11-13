@@ -8,7 +8,7 @@ from config.config import Config
 import zipfile
 import os 
 import subprocess
-
+import logging
 from app.db.influxdb.database import InfluxDatabase
 from influxdb_client import Point
 
@@ -47,7 +47,7 @@ async def upload_file(device_id:str,file:UploadFile):
                         timestamp = timestamp, 
                         device_id = device_id, 
                         ) 
-    
+    logging.info(f"created point for file {file_path}\n Point Object : {point}")
     db.write_point_obj_data(point)
     # except:
     #     raise HTTPException(status_code=401, detail="errors while insert data to DB")
