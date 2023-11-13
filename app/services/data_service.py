@@ -59,8 +59,10 @@ async def get_datas(
         from(bucket: "{db.bucket}")
         |> range(start: {start_time if start_time else Config.DEFAULT_TIME_RANGE}, stop: {stop_time if stop_time else (datetime.datetime.now().isoformat()).split(".")[0]+"Z"})
         |> filter(fn: (r) => {filter_query})
+        |> sort(columns: ["_time"], desc: true)
         |> limit(n: {limit}, offset: {offset})
     '''
+    # |> limit(n: {limit}, offset: {offset}) 쿼리 제외, influx_parser에서 처리 
     logging.info(f'Query from get_datas : {query}')
 
     table = db.query_data(query)
@@ -155,7 +157,8 @@ async def data_download(vehicle_type: str, db: Session, start_time: Optional[dat
         all_data = []
         for file_path in files_to_merge:
             with open(file_path, 'r') as file:
-                all_data.extend(file.readlines())
+                # all_data.extend(file.readlines())
+                all_data.append(file.readlines())
         
         folder_path = Path(f"{Config.DOWNLOAD_STORAGE}")
         folder_path.mkdir(parents=True, exist_ok=True)
@@ -169,7 +172,10 @@ async def data_download(vehicle_type: str, db: Session, start_time: Optional[dat
             
             merged_file_path = os.path.join(Config.DOWNLOAD_STORAGE, merged_file_name)
             with open(merged_file_path, 'w') as file:
-                file.writelines(all_data)
+                # file.writelines(all_data)
+                for data in all_data:
+                    file.write(' '.join(str(item) for item in data) + '\n')
+
             created_files.append(merged_file_path)
 
     # 생성된 파일들을 ZIP 파일로 압축
