@@ -69,8 +69,8 @@ async def get_metadatas():
 
 @router.get("/download")
 async def download_datas(
-    vehicle_type: str,  # alias를 제거했습니다.
-    start_time: Optional[datetime] = None,  # Optional을 사용하여 None이 기본값임을 명시합니다.
+    vehicle_type: str,  
+    start_time: Optional[datetime] = None,
     stop_time: Optional[datetime] = None,
     db : Session = Depends(get_db)
 ):
