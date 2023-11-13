@@ -38,3 +38,16 @@ class InfluxDatabase:
                         entry[key] = value
                 results.append(entry)
         return results
+    
+    def get_earliest_time(self):
+        earliest_time_query = '''
+            from(bucket: "{bucket}")
+            |> range(start: 0)
+            |> filter(fn: (r) => r._measurement == "{measurement}")
+            |> first()
+        '''.format(bucket=self.bucket, measurement=self.measurement)
+
+        result = self.query_data(earliest_time_query)
+        for table in result:
+            for record in table.records:
+                return record.get_time()  # 가장 초기의 타임스탬프 반환
