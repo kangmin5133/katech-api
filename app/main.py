@@ -38,6 +38,10 @@ def file_merge():
     device_ids_dir_path = get_device_ids()
     for device_id_dir_path in device_ids_dir_path: merge_files(device_id_dir_path)
 
+def file_delete():
+    device_id_dir_path = get_device_ids()
+    for device_id_dir_path in device_id_dir_path: delete_old_files(device_id_dir_path)
+    
 def start_scheduler():
     scheduler = BackgroundScheduler()
     # scheduler.add_job(file_merge, 'interval',minutes=1) # for test
@@ -58,6 +62,8 @@ def create_predefined_data():
 
 @app.on_event("startup")
 async def on_startup():
+    file_merge()
+    file_delete()
     start_scheduler()
     create_predefined_data()
 
