@@ -3,8 +3,13 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError, NoResultFound
 from app.db.mysql.schemas import VehicleInfoCreate, VehicleMetadataCreate
 from app.db.mysql import crud
+from app.db.influxdb.database import InfluxDatabase
 from typing import List, Optional, Dict
 import re
+from config.config import Config
+import datetime
+import logging
+import json
 
 async def create_vehicle_data(request: dict, db: Session):
 
@@ -113,6 +118,54 @@ async def get_vehicle_type(offset: int, limit: int, db: Session):
     total = crud.get_total_vehicle_type_count(db)
     result = crud.get_vehicle_metadatas(db=db, offset=offset, limit=limit)
     return [metadata.to_dict() for metadata in result], total
+
+async def get_terminal_gps(device_id : str, start_time : str = None, stop_time : str = None):
+    db = InfluxDatabase()
+    filters = []
+    if device_id:
+        device_id_filters = [f'r["device_id"] == "{device_id}"']
+        filters.append(f"({' or '.join(device_id_filters)})")
+
+    filter_query = " and ".join(filters) if filters else "true"
+
+    # 위도 데이터 조회
+    latitude_query = f'''
+        from(bucket: "{db.bucket}")
+        |> range(start: {start_time if start_time else Config.DEFAULT_TIME_RANGE}, stop: {stop_time if stop_time else (datetime.datetime.now().isoformat()).split(".")[0]+"Z"})
+        |> filter(fn: (r) => {filter_query})
+        |> filter(fn: (r) => r["_field"] == "latitude")
+    '''
+
+    # 경도 데이터 조회
+    longitude_query = f'''
+        from(bucket: "{db.bucket}")
+        |> range(start: {start_time if start_time else Config.DEFAULT_TIME_RANGE}, stop: {stop_time if stop_time else (datetime.datetime.now().isoformat()).split(".")[0]+"Z"})
+        |> filter(fn: (r) => {filter_query})
+        |> filter(fn: (r) => r["_field"] == "logitude")
+    '''
+
+    # 조인하여 위도와 경도 데이터를 한 쌍으로 만듦
+    combined_query = f'''
+        latitude = ({latitude_query})
+        logitude = ({longitude_query})
+        join(tables: {{latitude: latitude, logitude: logitude}}, on: ["_time", "device_id"])
+    '''
+    logging.info(f'Query for getting terminal GPS data: {combined_query}')
+
+    table = db.query_data(combined_query)
+    result = db.flux_to_json(table)
+
+    parsed_data = []
+    for item in result:
+        # 위도와 경도 추출
+        latitude = item["_value_latitude"]
+        longitude = item["_value_logitude"]
+
+        # 결과 리스트에 추가
+        parsed_data.append({"lat": latitude, "lng": longitude})
+
+    return parsed_data
+
 
 async def update_vehicle_data(vehicle_number : str, request : dict , db : Session):
     # 기존 차량 데이터 가져오기

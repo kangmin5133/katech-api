@@ -113,6 +113,18 @@ async def get_vehicle_type_data(offset: int = Query(0),
     final_response  = {"total": total, "count": len(response), "data": response}
     return JSONResponse(content=final_response)
 
+@router.get("/get/vehicle/location")
+async def get_vehicle_terminal_location_data(device_id: str,
+                                            start_time: str = Query(None, alias="start_time"),
+                                            stop_time: str = Query(None, alias="stop_time"),
+                                            ):
+    
+    if device_id is None:
+        raise HTTPException(status_code=400, detail="device_id is required in the params")
+    
+    response = await vehicle_service.get_terminal_gps(device_id = device_id,start_time=start_time,stop_time=stop_time)
+    return JSONResponse(content=response)
+
 # Update
 @router.put("/update/vehicle")
 async def update_vehicle_data(vehicle_number: str, 
