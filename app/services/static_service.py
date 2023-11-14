@@ -39,7 +39,7 @@ async def get_vehicle_count_by_type(db: Session):
 async def get_sensor_data_count_by_window(window: str):
     db = InfluxDatabase()
     
-    start_time_str = (datetime.datetime.now() - timedelta(days=30)).isoformat().split(".")[0]+"Z"
+    start_time_str = (datetime.datetime.now() - timedelta(days=120)).isoformat().split(".")[0]+"Z"
     start_time = datetime.datetime.fromisoformat(start_time_str)
 
     stop_time_str = datetime.datetime.now().isoformat().split(".")[0]+"Z"
@@ -51,7 +51,7 @@ async def get_sensor_data_count_by_window(window: str):
 
     count_by_window_query = f'''
             from(bucket: "{db.bucket}")
-            |> range(start: {Config.DEFAULT_TIME_RANGE}, stop: {stop_time_str})
+            |> range(start: {Config.MAX_TIME_RANGE}, stop: {stop_time_str})
             |> filter(fn: (r) => r._measurement == "{db.measurement}")
             |> filter(fn: (r) => r._field == "timestamp")
             |> window(every: {window})
@@ -60,7 +60,6 @@ async def get_sensor_data_count_by_window(window: str):
         '''
     logging.info(f'Query for getting sensor data count by window: {count_by_window_query}')
     result = db.query_data(count_by_window_query)
-
     data_for_chart = [{"index": i, "id": "timestamp", "count": 0} for i in range(total_index)]
 
     for table in result:
@@ -68,8 +67,7 @@ async def get_sensor_data_count_by_window(window: str):
             start_of_window = record.get_start()
             index = int((start_of_window - start_time).total_seconds() / window_duration_seconds)
             if 0 <= index < total_index:
-                data_for_chart[index]["count"] = record.get_value()
-
+                data_for_chart[index]["count"] += record.get_value()
     return data_for_chart
 
 def parse_window_to_seconds(window: str):
