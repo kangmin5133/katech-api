@@ -1,9 +1,7 @@
-from fastapi import  UploadFile, HTTPException
+from fastapi import  HTTPException
 from pathlib import Path
 from sqlalchemy.orm import Session
 from app.db.mysql import crud, metadatas
-import shutil
-from tempfile import NamedTemporaryFile
 import datetime
 from datetime import timezone
 import json
@@ -13,12 +11,8 @@ import os
 from typing import Optional, List
 import logging
 from app.db.influxdb.database import InfluxDatabase
-from influxdb_client import Point
 from app.utils.data_util import influx_parser, get_count
-
-import pandas as pd
 from app.db.mysql import crud
-import glob
 import re
 
 async def get_datas(
@@ -27,10 +21,17 @@ async def get_datas(
     stop_time: str = None, 
     limit: int = 10,
     offset: int = 0,
+    order : str = "ASC",
     extra_fields: List[str] = None
 ):
     db = InfluxDatabase()
     filters = []
+    desc = ""
+
+    if order == "ASC":
+        desc = "false"
+    elif order == "DESC":
+        desc = "true"
     
     if device_id:
         device_ids = device_id.split(',')
@@ -59,10 +60,9 @@ async def get_datas(
         from(bucket: "{db.bucket}")
         |> range(start: {start_time if start_time else Config.DEFAULT_TIME_RANGE}, stop: {stop_time if stop_time else (datetime.datetime.now().isoformat()).split(".")[0]+"Z"})
         |> filter(fn: (r) => {filter_query})
-        |> sort(columns: ["_time"], desc: true)
+        |> sort(columns: ["_time"], desc: {desc})
         |> limit(n: {limit}, offset: {offset})
     '''
-    # |> limit(n: {limit}, offset: {offset}) 쿼리 제외, influx_parser에서 처리 
     logging.info(f'Query from get_datas : {query}')
 
     table = db.query_data(query)
@@ -124,27 +124,33 @@ async def get_meta_and_predefined():
     }
     return response
 
-async def data_download(vehicle_type: str, db: Session, start_time: Optional[datetime.datetime] = None, stop_time: Optional[datetime.datetime] = None):
+async def data_download(vehicle_type: str, db: Session, device_ids : List[str]= None, start_time: Optional[datetime.datetime] = None, stop_time: Optional[datetime.datetime] = None):
     vehicle_metadata = crud.get_vehicle_metadata_by_type(db, vehicle_type)
     if not vehicle_metadata:
         raise HTTPException(status_code=404, detail="Vehicle type not found")
 
     vehicle_type_id = vehicle_metadata.id
     terminal_infos = crud.get_device_ids_by_vehicle_type_id(db, vehicle_type_id)
+    terminal_list = [info[0] for info in terminal_infos]
+
+    if device_ids is not None:
+        for device_id in device_ids:
+            if device_id not in terminal_list:
+                raise HTTPException(status_code=404, detail=f"device_id not found: {device_id}")
     
     created_files = []  # 생성된 파일들의 경로를 저장할 리스트
     current_timestamp = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
 
-    for terminal_info_tuple in terminal_infos:
-        terminal_info = terminal_info_tuple[0]
+    if device_ids is None:
+        terminal_infos_to_process = [terminal_info[0] for terminal_info in terminal_infos]
+    else:
+        terminal_infos_to_process = device_ids
+
+    for terminal_info in terminal_infos_to_process:
         directory_path = os.path.join(Config.DATA_STORAGE, terminal_info)
         if not os.path.exists(directory_path):
             logging.warning(f"Directory does not exist: {directory_path}")
             continue
-
-        # 파일 목록을 검색하고 정렬
-        # files_to_merge = [os.path.join(directory_path, f) for f in os.listdir(directory_path) if is_file_in_date_range(f, start_time, stop_time)]
-        # sort_files_by_timestamp(files_to_merge)
 
         files_to_merge = []
         for file_name in os.listdir(directory_path):
@@ -157,13 +163,12 @@ async def data_download(vehicle_type: str, db: Session, start_time: Optional[dat
         all_data = []
         for file_path in files_to_merge:
             with open(file_path, 'r') as file:
-                # all_data.extend(file.readlines())
-                all_data.append(file.readlines())
-        
+                cleaned_data = [remove_unnamed_columns(line) for line in file.readlines()]
+                all_data.append(cleaned_data)
+
         folder_path = Path(f"{Config.DOWNLOAD_STORAGE}")
         folder_path.mkdir(parents=True, exist_ok=True)
 
-        # 병합된 데이터를 DataFrame으로 변환하고 CSV 파일로 저장
         if all_data:
             if (start_time is None and stop_time is None):
                 merged_file_name = f"{current_timestamp}_{vehicle_type}_{terminal_info}.csv"
@@ -172,7 +177,6 @@ async def data_download(vehicle_type: str, db: Session, start_time: Optional[dat
             
             merged_file_path = os.path.join(Config.DOWNLOAD_STORAGE, merged_file_name)
             with open(merged_file_path, 'w') as file:
-                # file.writelines(all_data)
                 for data in all_data:
                     file.write(' '.join(str(item) for item in data) + '\n')
 
@@ -189,10 +193,12 @@ async def data_download(vehicle_type: str, db: Session, start_time: Optional[dat
         with zipfile.ZipFile(zip_filepath, 'w') as zipf:
             for file in created_files:
                 zipf.write(file, os.path.basename(file))
-        
-        return zip_filepath  # 생성된 ZIP 파일의 경로를 반환
+        return zip_filepath 
+    return None 
 
-    return None  # 파일이 없을 경우 None 반환
+def remove_unnamed_columns(line):
+    # "Unnamed:"이 포함된 부분을 찾아서 제거
+    return ','.join([item for item in line.split(',') if "Unnamed:" not in item])
 
 def sort_files_by_timestamp(files_list):
     def extract_timestamp(file_path):
@@ -200,18 +206,12 @@ def sort_files_by_timestamp(files_list):
         return match.group(0) if match else "000000000000"
     files_list.sort(key=extract_timestamp, reverse=True)
 
-
 def is_file_in_date_range(file_name, start_datetime, stop_datetime):
     match = re.search(r'_(\d{8})(\d{6})?\.csv$', file_name)
     if match:
         file_date_str = match.group(1)
-        file_time_str = match.group(2) or "000000"  # HHMMSS 부분이 없으면 자정으로 가정
+        file_time_str = match.group(2) or "000000"
         file_datetime_str = f"{file_date_str}{file_time_str}"
         file_datetime = datetime.datetime.strptime(file_datetime_str, '%Y%m%d%H%M%S').replace(tzinfo=timezone.utc)
-        # 파일 타임스탬프가 시작 및 종료 시간 범위 내인지 확인
         return start_datetime <= file_datetime <= stop_datetime
     return False
-
-
-
-    

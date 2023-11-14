@@ -22,13 +22,16 @@ async def get_data(
     stop_time: str = Query(None, alias="stop_time"),
     limit: int = Query(10, alias="limit"),
     offset: int = Query(0, alias="offset"),
+    order : str = Query("ASC", alias="order"),
     extra_fields: ExtraFields = None
 ):
     
     if device_id is None:
         raise HTTPException(status_code=400, detail="device_id is required in the params")
+    if order not in ["ASC","DESC"]:
+        raise HTTPException(status_code=400, detail="order param supports ASC or DESC")
     
-    logging.info(f"Get data requested with device_id: {device_id}, start_time: {start_time}, stop_time: {stop_time}, limit: {limit}, offset: {offset}, extra_fields: {extra_fields}")
+    logging.info(f"Get data requested with device_id: {device_id}, start_time: {start_time}, stop_time: {stop_time}, limit: {limit}, offset: {offset}, order:{order}, extra_fields: {extra_fields}")
 
     if extra_fields:
         extra_fields = extra_fields.extra_fields
@@ -39,6 +42,7 @@ async def get_data(
         stop_time=stop_time, 
         limit=limit,
         offset=offset,
+        order=order,
         extra_fields=extra_fields
     )
     return JSONResponse(content=response)
@@ -66,18 +70,25 @@ async def get_metadatas():
     response = await data_service.get_meta_and_predefined()
     return JSONResponse(content=response)
 
-
 @router.get("/download")
 async def download_datas(
     vehicle_type: str,  
+    device_id : str = None,
     start_time: Optional[datetime] = None,
     stop_time: Optional[datetime] = None,
     db : Session = Depends(get_db)
 ):
+    device_ids = []
+    if device_id is not None:
+        if "," in device_id: 
+            device_ids = device_id.split(",")
+        else:
+            device_ids.append(device_id)
+
     if vehicle_type is None:
         raise HTTPException(status_code=400, detail="vehicle_type is missing in the param")
 
-    response = await data_service.data_download(vehicle_type = vehicle_type, start_time = start_time, stop_time = stop_time, db = db)
+    response = await data_service.data_download(vehicle_type = vehicle_type, device_ids = device_ids, start_time = start_time, stop_time = stop_time, db = db)
 
     if response:
         return FileResponse(response, filename=os.path.basename(response), media_type='application/zip')
