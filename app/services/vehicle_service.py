@@ -122,6 +122,10 @@ async def get_vehicle_type(offset: int, limit: int, db: Session):
 async def get_terminal_gps(device_id : str, start_time : str = None, stop_time : str = None):
     db = InfluxDatabase()
     filters = []
+
+    current_time_str = datetime.datetime.now().isoformat().split(".")[0]+"Z"
+    current_time = datetime.datetime.fromisoformat(current_time_str)
+
     if device_id:
         device_id_filters = [f'r["device_id"] == "{device_id}"']
         filters.append(f"({' or '.join(device_id_filters)})")
@@ -160,9 +164,10 @@ async def get_terminal_gps(device_id : str, start_time : str = None, stop_time :
         # 위도와 경도 추출
         latitude = item["_value_latitude"]
         longitude = item["_value_logitude"]
+        time = item["_time"]
 
         # 결과 리스트에 추가
-        parsed_data.append({"lat": latitude, "lng": longitude})
+        parsed_data.append({"time":str(time).split(".")[0]+"Z","lat": latitude, "lng": longitude})
 
     return parsed_data
 
