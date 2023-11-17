@@ -12,10 +12,10 @@ import os
 
 router = APIRouter()
 
-class ExtraFields(BaseModel):
-    extra_fields: List[str]
+# class ExtraFields(BaseModel):
+#     extra_fields: List[str]
 
-@router.post("/search")
+@router.get("/search")
 async def get_data(
     device_id: str = Query(None, alias="device_id"),
     start_time: str = Query(None, alias="start_time"),
@@ -23,7 +23,7 @@ async def get_data(
     limit: int = Query(10, alias="limit"),
     offset: int = Query(0, alias="offset"),
     order : str = Query("ASC", alias="order"),
-    extra_fields: ExtraFields = None
+    # extra_fields: ExtraFields = None
 ):
     
     if device_id is None:
@@ -31,10 +31,10 @@ async def get_data(
     if order not in ["ASC","DESC"]:
         raise HTTPException(status_code=400, detail="order param supports ASC or DESC")
     
-    logging.info(f"Get data requested with device_id: {device_id}, start_time: {start_time}, stop_time: {stop_time}, limit: {limit}, offset: {offset}, order:{order}, extra_fields: {extra_fields}")
+    logging.info(f"Get data requested with device_id: {device_id}, start_time: {start_time}, stop_time: {stop_time}, limit: {limit}, offset: {offset}, order:{order}")
 
-    if extra_fields:
-        extra_fields = extra_fields.extra_fields
+    # if extra_fields:
+    #     extra_fields = extra_fields.extra_fields
     
     response = await data_service.get_datas(
         device_id=device_id, 
@@ -43,7 +43,7 @@ async def get_data(
         limit=limit,
         offset=offset,
         order=order,
-        extra_fields=extra_fields
+        # extra_fields=extra_fields
     )
     return JSONResponse(content=response)
 
@@ -66,7 +66,7 @@ async def get_device_ids_by_vehicle_type(vehicle_type: str, db : Session = Depen
 @router.get("/get/metadata")
 async def get_metadatas():
     logging.info(f"requested metadata")
-
+    
     response = await data_service.get_meta_and_predefined()
     return JSONResponse(content=response)
 
