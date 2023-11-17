@@ -15,6 +15,8 @@ from app.utils.data_util import get_count
 from app.db.mysql import crud
 import re
 
+logger = logging.getLogger()
+
 async def get_datas(
     device_id: str = None, 
     start_time: str = None, 
@@ -53,7 +55,7 @@ async def get_datas(
         |> count()
         |> yield(name: "count")
     '''
-    logging.info(f'Query from get_datas count total : {count_query}')
+    logger.info(f'Query from get_datas count total : {count_query}')
     table_count = db.query_data(count_query)
     result_count_json = table_count.to_json()
     total_count = get_count(result_count_json)
@@ -67,7 +69,7 @@ async def get_datas(
         |> limit(n: {limit}, offset: {offset})
     '''
 
-    logging.info(f'Query from get_datas query : {query}')
+    logger.info(f'Query from get_datas query : {query}')
 
     table = db.query_data(query)
     result = db.flux_to_json(table)
@@ -84,14 +86,14 @@ async def get_all_device_ids():
         |> distinct(column: "device_id")
         |> keep(columns: ["_value"])
     '''
-    logging.info(f'Query to get all device_ids: {query}')
+    logger.info(f'Query to get all device_ids: {query}')
     try:
         table = db.query_data(query)
         result = table.to_json()
         device_ids = [row['_value'] for row in json.loads(result)]
         response = {"device_ids": list(set(device_ids))}
     except Exception as e:
-        logging.error(f"An error occurred: {e}")
+        logger.info(f"An error occurred: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
     return response
@@ -110,7 +112,7 @@ async def get_device_ids_by_vehicle_type(vehicle_type: str, db: Session):
         
         response = {"device_ids": list(set(device_ids))}
     except Exception as e:
-        logging.error(f"An error occurred: {e}")
+        logger.info(f"An error occurred: {e}")
         raise HTTPException(status_code=500, detail=str(e))
     
     return response
@@ -152,7 +154,7 @@ async def data_download(vehicle_type: str, db: Session, device_ids : List[str]= 
     for terminal_info in terminal_infos_to_process:
         directory_path = os.path.join(Config.DATA_STORAGE, terminal_info)
         if not os.path.exists(directory_path):
-            logging.warning(f"Directory does not exist: {directory_path}")
+            logger.warning(f"Directory does not exist: {directory_path}")
             continue
 
         files_to_merge = []

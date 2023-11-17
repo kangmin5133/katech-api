@@ -11,6 +11,8 @@ import datetime
 import logging
 import json
 
+logger = logging.getLogger()
+
 async def create_vehicle_data(request: dict, db: Session):
 
     pattern = r"\d{2,3}[가-힣]\d{4}"
@@ -154,7 +156,7 @@ async def get_terminal_gps(device_id : str, start_time : str = None, stop_time :
         logitude = ({longitude_query})
         join(tables: {{latitude: latitude, logitude: logitude}}, on: ["_time", "device_id"])
     '''
-    logging.info(f'Query for getting terminal GPS data: {combined_query}')
+    logger.info(f'Query for getting terminal GPS data: {combined_query}')
 
     table = db.query_data(combined_query)
     result = db.flux_to_json(table)

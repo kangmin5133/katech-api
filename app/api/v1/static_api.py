@@ -1,14 +1,9 @@
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
-from datetime import datetime
 from sqlalchemy.orm import Session
 from app.db.mysql.database import get_db
 from fastapi import Query, Depends
-from typing import List, Optional
-from fastapi.responses import JSONResponse, FileResponse
+from fastapi.responses import JSONResponse
 from app.services import static_service
-import logging
-import os
 
 router = APIRouter()
 

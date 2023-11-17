@@ -8,6 +8,7 @@ from app.services import vehicle_service
 import logging
 
 router = APIRouter()
+logger = logging.getLogger()
 
 class UpdatevehicleData(BaseModel):
     vehicle_type_name : str
@@ -48,7 +49,7 @@ async def register_vehicle_data(vehicle_number: str,
         "fuel_type":fuel_type,
         "terminal_info":terminal_info
     }
-    logging.info(f"requested register vehicle data : {request}")
+    logger.info(f"requested register vehicle data : {request}")
     
     response = await vehicle_service.create_vehicle_data(request=request, db=db)
     return JSONResponse(content=response)
@@ -79,7 +80,7 @@ async def register_vehicle_type_data(vehicle_type_name: str,
         "category": size+" "+category
     }
 
-    logging.info(f"requested register vehicle type data : {request}")
+    logger.info(f"requested register vehicle type data : {request}")
     
     response = await vehicle_service.create_vehicle_type_data(request=request, db=db)
     return JSONResponse(content=response)

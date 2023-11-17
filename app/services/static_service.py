@@ -7,6 +7,8 @@ import logging
 from app.db.influxdb.database import InfluxDatabase
 from app.db.mysql import crud
 
+logger = logging.getLogger()
+
 async def get_vehicle_count_by_type(db: Session):
     vehicle_counts = crud.count_vehicle_by_type(db)
     
@@ -44,7 +46,7 @@ async def get_sensor_data_count_by_window(window: str):
             |> count()
             |> yield(name: "count")
         '''
-    logging.info(f'Query for getting sensor data count by window: {count_by_window_query}')
+    logger.info(f'Query for getting sensor data count by window: {count_by_window_query}')
     result = db.query_data(count_by_window_query)
     data_for_chart = [{"index": i, "id": "timestamp", "count": 0} for i in range(total_index)]
 

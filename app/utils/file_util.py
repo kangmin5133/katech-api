@@ -7,6 +7,8 @@ from pathlib import Path
 import logging
 import re
 
+logger = logging.getLogger()
+
 def get_device_ids():
     data_storage_path =  Path(Config.DATA_STORAGE)
     # 디렉토리 목록을 리스트로 반환
@@ -39,7 +41,7 @@ def merge_files(device_id_dir_path: str):
                 df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
                 all_columns.append(list(df.columns))
             except pd.errors.EmptyDataError:
-                logging.warning(f"Empty file: {file_path}")
+                logger.warning(f"Empty file: {file_path}")
                 continue
 
         merged_filename = f"{folder_path}/{device_id}_{date}.csv"
@@ -65,4 +67,4 @@ def delete_old_files(device_id_dir_path: str):
             try:
                 os.remove(file_path)
             except Exception as e:
-                logging.error(f"Error occurred while deleting file {file_path}: {e}")
+                logger.error(f"Error occurred while deleting file {file_path}: {e}")

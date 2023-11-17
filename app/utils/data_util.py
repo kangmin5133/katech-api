@@ -1,8 +1,6 @@
 import csv
 from influxdb_client import Point
-from collections import defaultdict
 import json
-from datetime import datetime
 
 def create_point(file_path, timestamp,device_id,vehicle_id= None ):
     if vehicle_id:

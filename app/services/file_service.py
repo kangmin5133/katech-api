@@ -14,6 +14,8 @@ from influxdb_client import Point
 
 from app.utils.data_util import create_point
 
+logger = logging.getLogger()
+
 async def upload_file(device_id:str,file:UploadFile):
     # Check file format
     # if file.content_type != "text/csv":
@@ -47,7 +49,7 @@ async def upload_file(device_id:str,file:UploadFile):
                         timestamp = timestamp, 
                         device_id = device_id, 
                         ) 
-    logging.info(f"created point for file {file_path}\n Point Object : {point}")
+    logger.info(f"created point for file {file_path}\n Point Object : {point}")
     db.write_point_obj_data(point)
     # except:
     #     raise HTTPException(status_code=401, detail="errors while insert data to DB")

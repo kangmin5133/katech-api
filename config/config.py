@@ -11,20 +11,22 @@ class Config(object):
     # jwt  
     
     # cors
-    CORS_RESOURCES={r"*": {"origins": ["*"]}}
+    # CORS_RESOURCES={r"*": {"origins": ["*"]}}
     
     # 
     JSON_AS_ASCII=False
 
-    # default image directory in container
+    # default data directory in container
     DATA_STORAGE = "/workspace/data/devices"
     DOWNLOAD_STORAGE = "/workspace/data/downloads"
 
     #influxDB token
-    INFLUX_TOKEN = ""
+    INFLUX_TOKEN = "ppV2K10Ljpz095xDXQyvblXvrAVLLIE4K37E49fLkr2kvnt10VKenDy_07yTkKeH4zNicNjaeXfnoVjisSnUNA=="
     INFLUX_ORG = "tbell"
     INFLUX_USER = "katech"
     INFLUX_PASSWD = "tbell0518"
-    INFLUX_BUCKET_NAME = "censorData"
+    INFLUX_BUCKET_NAME = "katech-censor"
+    INFLUX_MEASURENENT = "SensorData"
 
     DEFAULT_TIME_RANGE = "-30d"
+    MAX_TIME_RANGE = "-90d"

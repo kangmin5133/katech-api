@@ -8,10 +8,12 @@ from sqlalchemy.orm import sessionmaker,Session
 from app.api.v1 import file_api, data_api, vehicle_api, static_api
 from app.utils.file_util import merge_files, get_device_ids, delete_old_files
 import logging
+from config.logger_config import setup_logger
 
 # Initialize FastAPI application
 app = FastAPI()
-
+setup_logger()
+logger = logging.getLogger()
 
 origins =[
     "http://127.0.0.1:8824",
@@ -69,10 +71,14 @@ async def on_startup():
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
-    logging.info(f"Incoming request: {request.method} {request.url}")
-    logging.info(f"Headers: {request.headers}")
+    # logging.info(f"Incoming request: {request.method} {request.url}")
+    # logging.info(f"Headers: {request.headers}")
+    logger.info(f"Incoming request: {request.method} {request.url}")
+    logger.info(f"Headers: {request.headers}")
     response = await call_next(request)
-    logging.info(f"Outgoing response: {response.status_code}")
+    # logging.info(f"Outgoing response: {response.status_code}")
+    logger.info(f"Outgoing response: {response.status_code}")
+
     return response
 
 app.include_router(file_api.router, prefix="/api/v1/file", tags=["file_upload_api"])

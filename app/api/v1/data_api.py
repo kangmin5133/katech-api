@@ -11,9 +11,7 @@ import logging
 import os
 
 router = APIRouter()
-
-# class ExtraFields(BaseModel):
-#     extra_fields: List[str]
+logger = logging.getLogger()
 
 @router.get("/search")
 async def get_data(
@@ -23,7 +21,6 @@ async def get_data(
     limit: int = Query(10, alias="limit"),
     offset: int = Query(0, alias="offset"),
     order : str = Query("ASC", alias="order"),
-    # extra_fields: ExtraFields = None
 ):
     
     if device_id is None:
@@ -31,10 +28,7 @@ async def get_data(
     if order not in ["ASC","DESC"]:
         raise HTTPException(status_code=400, detail="order param supports ASC or DESC")
     
-    logging.info(f"Get data requested with device_id: {device_id}, start_time: {start_time}, stop_time: {stop_time}, limit: {limit}, offset: {offset}, order:{order}")
-
-    # if extra_fields:
-    #     extra_fields = extra_fields.extra_fields
+    logger.info(f"Get data requested with device_id: {device_id}, start_time: {start_time}, stop_time: {stop_time}, limit: {limit}, offset: {offset}, order:{order}")
     
     response = await data_service.get_datas(
         device_id=device_id, 
@@ -43,7 +37,6 @@ async def get_data(
         limit=limit,
         offset=offset,
         order=order,
-        # extra_fields=extra_fields
     )
     return JSONResponse(content=response)
 
@@ -58,15 +51,13 @@ async def get_device_ids_by_vehicle_type(vehicle_type: str, db : Session = Depen
     if vehicle_type is None:
         raise HTTPException(status_code=400, detail="vehicle_type is missing in the param")
 
-    logging.info(f"requested vehicle_type : {vehicle_type}")
-    
+    logger.info(f"requested vehicle_type : {vehicle_type}")
     response = await data_service.get_device_ids_by_vehicle_type(vehicle_type=vehicle_type,db=db)
     return JSONResponse(content=response)
 
 @router.get("/get/metadata")
 async def get_metadatas():
-    logging.info(f"requested metadata")
-    
+    logger.info("metadata requested")
     response = await data_service.get_meta_and_predefined()
     return JSONResponse(content=response)
 

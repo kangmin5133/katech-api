@@ -1,7 +1,8 @@
 import uvicorn
-import logging
+from logging.handlers import TimedRotatingFileHandler
+from config.logger_config import setup_logger
 
-logging.basicConfig(level=logging.INFO, filename='logs/app.log', format='%(asctime)s %(message)s')
 
 if __name__ == "__main__":
+    setup_logger()
     uvicorn.run("app.main:app", host="0.0.0.0", port=8820, reload=True)
