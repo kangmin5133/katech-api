@@ -6,7 +6,7 @@ def setup_logger():
     logger.setLevel(logging.INFO)
 
     # TimedRotatingFileHandler 설정
-    handler = TimedRotatingFileHandler('logs/app.log', when='D', interval=1)
+    handler = TimedRotatingFileHandler('logs/app.log', when='D', interval=1, backupCount=90)
     handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s %(message)s')
     handler.setFormatter(formatter)
