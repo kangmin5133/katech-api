@@ -51,3 +51,36 @@ class InfluxDatabase:
         for table in result:
             for record in table.records:
                 return record.get_time()  # 가장 초기의 타임스탬프 반환
+            
+    def influx_parser(self,query_result, total_count, offset, limit):
+        exclude_keys = ["result", "table", "_start", "_stop", "_time", "_measurement", "device_id"]
+        grouped_data = {}
+
+        # query_result를 돌면서 각 device_id별로 데이터 그룹화
+        for entry in query_result:
+            device_id = entry["device_id"]
+            if device_id not in grouped_data:
+                grouped_data[device_id] = []
+
+            # 필요없는 키 제거 및 None 값 필터링
+            filtered_entry = {k: v for k, v in entry.items() if k not in exclude_keys}
+            
+            # timestamp를 딕셔너리의 첫번째 요소로 이동
+            if "timestamp" in filtered_entry:
+                timestamp_value = filtered_entry.pop("timestamp")
+                filtered_entry = {"timestamp": timestamp_value, **filtered_entry}
+
+            grouped_data[device_id].append(filtered_entry)
+
+        # 그룹화된 데이터를 최종 결과 형식으로 변환
+        parsed_data = [{"device_id": device_id, "data": data} for device_id, data in grouped_data.items()]
+
+        result_with_meta = {
+            "total": total_count,
+            "offset": offset,
+            "limit": limit,
+            "count": sum(len(data["data"]) for data in parsed_data),
+            "data": parsed_data,
+        }
+
+        return result_with_meta
