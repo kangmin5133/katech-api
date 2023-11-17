@@ -11,7 +11,7 @@ import os
 from typing import Optional, List
 import logging
 from app.db.influxdb.database import InfluxDatabase
-from app.utils.data_util import influx_parser, get_count
+from app.utils.data_util import get_count
 from app.db.mysql import crud
 import re
 
@@ -22,7 +22,7 @@ async def get_datas(
     limit: int = 10,
     offset: int = 0,
     order : str = "ASC",
-    extra_fields: List[str] = None
+    # extra_fields: List[str] = None
 ):
     db = InfluxDatabase()
     filters = []
@@ -38,10 +38,10 @@ async def get_datas(
         device_id_filters = [f'r["device_id"] == "{id_}"' for id_ in device_ids]
         filters.append(f"({' or '.join(device_id_filters)})")
 
-    if extra_fields and extra_fields[0] != '':
-        extra_field_filters = [f'r["_field"] == "{field}"' for field in extra_fields]
-        extra_field_filters.append('r["_field"] == "timestamp"')  # timestamp를 무조건 포함
-        filters.append(f"({' or '.join(extra_field_filters)})")
+    # if extra_fields and extra_fields[0] != '':
+    #     extra_field_filters = [f'r["_field"] == "{field}"' for field in extra_fields]
+    #     extra_field_filters.append('r["_field"] == "timestamp"')  # timestamp를 무조건 포함
+    #     filters.append(f"({' or '.join(extra_field_filters)})")
     
     filter_query = " and ".join(filters) if filters else "true"
 
@@ -49,7 +49,9 @@ async def get_datas(
         from(bucket: "{db.bucket}")
         |> range(start: {start_time if start_time else Config.DEFAULT_TIME_RANGE}, stop: {stop_time if stop_time else (datetime.datetime.now().isoformat()).split(".")[0]+"Z"})
         |> filter(fn: (r) => {filter_query})
-        |> count(column: "_value")
+        |> filter(fn: (r) => r["_field"] == "timestamp")
+        |> count()
+        |> yield(name: "count")
     '''
     logging.info(f'Query from get_datas count total : {count_query}')
     table_count = db.query_data(count_query)
@@ -60,15 +62,16 @@ async def get_datas(
         from(bucket: "{db.bucket}")
         |> range(start: {start_time if start_time else Config.DEFAULT_TIME_RANGE}, stop: {stop_time if stop_time else (datetime.datetime.now().isoformat()).split(".")[0]+"Z"})
         |> filter(fn: (r) => {filter_query})
+        |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
         |> sort(columns: ["_time"], desc: {desc})
         |> limit(n: {limit}, offset: {offset})
     '''
-    logging.info(f'Query from get_datas : {query}')
+
+    logging.info(f'Query from get_datas query : {query}')
 
     table = db.query_data(query)
     result = db.flux_to_json(table)
-
-    parsed_result = influx_parser(query_result = result, total_count = total_count, offset = offset, limit = limit)
+    parsed_result = db.influx_parser(query_result = result, total_count = total_count, offset = offset, limit = limit)
 
     return parsed_result
 
