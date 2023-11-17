@@ -36,6 +36,7 @@ def merge_files(device_id_dir_path: str):
         for file_path in files:
             try:
                 df = pd.read_csv(file_path, index_col=None, header=0)
+                df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
                 all_columns.append(list(df.columns))
             except pd.errors.EmptyDataError:
                 logging.warning(f"Empty file: {file_path}")
@@ -43,9 +44,13 @@ def merge_files(device_id_dir_path: str):
 
         merged_filename = f"{folder_path}/{device_id}_{date}.csv"
         if all_columns:
-            merged_df = pd.DataFrame(all_columns)
-            merged_df.to_csv(merged_filename, index=False, header=False)
-            logging.info(f"{len(files)} files merged into {merged_filename}")
+            if os.path.exists(merged_filename):
+                merged_df = pd.DataFrame(all_columns)
+                merged_df.to_csv(merged_filename, mode='a', index=False, header=False)
+
+            else:
+                merged_df = pd.DataFrame(all_columns)
+                merged_df.to_csv(merged_filename, index=False, header=False)
 
 def delete_old_files(device_id_dir_path: str):
 
