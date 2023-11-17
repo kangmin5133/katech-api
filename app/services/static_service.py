@@ -1,25 +1,11 @@
-from fastapi import  UploadFile, HTTPException
-from pathlib import Path
 from sqlalchemy.orm import Session
-from app.db.mysql import crud, metadatas
-import shutil
-from tempfile import NamedTemporaryFile
+from app.db.mysql import crud
 import datetime
-from datetime import timezone, timedelta
-import json
+from datetime import timedelta
 from config.config import Config
-import zipfile
-import os 
-from typing import Optional, List
 import logging
 from app.db.influxdb.database import InfluxDatabase
-from influxdb_client import Point
-from app.utils.data_util import influx_parser, get_count
-
-import pandas as pd
 from app.db.mysql import crud
-import glob
-import re
 
 async def get_vehicle_count_by_type(db: Session):
     vehicle_counts = crud.count_vehicle_by_type(db)
