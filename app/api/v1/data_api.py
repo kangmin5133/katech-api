@@ -1,10 +1,9 @@
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
 from datetime import datetime
 from sqlalchemy.orm import Session
 from app.db.mysql.database import get_db
 from fastapi import Query, Depends
-from typing import List, Optional
+from typing import Optional
 from fastapi.responses import JSONResponse, FileResponse
 from app.services import data_service
 import logging

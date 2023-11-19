@@ -2,9 +2,9 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.events import EVENT_JOB_EXECUTED, EVENT_JOB_ERROR
-from app.db.mysql import crud, models, database, schemas, metadatas
+from app.db.mysql import crud, database, schemas, metadatas
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker,Session
+from sqlalchemy.orm import sessionmaker
 from app.api.v1 import file_api, data_api, vehicle_api, static_api
 from app.utils.file_util import merge_files, get_device_ids, delete_old_files
 import logging
@@ -46,7 +46,6 @@ def file_delete():
     
 def start_scheduler():
     scheduler = BackgroundScheduler()
-    # scheduler.add_job(file_merge, 'interval',minutes=1) # for test
     scheduler.add_listener(job_end_listener, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
     scheduler.add_job(file_merge, 'cron', hour=0)
     scheduler.start()
@@ -71,12 +70,9 @@ async def on_startup():
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
-    # logging.info(f"Incoming request: {request.method} {request.url}")
-    # logging.info(f"Headers: {request.headers}")
     logger.info(f"Incoming request: {request.method} {request.url}")
     logger.info(f"Headers: {request.headers}")
     response = await call_next(request)
-    # logging.info(f"Outgoing response: {response.status_code}")
     logger.info(f"Outgoing response: {response.status_code}")
 
     return response

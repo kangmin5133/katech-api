@@ -4,12 +4,11 @@ from sqlalchemy.exc import IntegrityError, NoResultFound
 from app.db.mysql.schemas import VehicleInfoCreate, VehicleMetadataCreate
 from app.db.mysql import crud
 from app.db.influxdb.database import InfluxDatabase
-from typing import List, Optional, Dict
+from typing import Optional 
 import re
 from config.config import Config
 import datetime
 import logging
-import json
 
 logger = logging.getLogger()
 
@@ -172,7 +171,6 @@ async def get_terminal_gps(device_id : str, start_time : str = None, stop_time :
         parsed_data.append({"time":str(time).split(".")[0]+"Z","lat": latitude, "lng": longitude})
 
     return parsed_data
-
 
 async def update_vehicle_data(vehicle_number : str, request : dict , db : Session):
     # 기존 차량 데이터 가져오기

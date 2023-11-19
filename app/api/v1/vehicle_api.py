@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from app.db.mysql.database import get_db
 from fastapi import APIRouter, HTTPException, Query, Depends
 from pydantic import BaseModel
-from typing import List, Optional, Dict
+from typing import Optional
 from fastapi.responses import JSONResponse
 from app.services import vehicle_service
 import logging

@@ -1,8 +1,7 @@
 from sqlalchemy.orm import Session
 from . import models, schemas
-from sqlalchemy.orm import join
 from sqlalchemy import func
-from typing import List, Optional, Dict
+from typing import List, Optional
 
 # VehicleMetadata CRUD
 def create_vehicle_metadata(db: Session, vehicle_metadata: schemas.VehicleMetadataCreate):

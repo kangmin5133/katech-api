@@ -3,23 +3,18 @@ from pathlib import Path
 import shutil
 from tempfile import NamedTemporaryFile
 import datetime
-import json
 from config.config import Config
 import zipfile
 import os 
 import subprocess
 import logging
 from app.db.influxdb.database import InfluxDatabase
-from influxdb_client import Point
 
 from app.utils.data_util import create_point
 
 logger = logging.getLogger()
 
 async def upload_file(device_id:str,file:UploadFile):
-    # Check file format
-    # if file.content_type != "text/csv":
-    #     raise HTTPException(status_code=400, detail="Invalid file format. Only CSV files are allowed.")
     
     # Create main storage directory if not exists
     storage_path = Path(Config.DATA_STORAGE)
@@ -44,15 +39,16 @@ async def upload_file(device_id:str,file:UploadFile):
             universal_newlines=True)
 
     #write to influxDB
-    db = InfluxDatabase()
-    point = create_point(file_path = file_path, 
-                        timestamp = timestamp, 
-                        device_id = device_id, 
-                        ) 
-    logger.info(f"created point for file {file_path}\n Point Object : {point}")
-    db.write_point_obj_data(point)
-    # except:
-    #     raise HTTPException(status_code=401, detail="errors while insert data to DB")
+    try:
+        db = InfluxDatabase()
+        point = create_point(file_path = file_path, 
+                            timestamp = timestamp, 
+                            device_id = device_id, 
+                            ) 
+        logger.info(f"created point for file {file_path}\n Point Object : {point}")
+        db.write_point_obj_data(point)
+    except:
+        logger.error(f"file saved But, errors while write point data to Database with {point}")
 
     return {"file_save_path": str(file_path)}
 

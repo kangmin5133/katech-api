@@ -1,5 +1,3 @@
-from datetime import timedelta
-
 class Config(object):
     TESTING = True
     DEBUG=True
