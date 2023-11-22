@@ -120,6 +120,11 @@ async def get_vehicle_type(offset: int, limit: int, db: Session):
     result = crud.get_vehicle_metadatas(db=db, offset=offset, limit=limit)
     return [metadata.to_dict() for metadata in result], total
 
+async def get_vehicle_type_by_type_name(type_name: str, db: Session):
+
+    result = crud.get_vehicle_type_by_name(db=db,type_name=type_name)
+    return result.to_dict()
+
 async def get_terminal_gps(device_id : str, start_time : str = None, stop_time : str = None):
     db = InfluxDatabase()
     filters = []

@@ -76,6 +76,9 @@ def get_total_vehicle_type_count(db: Session):
 def get_vehicle_metadatas(db: Session, offset: int, limit: int):
     return db.query(models.VehicleMetadata).offset(offset).limit(limit).all()
 
+def get_vehicle_type_by_name(db: Session, type_name: str):
+    return db.query(models.VehicleMetadata).filter(models.VehicleMetadata.vehicle_type == type_name).first()
+
 def get_vehicle_infos(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.VehicleInfo).offset(skip).limit(limit).all()
 

@@ -84,6 +84,7 @@ async def register_vehicle_type_data(vehicle_type_name: str,
     
     response = await vehicle_service.create_vehicle_type_data(request=request, db=db)
     return JSONResponse(content=response)
+
 # Read
 @router.get("/get/vehicle")
 async def get_vehicle_data(vehicle_number: str, 
@@ -113,6 +114,15 @@ async def get_vehicle_type_data(offset: int = Query(0),
     response, total = await vehicle_service.get_vehicle_type(offset=offset, limit=limit, db=db)
     final_response  = {"total": total, "count": len(response), "data": response}
     return JSONResponse(content=final_response)
+
+@router.get("/get/vehicleType")
+async def get_vehicle_type_data(type_name : str,
+                                db: Session = Depends(get_db)):
+    if type_name is None:
+        raise HTTPException(status_code=400, detail="type_name is required in the params")
+    
+    response = await vehicle_service.get_vehicle_type_by_type_name(type_name=type_name, db=db)
+    return JSONResponse(content=response)
 
 @router.get("/get/vehicle/location")
 async def get_vehicle_terminal_location_data(device_id: str,
