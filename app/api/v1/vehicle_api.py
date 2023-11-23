@@ -27,7 +27,7 @@ async def register_vehicle_data(vehicle_number: str,
                                 vehicle_type_name : str,
                                 year : str,
                                 fuel_type : str,
-                                terminal_info : str,
+                                terminal_info : str = None,
                                 db: Session = Depends(get_db)):
     
     if vehicle_number is None:

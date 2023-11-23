@@ -30,7 +30,8 @@ async def create_vehicle_data(request: dict, db: Session):
     # terminal_info 중복 검사
     try:
         existing_terminal = crud.get_vehicle_info_by_terminal_info(db, request["terminal_info"])
-        if existing_terminal:
+        result = existing_terminal.to_dict()
+        if result.get("terminal_info"):
             raise HTTPException(status_code=400, detail=f"There is duplicated terminal_info {request['terminal_info']}")
     except NoResultFound:
         pass  # terminal_info가 없으면, 생성 진행
