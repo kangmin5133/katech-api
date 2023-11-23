@@ -11,6 +11,7 @@ import logging
 from app.db.influxdb.database import InfluxDatabase
 
 from app.utils.data_util import create_point
+from app.utils.file_util import extract_datetime
 
 logger = logging.getLogger()
 
@@ -60,7 +61,11 @@ async def get_files(device_id:str):
     if not folder_path.exists():
         raise HTTPException(status_code=404, detail="Device ID not found")
     
-    files = [f.name for f in folder_path.iterdir() if f.is_file()]
+    files = sorted(
+        (f.name for f in folder_path.iterdir() if f.is_file()),
+        key=extract_datetime,
+        reverse=False  # 최신 파일이 먼저 오도록 하려면 reverse=True
+    )
     return {"files": files}
 
 async def download_zip(device_id: str):

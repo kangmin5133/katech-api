@@ -68,3 +68,12 @@ def delete_old_files(device_id_dir_path: str):
                 os.remove(file_path)
             except Exception as e:
                 logger.error(f"Error occurred while deleting file {file_path}: {e}")
+
+def extract_datetime(file_name):
+    parts = file_name.split('_')
+    if len(parts) > 1:
+        datetime_str = parts[1].split('.')[0]  # 확장자 제거
+        # 날짜와 시간 부분이 충분히 길지 않다면 000000을 추가
+        datetime_str = datetime_str.ljust(14, '0')
+        return datetime.strptime(datetime_str, "%Y%m%d%H%M%S")
+    return None
