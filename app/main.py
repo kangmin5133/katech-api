@@ -31,7 +31,7 @@ app.add_middleware(
 
 def job_end_listener(event):
     if event.exception:
-        logging.info(f"The job crashed: {event.exception}")
+        logger.info(f"The job crashed: {event.exception}")
     else:
         device_id_dir_path = get_device_ids()
         for device_id_dir_path in device_id_dir_path: delete_old_files(device_id_dir_path)
