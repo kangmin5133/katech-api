@@ -16,7 +16,7 @@ from app.utils.file_util import extract_datetime
 logger = logging.getLogger()
 
 async def upload_file(device_id:str,file:UploadFile):
-    
+    logger.info(f"file received {file.filename}")
     # Create main storage directory if not exists
     storage_path = Path(Config.DATA_STORAGE)
     storage_path.mkdir(parents=True, exist_ok=True)
@@ -25,9 +25,7 @@ async def upload_file(device_id:str,file:UploadFile):
     folder_path = Path(f"{Config.DATA_STORAGE}/{device_id}")
     folder_path.mkdir(parents=True, exist_ok=True)
 
-    # Generate timestamp and filename
-    timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-    file_name = f"{device_id}_{timestamp}.csv"
+    file_name = file.filename
     file_path = folder_path / file_name
 
     # Save the file
@@ -43,13 +41,14 @@ async def upload_file(device_id:str,file:UploadFile):
     try:
         db = InfluxDatabase()
         point = create_point(file_path = file_path, 
-                            timestamp = timestamp, 
+                            # timestamp = timestamp, 
                             device_id = device_id, 
                             ) 
         logger.info(f"created point for file {file_path}\n Point Object : {point}")
         db.write_point_obj_data(point)
-    except:
+    except Exception as e:
         logger.error(f"file saved But, errors while write point data to Database with {point}")
+        print(e)
 
     return {"file_save_path": str(file_path)}
 
