@@ -44,6 +44,11 @@ async def get_device_ids():
     response = await data_service.get_all_device_ids()
     return JSONResponse(content=response)
 
+@router.get("/get/unassigned/deviceId")
+async def get_unasigned_device_ids(db : Session = Depends(get_db)):
+    response = await data_service.get_unassigned_device_ids(db=db)
+    return JSONResponse(content=response)
+
 @router.get("/get/deviceIdBy/vehicleType")
 async def get_device_ids_by_vehicle_type(vehicle_type: str, db : Session = Depends(get_db)):
 
@@ -66,6 +71,7 @@ async def download_datas(
     device_id : str = None,
     start_time: Optional[datetime] = None,
     stop_time: Optional[datetime] = None,
+    order :Optional[str] = "DESC",
     db : Session = Depends(get_db)
 ):
     device_ids = []
@@ -78,7 +84,7 @@ async def download_datas(
     if vehicle_type is None:
         raise HTTPException(status_code=400, detail="vehicle_type is missing in the param")
 
-    response = await data_service.data_download(vehicle_type = vehicle_type, device_ids = device_ids, start_time = start_time, stop_time = stop_time, db = db)
+    response = await data_service.data_download(vehicle_type = vehicle_type, device_ids = device_ids, start_time = start_time, stop_time = stop_time, order = order,db = db)
 
     if response:
         return FileResponse(response, filename=os.path.basename(response), media_type='application/zip')

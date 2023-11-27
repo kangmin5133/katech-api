@@ -3,7 +3,9 @@ from pathlib import Path
 from sqlalchemy.orm import Session
 from app.db.mysql import crud, metadatas
 import datetime
-from datetime import timezone
+from datetime import timezone, timedelta
+from dateutil.parser import parse
+from collections import defaultdict
 import json
 from config.config import Config
 import zipfile
@@ -12,6 +14,7 @@ from typing import Optional, List
 import logging
 from app.db.influxdb.database import InfluxDatabase
 from app.utils.data_util import get_count
+from app.utils.file_util import get_device_ids
 from app.db.mysql import crud
 import re
 
@@ -44,12 +47,22 @@ async def get_datas(
     #     extra_field_filters = [f'r["_field"] == "{field}"' for field in extra_fields]
     #     extra_field_filters.append('r["_field"] == "timestamp"')  # timestamp를 무조건 포함
     #     filters.append(f"({' or '.join(extra_field_filters)})")
-    
+
+    start_dt = datetime.datetime.fromisoformat(start_time) if start_time else datetime.datetime.now() - timedelta(days=30)
+    stop_dt = datetime.datetime.fromisoformat(stop_time) if stop_time else datetime.datetime.now()
+
+    adjusted_start_time_str = (start_dt).isoformat()
+    adjusted_stop_time_str = (stop_dt).isoformat()
+
+    # "+" 또는 "." 문자를 기준으로 분할하여 Z 추가
+    adjusted_start_time = re.split(r'\+|\.', adjusted_start_time_str)[0] + "Z"
+    adjusted_stop_time = re.split(r'\+|\.', adjusted_stop_time_str)[0] + "Z"
+
     filter_query = " and ".join(filters) if filters else "true"
 
     count_query = f'''
         from(bucket: "{db.bucket}")
-        |> range(start: {start_time if start_time else Config.DEFAULT_TIME_RANGE}, stop: {stop_time if stop_time else (datetime.datetime.now().isoformat()).split(".")[0]+"Z"})
+        |> range(start: {adjusted_start_time}, stop: {adjusted_stop_time})
         |> filter(fn: (r) => {filter_query})
         |> filter(fn: (r) => r["_field"] == "timestamp")
         |> count()
@@ -57,12 +70,10 @@ async def get_datas(
     '''
     logger.info(f'Query from get_datas count total : {count_query}')
     table_count = db.query_data(count_query)
-    result_count_json = table_count.to_json()
-    total_count = get_count(result_count_json)
-
+    
     query = f'''
         from(bucket: "{db.bucket}")
-        |> range(start: {start_time if start_time else Config.DEFAULT_TIME_RANGE}, stop: {stop_time if stop_time else (datetime.datetime.now().isoformat()).split(".")[0]+"Z"})
+        |> range(start: {adjusted_start_time}, stop: {adjusted_stop_time})
         |> filter(fn: (r) => {filter_query})
         |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
         |> sort(columns: ["_time"], desc: {desc})
@@ -71,8 +82,12 @@ async def get_datas(
 
     logger.info(f'Query from get_datas query : {query}')
 
+    result_count_json = table_count.to_json()
+    total_count = get_count(result_count_json)
+
     table = db.query_data(query)
     result = db.flux_to_json(table)
+    
     parsed_result = db.influx_parser(query_result = result, total_count = total_count, offset = offset, limit = limit)
 
     return parsed_result
@@ -98,6 +113,21 @@ async def get_all_device_ids():
 
     return response
 
+async def get_unassigned_device_ids(db: Session):
+    try:
+        assigned_terminals = crud.get_all_terminal_info(db=db)
+        assigned_device_ids = [item[0] for item in assigned_terminals]
+        uploaded_device_path = get_device_ids()
+        uploaded_device_ids = [device_id.split("/")[-1] for device_id in uploaded_device_path]
+
+        print(f"assigned_device_ids:{assigned_device_ids} , uploaded_device_ids:{uploaded_device_ids}")
+        unassigned_device_ids = [device_id for device_id in uploaded_device_ids if device_id not in assigned_device_ids]
+        response = {"unassigned_device_ids": unassigned_device_ids}
+    except Exception as e:
+        logger.info(f"An error occurred: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    return response
+    
 async def get_device_ids_by_vehicle_type(vehicle_type: str, db: Session):
     try:
         vehicle_metadata = crud.get_vehicle_metadata_by_type(db, vehicle_type)
@@ -106,17 +136,19 @@ async def get_device_ids_by_vehicle_type(vehicle_type: str, db: Session):
         
         vehicle_type_id = vehicle_metadata.id
 
-        device_ids = crud.get_device_ids_by_vehicle_type_id(db, vehicle_type_id)
+        query_result = crud.get_device_ids_by_vehicle_type_id(db, vehicle_type_id)
 
-        device_ids = [row[0] for row in device_ids]
-        
-        response = {"device_ids": list(set(device_ids))}
+        response = [
+            {"vehicle_number": item[1], "device_id": item[0]}
+            for item in query_result
+            if item[0] and item[1]
+        ]
+
     except Exception as e:
         logger.info(f"An error occurred: {e}")
         raise HTTPException(status_code=500, detail=str(e))
     
     return response
-
 
 async def get_meta_and_predefined():
     response ={
@@ -129,7 +161,13 @@ async def get_meta_and_predefined():
     }
     return response
 
-async def data_download(vehicle_type: str, db: Session, device_ids : List[str]= None, start_time: Optional[datetime.datetime] = None, stop_time: Optional[datetime.datetime] = None):
+async def data_download(vehicle_type: str, 
+                        db: Session, 
+                        device_ids : List[str]= None, 
+                        start_time: Optional[datetime.datetime] = None, 
+                        stop_time: Optional[datetime.datetime] = None,
+                        order : str = "DESC"):
+    
     vehicle_metadata = crud.get_vehicle_metadata_by_type(db, vehicle_type)
     if not vehicle_metadata:
         raise HTTPException(status_code=404, detail="Vehicle type not found")
@@ -162,25 +200,38 @@ async def data_download(vehicle_type: str, db: Session, device_ids : List[str]= 
             file_path = os.path.join(directory_path, file_name)
             if (start_time is None and stop_time is None) or is_file_in_date_range(file_name, start_time, stop_time):
                 files_to_merge.append(file_path)
-        sort_files_by_timestamp(files_to_merge)
+            sort_files_by_timestamp(files_to_merge)
 
         # 병합할 파일들의 데이터를 리스트에 추가
         all_data = []
         for file_path in files_to_merge:
-            with open(file_path, 'r') as file:
-                cleaned_data = [remove_unnamed_columns(line) for line in file.readlines()]
-                all_data.append(cleaned_data)
+            file_name = os.path.basename(file_path)
+            match = re.search(r'(\d{8})\.csv$', file_name)
+            if match:
+                with open(file_path, 'r') as file:
+                    lines = file.readlines()
+                    if match.group(1):  # 파일 이름이 YYYYMMDD 형식인 경우
+                        cleaned_data = filter_data_by_timestamp(lines, start_time, stop_time)
+                    else:  # 파일 이름이 YYYYMMDD 형식이 아닌 경우
+                        cleaned_data = [remove_unnamed_columns(line) for line in lines]
+                    all_data.append(cleaned_data)
+            else:
+                with open(file_path, 'r') as file:
+                    cleaned_data = [remove_unnamed_columns(line) for line in file.readlines()]
+                    all_data.append(cleaned_data)
 
         folder_path = Path(f"{Config.DOWNLOAD_STORAGE}")
         folder_path.mkdir(parents=True, exist_ok=True)
 
         if all_data:
+            sort_data_by_timestamp(all_data,order)
             if (start_time is None and stop_time is None):
                 merged_file_name = f"{current_timestamp}_{vehicle_type}_{terminal_info}.csv"
             else:
                 merged_file_name = f"{current_timestamp}_{start_time.strftime('%Y%m%dT%H%M%SZ')}_{stop_time.strftime('%Y%m%dT%H%M%SZ')}_{vehicle_type}_{terminal_info}.csv"
             
             merged_file_path = os.path.join(Config.DOWNLOAD_STORAGE, merged_file_name)
+            
             with open(merged_file_path, 'w') as file:
                 for data in all_data:
                     file.write(' '.join(str(item) for item in data) + '\n')
@@ -211,12 +262,45 @@ def sort_files_by_timestamp(files_list):
         return match.group(0) if match else "000000000000"
     files_list.sort(key=extract_timestamp, reverse=True)
 
+def sort_data_by_timestamp(data_list,order):
+    def extract_timestamp(item):
+        # 각 항목에서 타임스탬프 추출
+        return item.split(',')[0] if item else ""
+    rvs = True
+    if order == "ASC": rvs = False
+    for inner_list in data_list:
+        # 각 내부 리스트를 타임스탬프 기준으로 내림차순 정렬
+        inner_list.sort(key=extract_timestamp, reverse=rvs)
+
+def filter_data_by_timestamp(lines, start_datetime, stop_datetime):
+    filtered_lines = []
+    for line in lines:
+        # 타임스탬프 추출
+        timestamp_str = line.split(',')[0]
+        timestamp = datetime.datetime.strptime(timestamp_str, '%Y%m%d%H%M%S')
+        timestamp = datetime.datetime.strptime(timestamp_str, '%Y%m%d%H%M%S').replace(tzinfo=timezone.utc)
+        # 타임스탬프가 지정된 범위 내인지 확인
+        if start_datetime <= timestamp <= stop_datetime:
+            filtered_lines.append(line)
+
+    return filtered_lines
+
 def is_file_in_date_range(file_name, start_datetime, stop_datetime):
     match = re.search(r'_(\d{8})(\d{6})?\.csv$', file_name)
     if match:
         file_date_str = match.group(1)
-        file_time_str = match.group(2) or "000000"
-        file_datetime_str = f"{file_date_str}{file_time_str}"
-        file_datetime = datetime.datetime.strptime(file_datetime_str, '%Y%m%d%H%M%S').replace(tzinfo=timezone.utc)
-        return start_datetime <= file_datetime <= stop_datetime
+        file_time_str = match.group(2)
+
+        # 날짜와 시간이 모두 있는 경우
+        if file_time_str:
+            file_datetime_str = f"{file_date_str}{file_time_str}"
+            file_datetime = datetime.datetime.strptime(file_datetime_str, '%Y%m%d%H%M%S').replace(tzinfo=timezone.utc)
+            return start_datetime <= file_datetime <= stop_datetime
+        # 날짜만 있는 경우
+        else:
+            file_date = datetime.datetime.strptime(file_date_str, '%Y%m%d').date()
+            start_date = start_datetime.date()
+            stop_date = stop_datetime.date()
+            return start_date <= file_date <= stop_date
+
     return False
