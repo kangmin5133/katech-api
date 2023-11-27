@@ -9,7 +9,7 @@ import re
 from config.config import Config
 import datetime
 import logging
-
+from datetime import timedelta
 logger = logging.getLogger()
 
 async def create_vehicle_data(request: dict, db: Session):
@@ -30,9 +30,10 @@ async def create_vehicle_data(request: dict, db: Session):
     # terminal_info 중복 검사
     try:
         existing_terminal = crud.get_vehicle_info_by_terminal_info(db, request["terminal_info"])
-        result = existing_terminal.to_dict()
-        if result.get("terminal_info"):
-            raise HTTPException(status_code=400, detail=f"There is duplicated terminal_info {request['terminal_info']}")
+        if existing_terminal:
+            result = existing_terminal.to_dict()
+            if result.get("terminal_info"):
+                raise HTTPException(status_code=400, detail=f"There is duplicated terminal_info {request['terminal_info']}")
     except NoResultFound:
         pass  # terminal_info가 없으면, 생성 진행
 
@@ -133,6 +134,21 @@ async def get_terminal_gps(device_id : str, start_time : str = None, stop_time :
     current_time_str = datetime.datetime.now().isoformat().split(".")[0]+"Z"
     current_time = datetime.datetime.fromisoformat(current_time_str)
 
+    start_dt = datetime.datetime.fromisoformat(start_time) if start_time else datetime.datetime.now() - timedelta(days=30)
+    stop_dt = datetime.datetime.fromisoformat(stop_time) if stop_time else datetime.datetime.now()
+
+    # _time 필드 조정 이전의 데이터 조회시 
+    # adjusted_start_time_str = (start_dt + timedelta(seconds=30)).isoformat()
+    # adjusted_stop_time_str = (stop_dt + timedelta(seconds=30)).isoformat()
+
+    # _time 필드 조정 이후의 데이터 조회시 
+    adjusted_start_time_str = (start_dt + timedelta(seconds=0)).isoformat()
+    adjusted_stop_time_str = (stop_dt + timedelta(seconds=0)).isoformat()
+
+    # "+" 또는 "." 문자를 기준으로 분할하여 Z 추가
+    adjusted_start_time = re.split(r'\+|\.', adjusted_start_time_str)[0] + "Z"
+    adjusted_stop_time = re.split(r'\+|\.', adjusted_stop_time_str)[0] + "Z"
+
     if device_id:
         device_id_filters = [f'r["device_id"] == "{device_id}"']
         filters.append(f"({' or '.join(device_id_filters)})")
@@ -142,7 +158,7 @@ async def get_terminal_gps(device_id : str, start_time : str = None, stop_time :
     # 위도 데이터 조회
     latitude_query = f'''
         from(bucket: "{db.bucket}")
-        |> range(start: {start_time if start_time else Config.DEFAULT_TIME_RANGE}, stop: {stop_time if stop_time else (datetime.datetime.now().isoformat()).split(".")[0]+"Z"})
+        |> range(start: {adjusted_start_time}, stop: {adjusted_stop_time})
         |> filter(fn: (r) => {filter_query})
         |> filter(fn: (r) => r["_field"] == "latitude")
     '''
@@ -150,7 +166,7 @@ async def get_terminal_gps(device_id : str, start_time : str = None, stop_time :
     # 경도 데이터 조회
     longitude_query = f'''
         from(bucket: "{db.bucket}")
-        |> range(start: {start_time if start_time else Config.DEFAULT_TIME_RANGE}, stop: {stop_time if stop_time else (datetime.datetime.now().isoformat()).split(".")[0]+"Z"})
+        |> range(start: {adjusted_start_time}, stop: {adjusted_stop_time})
         |> filter(fn: (r) => {filter_query})
         |> filter(fn: (r) => r["_field"] == "logitude")
     '''
@@ -188,6 +204,15 @@ async def update_vehicle_data(vehicle_number : str, request : dict , db : Sessio
     vehicle_metadata = crud.get_vehicle_metadata_by_type(vehicle_type = request.get("vehicle_type_name"), db = db)
     if not vehicle_metadata:
         raise HTTPException(status_code=404, detail="Vehicle type not found")
+
+    try:
+        existing_terminal = crud.get_vehicle_info_by_terminal_info(db, request.get("terminal_info"))
+        if existing_terminal:
+            result = existing_terminal.to_dict()
+            if result.get("terminal_info"):
+                raise HTTPException(status_code=400, detail=f"There is duplicated terminal_info {request['terminal_info']}")
+    except NoResultFound:
+        pass  # terminal_info가 없으면, 생성 진행
         
     # 업데이트할 데이터 생성
     update_data = {
