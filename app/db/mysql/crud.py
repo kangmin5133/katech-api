@@ -82,6 +82,9 @@ def get_vehicle_type_by_name(db: Session, type_name: str):
 def get_vehicle_infos(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.VehicleInfo).offset(skip).limit(limit).all()
 
+def get_all_terminal_info(db: Session):
+    return db.query(models.VehicleInfo.terminal_info).all()
+
 def get_vehicle_info_by_number(db: Session, vehicle_number: str):
     return db.query(models.VehicleInfo).filter(models.VehicleInfo.vehicle_number == vehicle_number).first()
 
@@ -105,7 +108,7 @@ def get_vehicle_info_with_metadata_by_number(db: Session, vehicle_number: str):
     )
 
 def get_device_ids_by_vehicle_type_id(db: Session, vehicle_type_id: int):
-    return db.query(models.VehicleInfo.terminal_info)\
+    return db.query(models.VehicleInfo.terminal_info, models.VehicleInfo.vehicle_number)\
         .filter(models.VehicleInfo.vehicle_type_id == vehicle_type_id)\
         .all()
 
