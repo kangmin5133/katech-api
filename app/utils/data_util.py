@@ -1,26 +1,21 @@
 import csv
 from influxdb_client import Point
+import datetime
+from dateutil.parser import parse
 import json
+from datetime import timezone
+def create_point(file_path,device_id):
 
-def create_point(file_path, timestamp,device_id,vehicle_id= None ):
-    if vehicle_id:
-        point = Point("SensorData") \
-                .tag("vehicle_id", vehicle_id) \
-                .tag("device_id", device_id) \
-                .time(timestamp)
-    else:
-        point = Point("SensorData") \
-                .tag("device_id", device_id) \
-                .time(timestamp)
-
-    
+    point = Point("SensorData") \
+            .tag("device_id", device_id) \
+            # .time(timestamp)
     with open(file_path, mode='r') as file:
         csv_reader = csv.reader(file)
         for i,row in enumerate(csv_reader):
             for i,item in enumerate(row):
                 if "=" not in row[i] and len(row[i]) == 14: 
                     point.field("timestamp", row[i])
-
+                    point.time(datetime.datetime.strptime(row[i], "%Y%m%d%H%M%S"))
                 elif i == 1: 
                     if row[i] not in ["NA","NA.1"] and "=" not in row[i]:
                         point.field("latitude", float(row[i]))
@@ -52,3 +47,5 @@ def get_count(data_list):
             current_device_id = data.get("device_id")
         else: continue
     return result_count
+
+
