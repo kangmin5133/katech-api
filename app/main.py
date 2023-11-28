@@ -6,7 +6,7 @@ from app.db.mysql import crud, database, schemas, metadatas
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app.api.v1 import file_api, data_api, vehicle_api, static_api
-from app.utils.file_util import merge_files, get_device_ids, delete_old_files
+from app.utils.file_util import merge_files, get_device_ids, delete_old_files, rearrange_csv_data
 import logging
 from config.logger_config import setup_logger
 
@@ -39,6 +39,7 @@ def job_end_listener(event):
 def file_merge():
     device_ids_dir_path = get_device_ids()
     for device_id_dir_path in device_ids_dir_path: merge_files(device_id_dir_path)
+    for device_id_dir_path in device_ids_dir_path: rearrange_csv_data(device_id_dir_path)
 
 def file_delete():
     device_id_dir_path = get_device_ids()
