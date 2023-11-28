@@ -1,40 +1,67 @@
 import csv
+from fastapi import HTTPException
 from influxdb_client import Point
 import datetime
 from dateutil.parser import parse
 import json
 from datetime import timezone
-def create_point(file_path,device_id):
+import re
 
-    point = Point("SensorData") \
-            .tag("device_id", device_id) \
-            # .time(timestamp)
+def is_valid_timestamp(value):
+    # YYYYMMDDHHMMSS 형식 확인
+    if not re.match(r'^\d{14}$', value):
+        return False
+    year, month, day, hour, minute, second = int(value[:4]), int(value[4:6]), int(value[6:8]), int(value[8:10]), int(value[10:12]), int(value[12:14])
+    # 각 부분의 범위 확인
+    if year >= 2023 and 1 <= month <= 12 and 1 <= day <= 31 and 0 <= hour < 24 and 0 <= minute < 60 and 0 <= second < 60:
+        return True
+    else:
+        return False
+
+def is_valid_latitude(value):
+    try:
+        lat = float(value)
+        return 33.1 <= lat <= 38.3
+    except ValueError:
+        return False
+
+def is_valid_longitude(value):
+    try:
+        lon = float(value)
+        return 124.6 <= lon <= 131.9
+    except ValueError:
+        return False
+    
+def create_point(file_path, device_id):
+    point = Point("SensorData").tag("device_id", device_id)
+
     with open(file_path, mode='r') as file:
         csv_reader = csv.reader(file)
-        for i,row in enumerate(csv_reader):
-            for i,item in enumerate(row):
-                if "=" not in row[i] and len(row[i]) == 14: 
-                    point.field("timestamp", row[i])
-                    point.time(datetime.datetime.strptime(row[i], "%Y%m%d%H%M%S"))
-                elif i == 1: 
-                    if row[i] not in ["NA","NA.1"] and "=" not in row[i]:
-                        point.field("latitude", float(row[i]))
-                elif i == 2: 
-                    if row[i] not in ["NA","NA.1"] and"=" not in row[i]:
-                        point.field("logitude", float(row[i]))
-
+        for row in csv_reader:
+            timestamp_found = False
+            for item in row:
+                # Timestamp 처리
+                if is_valid_timestamp(item):
+                    point.field("timestamp", item)
+                    point.time(datetime.datetime.strptime(item, "%Y%m%d%H%M%S"))
+                    timestamp_found = True
+                # Latitude 처리
+                elif is_valid_latitude(item):
+                    point.field("latitude", float(item))
+                # Longitude 처리
+                elif is_valid_longitude(item):
+                    point.field("logitude", float(item))
+                # 나머지 데이터 처리
                 elif "=" in item:
                     field, value = item.split("=")
                     try:
-                        # Check if the value contains a decimal point
-                        if '.' in value:
-                            value = float(value)
-                        else:
-                            value = int(value)
+                        value = float(value) if '.' in value else int(value)
                     except ValueError:
-                        # If conversion fails, keep it as string
-                        pass
+                        pass  # 문자열로 유지
                     point.field(field, value)
+            if not timestamp_found:
+                raise HTTPException(f"Invalid data: Timestamp not found in row: {row}")
+
     return point
 
 def get_count(data_list):

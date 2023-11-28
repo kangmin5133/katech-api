@@ -200,7 +200,7 @@ async def data_download(vehicle_type: str,
             file_path = os.path.join(directory_path, file_name)
             if (start_time is None and stop_time is None) or is_file_in_date_range(file_name, start_time, stop_time):
                 files_to_merge.append(file_path)
-            sort_files_by_timestamp(files_to_merge)
+            sort_files_by_timestamp(files_to_merge,order)
 
         # 병합할 파일들의 데이터를 리스트에 추가
         all_data = []
@@ -231,10 +231,13 @@ async def data_download(vehicle_type: str,
                 merged_file_name = f"{current_timestamp}_{start_time.strftime('%Y%m%dT%H%M%SZ')}_{stop_time.strftime('%Y%m%dT%H%M%SZ')}_{vehicle_type}_{terminal_info}.csv"
             
             merged_file_path = os.path.join(Config.DOWNLOAD_STORAGE, merged_file_name)
-            
+
             with open(merged_file_path, 'w') as file:
-                for data in all_data:
-                    file.write(' '.join(str(item) for item in data) + '\n')
+                for i,data in enumerate(all_data):
+                    # file.write(' '.join(str(item) for item in data) + '\n')
+                   for item in data:
+                       if item.strip():  # 공백이나 개행 문자만 있는 행을 제외
+                           file.write(item.strip() + '\n')  # 앞뒤 공백 제거 후 파일에 쓰기
 
             created_files.append(merged_file_path)
 
@@ -256,11 +259,13 @@ def remove_unnamed_columns(line):
     # "Unnamed:"이 포함된 부분을 찾아서 제거
     return ','.join([item for item in line.split(',') if "Unnamed:" not in item])
 
-def sort_files_by_timestamp(files_list):
+def sort_files_by_timestamp(files_list,order):
     def extract_timestamp(file_path):
         match = re.search(r'_(\d{8})(\d{6})?\.csv$', os.path.basename(file_path))
         return match.group(0) if match else "000000000000"
-    files_list.sort(key=extract_timestamp, reverse=True)
+    rvs = True
+    if order == "ASC": rvs = False
+    files_list.sort(key=extract_timestamp, reverse=rvs)
 
 def sort_data_by_timestamp(data_list,order):
     def extract_timestamp(item):
@@ -269,7 +274,6 @@ def sort_data_by_timestamp(data_list,order):
     rvs = True
     if order == "ASC": rvs = False
     for inner_list in data_list:
-        # 각 내부 리스트를 타임스탬프 기준으로 내림차순 정렬
         inner_list.sort(key=extract_timestamp, reverse=rvs)
 
 def filter_data_by_timestamp(lines, start_datetime, stop_datetime):
@@ -277,10 +281,22 @@ def filter_data_by_timestamp(lines, start_datetime, stop_datetime):
     for line in lines:
         # 타임스탬프 추출
         timestamp_str = line.split(',')[0]
-        timestamp = datetime.datetime.strptime(timestamp_str, '%Y%m%d%H%M%S')
-        timestamp = datetime.datetime.strptime(timestamp_str, '%Y%m%d%H%M%S').replace(tzinfo=timezone.utc)
+
+        if not re.match(r'\d{14}', timestamp_str):
+            continue
+        
+        try:
+            timestamp = datetime.datetime.strptime(timestamp_str, '%Y%m%d%H%M%S')
+            timestamp = timestamp.replace(tzinfo=datetime.timezone.utc)
+        except ValueError:
+            # 타임스탬프 형식이 맞지 않으면 건너뛰기
+            continue
+        
         # 타임스탬프가 지정된 범위 내인지 확인
-        if start_datetime <= timestamp <= stop_datetime:
+        if start_datetime and stop_datetime:
+            if start_datetime <= timestamp <= stop_datetime:
+                filtered_lines.append(line)
+        else:
             filtered_lines.append(line)
 
     return filtered_lines
