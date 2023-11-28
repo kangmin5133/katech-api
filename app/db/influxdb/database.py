@@ -3,6 +3,7 @@ from config.config import Config
 from influxdb_client.client.write_api import SYNCHRONOUS
 from typing import List, Dict, Any
 import datetime
+import re
 
 class InfluxDatabase:
     def __init__(self):
@@ -62,15 +63,20 @@ class InfluxDatabase:
             if device_id not in grouped_data:
                 grouped_data[device_id] = []
 
-            # 필요없는 키 제거 및 None 값 필터링
+            # 필요없는 키 제거
             filtered_entry = {k: v for k, v in entry.items() if k not in exclude_keys}
-            
-            # timestamp를 딕셔너리의 첫번째 요소로 이동
-            if "timestamp" in filtered_entry:
-                timestamp_value = filtered_entry.pop("timestamp")
-                filtered_entry = {"timestamp": timestamp_value, **filtered_entry}
+            # 필드 정렬 (문자열 + 숫자 형식일 경우 숫자 기준으로 정렬)
+            sorted_keys = sorted(filtered_entry.keys(), key=lambda x: (re.split('(\d+)', x)[0], int(re.split('(\d+)', x)[1]) if len(re.split('(\d+)', x)) > 1 else 0))
+            sorted_entry = {k: filtered_entry[k] for k in sorted_keys}
 
-            grouped_data[device_id].append(filtered_entry)
+            if "logitude" in sorted_entry:
+                sorted_entry["longitude"] = sorted_entry.pop("logitude")
+            
+            if "timestamp" in sorted_entry:
+                timestamp_value = sorted_entry.pop("timestamp")
+                sorted_entry = {"timestamp": timestamp_value, **sorted_entry}
+
+            grouped_data[device_id].append(sorted_entry)
 
         # 그룹화된 데이터를 최종 결과 형식으로 변환
         parsed_data = [{"device_id": device_id, "data": data} for device_id, data in grouped_data.items()]
