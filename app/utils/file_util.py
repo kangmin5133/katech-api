@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from config.config import Config
 from pathlib import Path
 import logging
+from .data_util import is_valid_timestamp, is_valid_latitude, is_valid_longitude
 import re
 
 logger = logging.getLogger()
@@ -77,3 +78,42 @@ def extract_datetime(file_name):
         datetime_str = datetime_str.ljust(14, '0')
         return datetime.strptime(datetime_str, "%Y%m%d%H%M%S")
     return None
+
+def rearrange_csv_data(device_id_dir_path):
+    device_id = device_id_dir_path.split("/")[-1]
+    folder_path = f"{Config.DATA_STORAGE}/{device_id}"
+    all_files = glob.glob(os.path.join(folder_path, f"{device_id}_*.csv"))
+    for file_path in all_files:
+        # 파일 읽기
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+
+        processed_lines = []
+
+        for line in lines:
+            row = line.strip().split(',')
+
+            # 타임스탬프, 위도, 경도 확인 플래그
+            timestamp, latitude, longitude = 'NA', 'NA', 'NA'
+
+            # 전체 row에 대한 순회
+            for item in row:
+                if is_valid_timestamp(str(item)):
+                    timestamp = item 
+                if is_valid_latitude(item):
+                    latitude = item 
+                if is_valid_longitude(item):
+                    longitude = item 
+
+            # 유효한 타임스탬프가 있는 경우에만 처리
+            if timestamp != 'NA':
+                other_data = [item for item in row if item not in [timestamp, latitude, longitude] and item not in ['NA', 'NA.1']]
+                rearranged_row = [timestamp, latitude, longitude] + other_data
+                processed_lines.append(rearranged_row)
+            else:
+                processed_lines.append(row)
+
+        processed_df = pd.DataFrame(processed_lines)
+        processed_df.to_csv(file_path, index=False, header=False)
+
+
