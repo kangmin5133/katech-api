@@ -41,7 +41,6 @@ async def upload_file(device_id:str,file:UploadFile):
     try:
         db = InfluxDatabase()
         point = create_point(file_path = file_path, 
-                            # timestamp = timestamp, 
                             device_id = device_id, 
                             ) 
         logger.info(f"created point for file {file_path}\n Point Object : {point}")
@@ -72,7 +71,7 @@ async def download_zip(device_id: str):
     if not folder_path.exists():
         raise HTTPException(status_code=404, detail="Device ID not found")
 
-    zip_file_path = Path(f"{Config.DATA_STORAGE}/{device_id}.zip")
+    zip_file_path = Path(f"{Config.DOWNLOAD_STORAGE}/{device_id}.zip")
     with zipfile.ZipFile(zip_file_path, 'w') as zipf:
         for root, _, files in os.walk(folder_path):
             for file in files:
