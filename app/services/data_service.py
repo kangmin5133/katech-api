@@ -9,12 +9,13 @@ from collections import defaultdict
 import json
 from config.config import Config
 import zipfile
+import pandas as pd
 import os 
 from typing import Optional, List
 import logging
 from app.db.influxdb.database import InfluxDatabase
 from app.utils.data_util import get_count
-from app.utils.file_util import get_device_ids
+from app.utils.file_util import get_device_ids, rearrange_csv_data, merge_files, delete_old_files
 from app.db.mysql import crud
 import re
 
@@ -26,12 +27,12 @@ async def get_datas(
     stop_time: str = None, 
     limit: int = 10,
     offset: int = 0,
-    order : str = "ASC",
+    order : str = "DESC",
     # extra_fields: List[str] = None
 ):
     db = InfluxDatabase()
     filters = []
-    desc = ""
+    desc = "true"
 
     if order == "ASC":
         desc = "false"
@@ -51,8 +52,12 @@ async def get_datas(
     start_dt = datetime.datetime.fromisoformat(start_time) if start_time else datetime.datetime.now() - timedelta(days=30)
     stop_dt = datetime.datetime.fromisoformat(stop_time) if stop_time else datetime.datetime.now()
 
-    adjusted_start_time_str = (start_dt).isoformat()
-    adjusted_stop_time_str = (stop_dt).isoformat()
+    if start_time and stop_time and start_time == stop_time:
+        adjusted_start_time_str = (start_dt + timedelta(seconds=0)).isoformat()
+        adjusted_stop_time_str = (stop_dt + timedelta(seconds=1)).isoformat()
+    else:
+        adjusted_start_time_str = (start_dt + timedelta(seconds=0)).isoformat()
+        adjusted_stop_time_str = (stop_dt + timedelta(seconds=0)).isoformat()
 
     # "+" 또는 "." 문자를 기준으로 분할하여 Z 추가
     adjusted_start_time = re.split(r'\+|\.', adjusted_start_time_str)[0] + "Z"
@@ -91,7 +96,6 @@ async def get_datas(
     parsed_result = db.influx_parser(query_result = result, total_count = total_count, offset = offset, limit = limit)
 
     return parsed_result
-
 
 async def get_all_device_ids():
     db = InfluxDatabase()
@@ -167,7 +171,11 @@ async def data_download(vehicle_type: str,
                         start_time: Optional[datetime.datetime] = None, 
                         stop_time: Optional[datetime.datetime] = None,
                         order : str = "DESC"):
-    
+
+    for device_id in device_ids: merge_files(device_id)
+    for device_id in device_ids: delete_old_files(device_id)
+    for device_id in device_ids: rearrange_csv_data(device_id)
+
     vehicle_metadata = crud.get_vehicle_metadata_by_type(db, vehicle_type)
     if not vehicle_metadata:
         raise HTTPException(status_code=404, detail="Vehicle type not found")
@@ -219,26 +227,31 @@ async def data_download(vehicle_type: str,
                 with open(file_path, 'r') as file:
                     cleaned_data = [remove_unnamed_columns(line) for line in file.readlines()]
                     all_data.append(cleaned_data)
-
         folder_path = Path(f"{Config.DOWNLOAD_STORAGE}")
         folder_path.mkdir(parents=True, exist_ok=True)
 
         if all_data:
             sort_data_by_timestamp(all_data,order)
+            column_names = extract_column_names(all_data)
+            
+            # 메타데이터 불러오기
+            meta_data = metadatas.censor_index_metadata
+            # 메타데이터를 딕셔너리로 변환 (인덱스명을 키로, 한글 항목명을 값으로)
+            meta_dict = {meta['index']: meta['item_name'] for meta in meta_data}
+            # column_names를 한글 항목명(인덱스명) 형식으로 변경
+            column_names_kr = [f"{meta_dict.get(name, '알 수 없음')}({name})" if name in meta_dict else name for name in column_names]
+
+            rearranged_data = rearrange_data(all_data, column_names)
             if (start_time is None and stop_time is None):
                 merged_file_name = f"{current_timestamp}_{vehicle_type}_{terminal_info}.csv"
             else:
                 merged_file_name = f"{current_timestamp}_{start_time.strftime('%Y%m%dT%H%M%SZ')}_{stop_time.strftime('%Y%m%dT%H%M%SZ')}_{vehicle_type}_{terminal_info}.csv"
             
             merged_file_path = os.path.join(Config.DOWNLOAD_STORAGE, merged_file_name)
+            rearranged_data_split = [line.split(',') for line in rearranged_data]
 
-            with open(merged_file_path, 'w') as file:
-                for i,data in enumerate(all_data):
-                    # file.write(' '.join(str(item) for item in data) + '\n')
-                   for item in data:
-                       if item.strip():  # 공백이나 개행 문자만 있는 행을 제외
-                           file.write(item.strip() + '\n')  # 앞뒤 공백 제거 후 파일에 쓰기
-
+            df = pd.DataFrame(rearranged_data_split, columns=['시간(timestamp)', '위도(latitude)', '경도(longitude)'] + column_names_kr)
+            df.to_csv(merged_file_path, index=True, index_label="No")
             created_files.append(merged_file_path)
 
     # 생성된 파일들을 ZIP 파일로 압축
@@ -252,8 +265,8 @@ async def data_download(vehicle_type: str,
         with zipfile.ZipFile(zip_filepath, 'w') as zipf:
             for file in created_files:
                 zipf.write(file, os.path.basename(file))
-        return zip_filepath 
-    return None 
+        return zip_filepath
+    return None
 
 def remove_unnamed_columns(line):
     # "Unnamed:"이 포함된 부분을 찾아서 제거
@@ -320,3 +333,30 @@ def is_file_in_date_range(file_name, start_datetime, stop_datetime):
             return start_date <= file_date <= stop_date
 
     return False
+
+def extract_column_names(all_data):
+    column_names = set()
+    for data in all_data:
+        for line in data:
+            items = line.split(',')
+            for item in items[3:]: 
+                if '=' in item:
+                    column_name, _ = item.split('=', 1)
+                    if column_name and '.' not in column_name:
+                        column_names.add(column_name)
+    return sorted(list(column_names))
+
+def rearrange_data(all_data, column_names):
+    rearranged_data = []
+    for data in all_data:
+        for line in data:
+            items = line.split(',')
+            # timestamp, 위도, 경도 데이터 추출
+            line_data = items[:3]
+            # 나머지 데이터를 딕셔너리로 변환
+            data_dict = {item.split('=')[0]: item.split('=')[1] for item in items[3:] if '=' in item}
+            # 정렬된 열 이름에 따라 데이터 재배열
+            for col_name in column_names:
+                line_data.append(data_dict.get(col_name, 'NA').strip("\n"))
+            rearranged_data.append(','.join(line_data))
+    return rearranged_data
