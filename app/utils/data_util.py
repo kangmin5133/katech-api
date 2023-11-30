@@ -34,7 +34,7 @@ def is_valid_longitude(value):
     
 def create_point(file_path, device_id):
     point = Point("SensorData").tag("device_id", device_id)
-
+    field_values = {}
     with open(file_path, mode='r') as file:
         csv_reader = csv.reader(file)
         for row in csv_reader:
@@ -55,9 +55,19 @@ def create_point(file_path, device_id):
                 elif "=" in item:
                     field, value = item.split("=")
                     try:
+                        # 필드 중복 검사 및 값 유효성 검증
+                        if field in field_values:
+                            prev_value = field_values[field]
+                            # value가 소수였고 중복되어서 들어온경우
+                            if '.' in str(prev_value) and '.' in value:
+                                continue  
+                            # value가 정수였고 중복되어서 들어온경우
+                            elif '.' not in str(prev_value) and '.' in value:
+                                continue
                         value = float(value) if '.' in value else int(value)
+                        field_values[field] = value  # 필드 값 업데이트
                     except ValueError:
-                        pass  # 문자열로 유지
+                        continue  # 유효하지 않은 값이므로 건너뜀
                     point.field(field, value)
             if not timestamp_found:
                 raise HTTPException(f"Invalid data: Timestamp not found in row: {row}")
