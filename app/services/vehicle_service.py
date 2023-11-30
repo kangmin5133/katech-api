@@ -130,20 +130,16 @@ async def get_vehicle_type_by_type_name(type_name: str, db: Session):
 async def get_terminal_gps(device_id : str, start_time : str = None, stop_time : str = None):
     db = InfluxDatabase()
     filters = []
-
-    current_time_str = datetime.datetime.now().isoformat().split(".")[0]+"Z"
-    current_time = datetime.datetime.fromisoformat(current_time_str)
-
     start_dt = datetime.datetime.fromisoformat(start_time) if start_time else datetime.datetime.now() - timedelta(days=30)
     stop_dt = datetime.datetime.fromisoformat(stop_time) if stop_time else datetime.datetime.now()
 
     # _time 필드 조정 이전의 데이터 조회시 
-    # adjusted_start_time_str = (start_dt + timedelta(seconds=30)).isoformat()
-    # adjusted_stop_time_str = (stop_dt + timedelta(seconds=30)).isoformat()
-
-    # _time 필드 조정 이후의 데이터 조회시 
-    adjusted_start_time_str = (start_dt + timedelta(seconds=0)).isoformat()
-    adjusted_stop_time_str = (stop_dt + timedelta(seconds=0)).isoformat()
+    if start_time and stop_time and start_time == stop_time:
+        adjusted_start_time_str = (start_dt + timedelta(seconds=0)).isoformat()
+        adjusted_stop_time_str = (stop_dt + timedelta(seconds=1)).isoformat()
+    else:
+        adjusted_start_time_str = (start_dt + timedelta(seconds=0)).isoformat()
+        adjusted_stop_time_str = (stop_dt + timedelta(seconds=0)).isoformat()
 
     # "+" 또는 "." 문자를 기준으로 분할하여 Z 추가
     adjusted_start_time = re.split(r'\+|\.', adjusted_start_time_str)[0] + "Z"
