@@ -92,7 +92,6 @@ def rearrange_csv_data(device_id_dir_path):
 
         for line in lines:
             row = line.strip().split(',')
-
             # 타임스탬프, 위도, 경도 확인 플래그
             timestamp, latitude, longitude = 'NA', 'NA', 'NA'
 
@@ -110,10 +109,18 @@ def rearrange_csv_data(device_id_dir_path):
                 other_data = [item for item in row if item not in [timestamp, latitude, longitude] and item not in ['NA', 'NA.1']]
                 rearranged_row = [timestamp, latitude, longitude] + other_data
                 processed_lines.append(rearranged_row)
-            else:
+            elif any(item.strip() for item in row):
                 processed_lines.append(row)
+            
 
         processed_df = pd.DataFrame(processed_lines)
         processed_df.to_csv(file_path, index=False, header=False)
 
+def clean_download_storage():
+    all_downlaoded_files = glob.glob(Config.DOWNLOAD_STORAGE+"/*")
+    for file_path in all_downlaoded_files:
+        try:
+            os.remove(file_path)
+        except Exception as e:
+            logger.error(f"Error occurred while deleting file {file_path}: {e}")
 
