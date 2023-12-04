@@ -251,7 +251,7 @@ async def data_download(vehicle_type: str,
             rearranged_data_split = [line.split(',') for line in rearranged_data]
 
             df = pd.DataFrame(rearranged_data_split, columns=['시간(timestamp)', '위도(latitude)', '경도(longitude)'] + column_names_kr)
-            df.to_csv(merged_file_path, index=True, index_label="No")
+            df.to_csv(merged_file_path, index=True, index_label="No",encoding='utf-8-sig')
             created_files.append(merged_file_path)
 
     # 생성된 파일들을 ZIP 파일로 압축
