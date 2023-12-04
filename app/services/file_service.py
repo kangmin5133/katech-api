@@ -46,8 +46,7 @@ async def upload_file(device_id:str,file:UploadFile):
         logger.info(f"created point for file {file_path}\n Point Object : {point}")
         db.write_point_obj_data(point)
     except Exception as e:
-        logger.error(f"file saved But, errors while write point data to Database with {point}")
-        print(e)
+        logger.error(e)
 
     return {"file_save_path": str(file_path)}
 

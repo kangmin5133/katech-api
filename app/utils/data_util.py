@@ -6,6 +6,9 @@ from dateutil.parser import parse
 import json
 from datetime import timezone
 import re
+import logging
+
+logger = logging.getLogger()
 
 def is_valid_timestamp(value):
     # YYYYMMDDHHMMSS 형식 확인
@@ -39,6 +42,7 @@ def create_point(file_path, device_id):
         csv_reader = csv.reader(file)
         for row in csv_reader:
             timestamp_found = False
+            logger.info(f"received data : {row}")
             for item in row:
                 # Timestamp 처리
                 if is_valid_timestamp(item):
@@ -70,7 +74,8 @@ def create_point(file_path, device_id):
                         continue  # 유효하지 않은 값이므로 건너뜀
                     point.field(field, value)
             if not timestamp_found:
-                raise HTTPException(f"Invalid data: Timestamp not found in row: {row}")
+                logger.info(f"Invalid data: Timestamp not found in row: {row}")
+                raise HTTPException(status_code=500, detail=f"Invalid data:{row}")
 
     return point
 
