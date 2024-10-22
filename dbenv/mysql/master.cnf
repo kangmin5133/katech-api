@@ -6,7 +6,6 @@ log-bin=mysql-bin
 replicate-do-db='katech_db'
 max_allowed_packet=1000M
 sync_binlog = 1
-expire-logs-days= 7
 
 #
 character-set-server = utf8

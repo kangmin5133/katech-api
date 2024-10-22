@@ -1,3 +1,48 @@
+# InfluxDB 데이터 파일
+dbenv/influxdb/influxd.bolt
+dbenv/influxdb/influxd.sqlite
+dbenv/influxdb/engine/
+dbenv/influxdb/data/
+
+# MySQL 데이터 파일
+dbenv/mysql/mysql_master/
+
+# 기타 데이터베이스 관련 파일
+*.rdb
+*.aof
+
+
+
+
+# Python 캐시 파일
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 가상 환경
+venv/
+env/
+.env
+
+# IDE 관련 파일
+.vscode/
+.idea/
+
+# 로그 파일
+*.log
+
+# 데이터베이스 파일
+*.db
+*.sqlite3
+
+# 임시 파일
+*.tmp
+*.bak
+*.swp
+
+# 운영체제 관련 파일
+.DS_Store
+Thumbs.db
 
 dbenv/.DS_Store
 app/.DS_Store

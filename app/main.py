@@ -1,3 +1,9 @@
+from alembic.config import Config
+from alembic import command
+from alembic.script import ScriptDirectory
+from alembic.runtime.migration import MigrationContext
+from sqlalchemy import create_engine
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -9,6 +15,30 @@ from app.api.v1 import file_api, data_api, vehicle_api, static_api
 from app.utils.file_util import merge_files, get_device_ids, delete_old_files, rearrange_csv_data, clean_download_storage
 import logging
 from config.logger_config import setup_logger
+
+def check_and_run_migrations():
+    engine = create_engine(database.DATABASE_URL)
+    conn = engine.connect()
+
+    # 현재 데이터베이스의 리비전 확인
+    context = MigrationContext.configure(conn)
+    current_rev = context.get_current_revision()
+
+    # Alembic 설정 로드
+    alembic_cfg = Config("alembic.ini")
+    script = ScriptDirectory.from_config(alembic_cfg)
+
+    # 최신 리비전 확인
+    head_rev = script.get_current_head()
+
+    if current_rev != head_rev:
+        logger.info("Database is not up to date. Running migrations...")
+        command.upgrade(alembic_cfg, "head")
+        logger.info("Migrations completed successfully.")
+    else:
+        logger.info("Database is up to date. No migrations needed.")
+
+    conn.close()
 
 # Initialize FastAPI application
 app = FastAPI()
@@ -66,6 +96,7 @@ def create_predefined_data():
 
 @app.on_event("startup")
 async def on_startup():
+    check_and_run_migrations() 
     file_merge()
     file_delete()
     start_scheduler()

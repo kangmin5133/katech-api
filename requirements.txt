@@ -7,3 +7,4 @@ sqlalchemy
 influxdb-client
 apscheduler
 pandas
+cryptography==3.4.7
